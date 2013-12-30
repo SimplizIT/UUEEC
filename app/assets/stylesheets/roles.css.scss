@@ -11,3 +11,22 @@
 .table-hover > tbody > tr:hover > th {
   background-color: #FFFFCC !important;
 }
+
+#roletable a.current {
+  padding-left: 5px;
+}
+
+#roleSearch {
+  float: right;
+  margin-bottom: 20px;
+  margin-right: 37px;
+}
+
+textarea:focus, input:focus {
+  border-color: green !important;
+  box-shadow: none !important;
+}
+
+.input-group-addon:focus {
+  border-color: green !important;
+}
