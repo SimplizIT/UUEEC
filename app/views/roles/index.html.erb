@@ -1,0 +1,46 @@
+<% if can? :read, :all %>
+<p><span style='color:red'>You should not be allowed to view this if you are a guest</span></p>
+<% end %>
+
+<% if can? :manage, :all %>
+  
+  <table id='roletable' class="table table-striped table-hover tablesorter">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th><%= sortable 'first', 'First Name' %></th>
+        <th><%= sortable 'last', 'Last Name' %></th>
+        <th><%= sortable 'email', 'E-mail' %></th>
+        <th><%= sortable 'roles_mask', 'Authorization Rights' %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @all_users %>
+        <% counter = 0 %>
+        <% @all_users.each do |user| %>
+          <% counter += 1 %>
+          <tr>
+            <td><%= counter %><span hidden><%= user.id %></span></td>
+            <td><%= user.first %></td>
+            <td><%= user.last %></td>
+            <td><%= user.email %></td>
+            <td>
+              <%= form_tag(roles_update_path(user), method: 'put') do %>
+                <% for role in User::ROLES %>
+                  <%= check_box_tag "user[roles][#{role}]", role, user.roles.include?(role), {:name => "user[roles][]"}%>
+                  <% if user.roles.include?(role) %>
+                    <%= label_tag "user_roles_#{role}", role.humanize, class: 'makeGreen' %>
+                  <% else %>
+                    <%= label_tag "user_roles_#{role}", role.humanize %>
+                  <% end %>
+                <% end %>
+                <%= hidden_field_tag "user[roles][]", "" %>
+                <%= submit_tag "Update", class: 'btn btn-xs btn-warning' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

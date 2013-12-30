@@ -1,4 +1,5 @@
 Uueec::Application.routes.draw do
+  get "roles/index"
   put "roles/update"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

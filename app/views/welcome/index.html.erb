@@ -3,15 +3,5 @@
   The time is now: <%= Time.now %>
 </p>
 
-<% if current_user %>
-  <%= current_user.email %></br>
-  <%= current_user.roles %></br>
-  <%= form_tag('/roles/update', method: 'put') do %>
-    <% for role in User::ROLES %>
-      <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-      <%= label_tag "user_roles_#{role}", role.humanize %><% if @user.roles.include?(role) %><span style='color:green'><%= ' - Active' %></span><% end %><br />
-    <% end %>
-    <%= hidden_field_tag "user[roles][]", "" %>
-    <%= submit_tag "Update" %>
-  <% end %>
-<% end %>
+
+<%= link_to 'Role Management', roles_index_path %>
