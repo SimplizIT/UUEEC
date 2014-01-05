@@ -1,6 +1,14 @@
 Uueec::Application.routes.draw do
+  resources :bugs
+  resources :obligations
+
   get "roles/index"
   put "roles/update"
+
+  resources :events, only: [:index, :create, :new, :destroy]
+  resources :user, only: [:index, :update]
+  # get "user/index"
+  # put "user/update"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

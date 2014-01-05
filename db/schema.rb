@@ -11,14 +11,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224050251) do
+ActiveRecord::Schema.define(version: 20140105035942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bugs", force: true do |t|
+    t.string   "title"
+    t.string   "browser"
+    t.string   "browser_version"
+    t.text     "error"
+    t.integer  "security_level"
+    t.boolean  "resolved"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.boolean  "allDay"
+    t.string   "description"
+    t.string   "note"
+    t.date     "start"
+    t.date     "end"
+    t.string   "url"
+    t.string   "className"
+    t.boolean  "editable"
+    t.string   "color"
+    t.string   "backgroundColor"
+    t.string   "borderColor"
+    t.string   "textColor"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "obligations", force: true do |t|
+    t.string   "title"
+    t.boolean  "allDay"
+    t.string   "description"
+    t.string   "note"
+    t.date     "start"
+    t.date     "end"
+    t.string   "url"
+    t.string   "className"
+    t.boolean  "editable"
+    t.string   "color"
+    t.string   "backgroundColor"
+    t.string   "borderColor"
+    t.string   "textColor"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "first",                  default: "", null: false
-    t.string   "last",                   default: "", null: false
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
     t.string   "email",                  default: "", null: false
     t.integer  "roles_mask"
     t.string   "encrypted_password",     default: "", null: false

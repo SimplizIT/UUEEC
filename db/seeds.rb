@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create(first: 'john', last: 'doe', email: 'dude@dude.com', password: '12345678', password_confirmation: '12345678')
-user.roles = ['admin']
+user = User.create(first_name: 'john', last_name: 'doe', email: 'dude@dude.com', password: '12345678', password_confirmation: '12345678')
+user.roles = ['admin', 'teacher', 'volunteer']
 user.save
 
 50.times do
-  User.create(first: Faker::Name.first_name, last: Faker::Name.last_name, email: Faker::Internet.email, password: '12345678', password_confirmation: '12345678')
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '12345678', password_confirmation: '12345678')
 end
 

@@ -29,6 +29,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-tablesorter'
 
+gem 'fullcalendar-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -46,6 +47,8 @@ gem 'rails_12factor', group: :production
 gem 'faker', group: :development
 
 gem 'font-awesome-rails'
+
+gem 'bootstrap-datepicker-rails'
 
 
 # Use ActiveModel has_secure_password

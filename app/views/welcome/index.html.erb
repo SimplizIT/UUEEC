@@ -3,5 +3,11 @@
   The time is now: <%= Time.now %>
 </p>
 
+<% if can? :manage, :all %>
+  <%= link_to 'Role Management', roles_index_path %><br>
+<% end %>
+<%= link_to 'Profile Page', user_index_path %><br>
+<%= link_to 'Event Page', events_path %><br>
+<%= link_to 'Volunteer Page', obligations_path %>
 
-<%= link_to 'Role Management', roles_index_path %>
+

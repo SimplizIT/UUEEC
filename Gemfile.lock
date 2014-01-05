@@ -28,6 +28,8 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-datepicker-rails (1.1.1.11)
+      railties (>= 3.0)
     builder (3.1.4)
     cancan (1.6.10)
     coffee-rails (4.0.1)
@@ -49,6 +51,7 @@ GEM
       i18n (~> 0.5)
     font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
+    fullcalendar-rails (1.6.4.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -137,11 +140,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-datepicker-rails
   cancan
   coffee-rails (~> 4.0.0)
   devise
   faker
   font-awesome-rails
+  fullcalendar-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-tablesorter

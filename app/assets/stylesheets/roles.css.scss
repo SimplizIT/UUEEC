@@ -30,3 +30,10 @@ textarea:focus, input:focus {
 .input-group-addon:focus {
   border-color: green !important;
 }
+
+.tableDevider {
+  background-color: #B0B0B0 !important;
+  height: 35px;
+  border-top: 2px solid #888888 !important;
+  border-bottom: 2px solid #888888 !important;
+}

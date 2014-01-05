@@ -2,7 +2,9 @@
 <p><span style='color:red'>You should not be allowed to view this if you are a guest</span></p>
 <% end %>
 
-  
+
+<%= link_to 'Home page', root_path %>
+
   <div id='roleSearch' class="row col-sm-4">
     <div class="input-group">
       <input type="text" id='role_search' class="form-control">
@@ -12,31 +14,43 @@
     </div><!-- /input-group -->
   </div><!-- /.row -->
           
-  <table id='roletable' class="table table-striped table-hover tablesorter">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th><%= sortable 'last', 'Last Name' %></th>
-        <th><%= sortable 'first', 'First Name' %></th>
-        <th><%= sortable 'email', 'E-mail' %></th>
-        <th><%= sortable 'roles_mask', 'Authorization Rights' %></th>
-      </tr>
-    </thead>
-    <tbody id='role_table_body'>
-      <% if @all_users %>
-        <% counter = 0 %>
-        <% @all_users.each do |user| %>
-          <% counter += 1 %>
-          <% if user.roles.include?('admin')
+  <% if @all_users %>
+    <% counter = 0 %>
+    <table id='roletable' class="table table-striped table-hover tablesorter">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><%= sortable 'last_name', 'Last Name' %></th>
+          <th><%= sortable 'first_name', 'First Name' %></th>
+          <th><%= sortable 'email', 'E-mail' %></th>
+          <th><%= sortable 'roles_mask', 'Authorization Rights' %></th>
+        </tr>
+      </thead>
+      <% @all_users.each do |type, users| %>
+        <% if users.length > 0 %>
           <tr>
-            <td><%= counter %><span hidden><%= user.id %></span></td>
-            <td><%= user.last %></td>
-            <td><%= user.first %></td>
-            <td><%= user.email %></td>
-            <td>
+            <td class='tableDevider'></td>
+            <td class='tableDevider'></td>
+            <td class='tableDevider'></td>
+            <% if type == :guests %>
+              <td class='tableDevider' align='center'><strong>- <%= type.to_s.capitalize %> have no roles -</strong></td>
+            <% else %>
+              <td class='tableDevider' align='center'><strong><%= type.to_s.chomp('s').capitalize %> Roles</strong></td>
+            <% end %>
+            <td class='tableDevider'></td>
+          </tr>
+        <% end %>
+        <tbody class='role_table_body'>
+          <% users.each do |user| %>
+            <% counter += 1 %>
+            <tr>
+              <td><%= counter %><span hidden><%= user.id %></span></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.email %></td>
+              <td>
               <%= form_tag(roles_update_path(user), method: 'put') do %>
                 <% for role in User::ROLES %>
-
                   <% if role == 'admin' && current_user.email == user.email %>
                     <%= check_box_tag "user[roles][#{role}]", role, user.roles.include?(role), {:name => "user[roles][]", disabled: true}%>
                     <%= hidden_field(:user, :roles, multiple: true, value: 'admin') %>
@@ -50,13 +64,13 @@
                     <%= label_tag "user_roles_#{role}", role.humanize %>
                   <% end %>
                 <% end %>
-
                 <%= hidden_field_tag "user[roles][]", "" %>
                 <%= submit_tag "Update", class: 'btn btn-xs btn-warning' %>
               <% end %>
             </td>
           </tr>
-        <% end %>
-      <% end %>
-    </tbody>
+        <% end %>  
+      </tbody>
+    <% end %>
   </table>
+<% end %>

@@ -10,6 +10,9 @@
   <noscript><strong id='jsDisabled'>Javascript is disabled in your browser.  This site will not fuction to its full potential.  Please turn Javascript on.</strong></noscript>
   <p class='notice'><%= notice %></p>
   <p class='alert'><%= alert %></p>
+  <% if flash[:error] %>
+    <p class='error'><%= h flash[:error] %></p>
+  <% end %>
   <nav>
     <% if current_user %>
       <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
