@@ -1,6 +1,16 @@
 var datePicker = function(){
-  $('.datepicker').datepicker({autoclose: true});
 
+$('.datetimepickersss').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true,
+      pickSeconds: false,
+    });
+
+$('#datetimepicker1').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true,
+      pickSeconds: false,
+    });
 }
 
 

@@ -13,8 +13,10 @@ class ObligationsController < ApplicationController
   end
 
   def create
-    current_user.obligations.create(obligation_params)
-    redirect_to obligations_path
+    p '$' * 80
+    p params
+    # current_user.obligations.create(obligation_params)
+    # redirect_to obligations_path
   end
 
   def show

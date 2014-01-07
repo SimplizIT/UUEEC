@@ -2,28 +2,46 @@
 <%= link_to 'Obligations page', obligations_path %><br><br>
 
 
+
+  <div class="well">
+  <div id="datetimepicker1" class="input-append date">
+    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</div>
  <%= form_for(@obligation) do |f| %>
   <div>
   <%= f.label :title %><br />
   <%= f.text_field :title %>
-  </div>
-  <div>
-  <%= f.label :start %><br />
-  <%= f.text_field :start, class: 'datepicker', :"data-autoclose" => true %>
-  </div>
-  <div>
-  <%= f.label :end %><br />
-  <%= f.text_field :end, class: 'datepicker' %>
-  </div>
-  <div>
-  <%= f.label :allDay %><br />
   <%= f.check_box :allDay %>
+  <%= f.label :allDay %><br />
+  </div>
+
+  <div class='datetimepickersss input-append date'>
+  <%= f.label :start %>
+  <%= f.text_field :start, data: { format: "dd/MM/yyyy hh:mm:ss"} %>
+  <span class='add-on'>
+    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+  </span>
+
+
+  </div>
+  <div class='datetimepicker right-inner-addon'>
+  <%= f.label :end %><br>
+  <%= f.text_field :end, class: "datetimepicker endDateTime", readonly: true %>
+  <i class='fa fa-clock-o icon-input-right'></i><br><br>
   </div>
   <div>
   <%= f.label :description %><br />
   <%= f.text_area :description %>
   </div>
   <div>
-  <%= f.submit %>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
   </div>
   <% end %>
+
+
+

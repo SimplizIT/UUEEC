@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-datepicker
+//= require twitter/bootstrap
+//= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require turbolinks
 //= require_tree .

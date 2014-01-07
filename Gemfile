@@ -19,10 +19,13 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'cancan'
 
-gem 'twitter-bootstrap-rails'
+
+# gem 'bootstrap-sass'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -48,7 +51,11 @@ gem 'faker', group: :development
 
 gem 'font-awesome-rails'
 
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-timepicker-rails', '= 0.1.3'
+
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
+
 
 
 # Use ActiveModel has_secure_password
