@@ -6,6 +6,15 @@ var datePicker = function(){
     pickSeconds: false,
   });
 
+  $('.sentance')
+    .mouseenter(function(){
+      $(this).toggleClass('ToGray ToWhite');
+    })
+    .mouseleave(function(){
+      $(this).toggleClass('ToWhite ToGray');
+    });
+
+
   $('#datetimepicker1').datetimepicker({
     language: 'en',
     pick12HourFormat: true,
