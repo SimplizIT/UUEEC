@@ -5,8 +5,8 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :allDay
       t.string :description
       t.string :note
-      t.date :start
-      t.date :end
+      t.datetime :start
+      t.datetime :end
       t.string :url
       t.string :className
       t.boolean :editable

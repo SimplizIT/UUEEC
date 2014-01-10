@@ -1,6 +1,9 @@
 <br><%= link_to 'Volunteer', new_obligation_path %><br>
 <%= link_to 'Home page', root_path %><br><br>
 
-
 <div id='calendarObligations'></div>
 <%= render partial: 'obligations/partials/view_obligation' %>
+
+<% if can? :delete, Obligation %>
+  <span id='hiddenUserObligations' type='hidden'><%= current_user.id %></span>
+<% end %>

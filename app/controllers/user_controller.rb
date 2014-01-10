@@ -1,7 +1,12 @@
 class UserController < ApplicationController
 
   def index
-    @user = current_user
+    if current_user
+      @user = current_user
+    else
+      flash[:error] = 'You must sign in'
+      redirect_to root_path
+    end
   end
 
   def update

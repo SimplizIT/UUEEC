@@ -1,4 +1,5 @@
 class ObligationsController < ApplicationController
+  load_and_authorize_resource
   def index
     @obligations = Obligation.all
 
@@ -13,10 +14,8 @@ class ObligationsController < ApplicationController
   end
 
   def create
-    p '$' * 80
-    p params
-    # current_user.obligations.create(obligation_params)
-    # redirect_to obligations_path
+    current_user.obligations.create(obligation_params)
+    redirect_to obligations_path
   end
 
   def show
@@ -26,9 +25,17 @@ class ObligationsController < ApplicationController
   end
 
   def update
+
   end
 
   def destroy
+    event = Obligation.find(params[:id])
+    if event.user.id == current_user.id
+      event.delete
+    else
+      flash[:error] = 'Access is denied for this action.'
+      redirect_to obligations_path
+    end
   end
 
   private

@@ -3,15 +3,7 @@
 
 
 
-  <div class="well">
-  <div id="datetimepicker1" class="input-append date">
-    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-  </div>
-</div>
+
  <%= form_for(@obligation) do |f| %>
   <div>
   <%= f.label :title %><br />
@@ -22,18 +14,21 @@
 
   <div class='datetimepickersss input-append date'>
   <%= f.label :start %>
-  <%= f.text_field :start, data: { format: "dd/MM/yyyy hh:mm:ss"} %>
+  <%= f.text_field :start, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
   <span class='add-on'>
     <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
   </span>
-
-
   </div>
-  <div class='datetimepicker right-inner-addon'>
-  <%= f.label :end %><br>
-  <%= f.text_field :end, class: "datetimepicker endDateTime", readonly: true %>
-  <i class='fa fa-clock-o icon-input-right'></i><br><br>
+
+   <div class='datetimepickersss input-append date'>
+  <%= f.label :end %>
+  <%= f.text_field :end, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
+  <span class='add-on'>
+    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+  </span>
   </div>
+
+ 
   <div>
   <%= f.label :description %><br />
   <%= f.text_area :description %>

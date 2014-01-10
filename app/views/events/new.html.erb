@@ -2,28 +2,37 @@
   <%= link_to 'Events page', events_path %><br><br>
 
 
- <%= form_for(@event) do |f| %>
+<%= form_for(@event) do |f| %>
   <div>
-  <%= f.label :title %><br />
-  <%= f.text_field :title %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    <%= f.check_box :allDay %>
+    <%= f.label :allDay %><br />
   </div>
+
+  <div class='datetimepickersss input-append date'>
+    <%= f.label :start %><br />
+    <%= f.text_field :start, data: { format: 'dd-MM-yyyy hh:mm:ss' } %>
+    <span class='add-on'>
+      <i data-time-icon='icon-time' data-date-icon='icon-calendar'></i>
+    </span>
+  </div>
+
+  <div class='datetimepickersss input-append date'>
+    <%= f.label :end %>
+    <%= f.text_field :end, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
+    <span class='add-on'>
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+    </span>
+  </div>
+
   <div>
-  <%= f.label :start %><br />
-  <%= f.datetime_select :start %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
   </div>
+
   <div>
-  <%= f.label :end %><br />
-  <%= f.datetime_select :end %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'  %>
   </div>
-  <div>
-  <%= f.label :allDay %><br />
-  <%= f.check_box :allDay %>
-  </div>
-  <div>
-  <%= f.label :description %><br />
-  <%= f.text_area :description %>
-  </div>
-  <div>
-  <%= f.submit %>
-  </div>
-  <% end %>
+<% end %>
+

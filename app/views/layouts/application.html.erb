@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Uueec</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <noscript><strong id='jsDisabled'>Javascript is disabled in your browser.  This site will not fuction to its full potential.  Please turn Javascript on.</strong></noscript>
-  <p class='notice'><%= notice %></p>
-  <p class='alert'><%= alert %></p>
-  <% if flash[:error] %>
-    <p class='error'><%= h flash[:error] %></p>
-  <% end %>
-  <nav>
-    <% if current_user %>
-      <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
-    <% else %>
-      <li><%= link_to "Sign Up", new_user_registration_path, method: 'get' %></li>
-      <li><%= link_to "Sign In", new_user_session_path, method: 'get' %></li>
+  <head>
+    <title>Uueec</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <noscript><strong id='jsDisabled'>Javascript is disabled in your browser.  This site will not fuction to its full potential.  Please turn Javascript on.</strong></noscript>
+    
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
     <% end %>
-  </nav>
-  <% if current_user %>
-    <%= current_user.email %>
-  <% end %>
 
-<%= yield %>
+    <ul id='navbar' class='nav nav-pills pull-right'>
+      <li><%= link_to 'Events', events_path %></li>
+      <li><%= link_to 'Blog', events_path %></li>
+      <li><%= link_to 'FAQ', events_path %></li>
+      <% if current_user %>
+        <li><%= link_to 'Profile', user_index_path %></li>
+        <% if can? :manage, :all %>
+          <li><%= link_to 'Role Management', roles_index_path %><br></li>
+        <% end %>
+        <% if can? :manage, Obligation %>
+          <li><%= link_to 'Volunteer Page', obligations_path %></li>
+        <% end %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path, method: 'get' %></li>
+        <li><%= link_to "Sign In", new_user_session_path, method: 'get' %></li>
+      <% end %>
+    </ul>
 
-</body>
+    <%= yield %>
+  </body>
 </html>

@@ -1,13 +1,68 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
+<div id='uueecBanner'></div>
+<div id='welcomephoto'></div>
+<div id='welcomemessage'>
+  <div id='circle'></div>
+  <div id='welcomemessagepara'>
+    <p>
+      <b>A <span>Cooperative Early Education Program</span> that brings <span>parents</span> and <span>children</span> together within a learning environment that <span>supports</span> each child's <span>individual growth</span>, while also <span>creating</span> a <span>community</span> of support <span>in parenting</span>.</b>
+    </p>
+  </div>  
+</div>
 
-<% if can? :manage, :all %>
-  <%= link_to 'Role Management', roles_index_path %><br>
-<% end %>
-<%= link_to 'Profile Page', user_index_path %><br>
-<%= link_to 'Event Page', events_path %><br>
-<%= link_to 'Volunteer Page', obligations_path %>
+<div id='welcomedivcontainer'>
+  <div id='welcomeevents' class='welcomedivselections'>
+    <h3>Upcoming Events</h3>
+    <div id='eventdiv'></div>
+    <h5>Click for upcoming events</h5>
+    <p>We hold all kinds of events throughout the year for our children and their parents.</p>
+  </div>
+  <div id='welcomeblog' class='welcomedivselections'>
+    <h3>Our Blog</h3>
+    <div id='blogdiv'></div>
+    <h5>Click to read our blog</h5>
+    <p>We update our blog frequently with information you may be searching for. Take a moment and check it out.</p>
+  </div>
+  <div id='welcomeprograms' class='welcomedivselections'>
+    <h3>Child Programs</h3>
+    <div id='programdiv'></div>
+    <h5>Click for program details</h5>
+    <p>We offer dynamic programs for three age groups in which to prepare our young minds for the world.</p>
+  </div>
+</div>
 
+<div id='welcomephilosophy'>
+  <div id='philosophycirclecontainer'>
+    <ul class="ch-grid">
+        <li id='circleone'>
+            <div class="ch-item ch-img-1">
+                <div class="ch-info pink">
+                    <p>A parent is a child's first teacher</p>
+                </div>
+            </div>
+        </li>
+        <li id='circletwo'>
+            <div class="ch-item ch-img-2">
+                <div class="ch-info blue">
+                    <p>The best academic environment for a young child is a play-based environment.</p>
+                </div>
+            </div>
+        </li>
+        <li id='circlethree'>
+            <div class="ch-item ch-img-3">
+                <div class="ch-info green">
+                    <p>Each unique stage of development should be celebrated and not rushed.</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+<!--     <div id='circleonewrapper'><div id='circleone' class='circle circlerelative'>Parent</div></div>
+    <div id='circletwowrapper'><div id='circletwo' class='circle circlerelative'>Child</div></div>
+    <div id='circlethreewrapper'><div id='circlethree' class='circle circlerelative'>Teacher</div></div> -->
 

@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
     flash[:error] = 'Access is denied for this action.'
     redirect_to root_url
   end
+
+  # This is a workaround for CanCan until updated for rails 4.0 - Remove after CanCan update
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
 end

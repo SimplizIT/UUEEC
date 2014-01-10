@@ -1,0 +1,9 @@
+/*.alert is used with flash alerts and alertify.  A hidden div is created that alertify uses to capture data.*/
+.alert {
+  position: absolute;
+  z-index: 1000;
+  right: -5px;
+  top: 115px;
+  display: none;
+}
+
