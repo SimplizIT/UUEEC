@@ -39,7 +39,7 @@ body {
 
 #welcomemessage {
   height: 300px;
-  background-color: rgb(54, 166, 223);
+  background-color: #36A6DF;
   color: #FFF;
   font-size: 33px;
   line-height: 41px;
@@ -135,7 +135,7 @@ body {
 
 #welcomephilosophy {
   height: 500px;
-  background-color: #034769;
+  background-color: #126791;
 }
 
 #philosophycirclecontainer {
@@ -179,9 +179,70 @@ body {
   top: -121px;
 }
 
+#welcomecurriculum {
+  height: 900px;
+}
+
+#curriculumwrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: 1000px;
+  height: 100%;
+}
+
+#pillars {
+  width: 1029;
+  height: 674px;
+  position: relative;
+  left: -23px;
+  top: 236px;
+  opacity: .4;
+  overflow: hidden;
+  background-image: url(/assets/pillars2.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#swing {
+  width: 168px;
+  height: 315px;
+  position: relative;
+  left: 16px;
+  top: -724px;
+  opacity: .4;
+  overflow: hidden;
+  background-image: url(/assets/swing.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#twoswing {
+  width: 100px;
+  height: 420px;
+  position: relative;
+  left: 880px;
+  top: -1104px;
+  opacity: .4;
+  overflow: hidden;
+  background-image: url(/assets/twoswing.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+#welcomefooter {
+  height: 400px;
+  background-color: #4888A7;
+}
 
 
 
+
+
+
+/*navbar below*/
 #navbar {
   margin-top: 20px;
 }
