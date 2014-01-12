@@ -63,11 +63,15 @@
       <div id='philosophytop'>Philosophy</div>
       <div id='philosophybottom'>Philosophy</div>
     </div>
-    <p id='philosophysentanceone' class='sentance ToGray'>"Provide parents with positive language and parenting techniques, alongside the opportunity to interact with their child in classroom participation."</p>
-    <p id='philosophysentancetwo' class='sentance ToGray'>"Develop cognitive, social, emotional, linguistic, creative, and physical skills in each unique child."</p>
-    <p id='philosophysentancethree' class='sentance ToGray'>"Encourage each child to make their own choices, and be responsible for their own behavior."</p>
-    <p id='philosophysentancefour' class='sentance ToGray'>"Create a community that fosters and values positive lifelong parent-child relationships."</p>
-    <div id='clickHere'></div>
+    <div id='philosentancewrapper'>
+      <p id='philosophysentanceone' class='sentance ToGray'>"Provide parents with positive language and parenting techniques, alongside the opportunity to interact with their child in classroom participation."</p>
+      <p id='philosophysentancetwo' class='sentance ToGray'>"Develop cognitive, social, emotional, linguistic, creative, and physical skills in each unique child."</p>
+      <p id='philosophysentancethree' class='sentance ToGray'>"Encourage each child to make their own choices, and be responsible for their own behavior."</p>
+      <p id='philosophysentancefour' class='sentance ToGray'>"Create a community that fosters and values positive lifelong parent-child relationships."</p>
+    </div>
+    <div id='clickHerewrapper'>
+      <div id='clickHere'></div>
+    </div>
   </div>
 </div>
 
@@ -76,11 +80,62 @@
     <div id='pillars'></div>
     <div id='swing'></div>
     <div id='twoswing'></div>
+    <div id='curriculuminfowrapper'>
+      <div id='curheadline'>
+        <h1>Award-winning Curriculum</h1>
+        <p>- Research-based content fully aligned with the <em>Head Start Child Development Early Learning Framework</em> and <em>Arizona State Early Learning</em> standards.-</p>
+      </div>
+       <div id='curmessageone' class='curmessage'>
+        <h5>Individualized Instruction</h5>
+        <p>- Teachers capitalize on daily opportunites to individualize instruction to meet the needs of every type of learner.-</p>
+      </div>
+      <div id='curmessagetwo' class='curmessage'>
+        <h5>Mindful Play</h5>
+        <p>- Exploration and discovery as a way of learning enables children to develop confidence, creativitiy, and lifelong critical thinking skills.-</p>
+      </div>
+      <div id='curmessagethree' class='curmessage'>
+        <h5>Critical Thinking</h5>
+        <p>- Includes important areas of learning in social-emothional, math, technology, arts, and language. -</p>
+      </div>
+      <div id='curmessagefour' class='curmessage'>
+        <h5>Informed Parenting</h5>
+        <p>- Parent participation in the classroom and parent education are ways we support the family and its growth. -</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id='welcomeinvite'>
+  <div id='welcomeinvitewrapper'>
+
+    <h1>Come Visit Us!</h1>
+    <div id='visitorForm'>
+      <%= form_for(@visitor) do |f| %>
+        <%= f.label :firstname, 'First Name' %><br>
+        <%= f.text_field :firstname %><br>
+        <%= f.label :lastname, 'Last Name' %><br>
+        <%= f.text_field :lastname %><br>
+        <%= f.label :email %><br>
+        <%= f.text_field :email %><br>
+        <div>
+          <div class='divinline'>
+            <%= f.label :numkids, '# of Kids' %><br>
+            <%= f.select :numkids, (1..10), {}, class: 'selectpicker', data: {style: 'btn-inverse'} %>
+          </div>
+          <div id='ageDiv' class='divinline'>
+            <%= f.label :ages, 'Age(s)' %><br>
+            <%= f.select :ages, (2..5), {}, {multiple: true, title: 'age', class: 'selectpicker', data: {style: 'btn-inverse'}} %><br>
+          </div>
+        </div>
+        <%= f.label :howfindus, 'How did you find us?' %><br>
+        <%= f.text_area :howfindus, size: '33x3' %><br><br>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div id='welcomefooter'>
 
 </div>
-
 

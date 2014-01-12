@@ -56,6 +56,7 @@ body {
   height: 140px;
   position: relative;
   top: -26px;
+  left: -15px;
   overflow: hidden;
   background-image: url(/assets/circle.png);
   background-size: 100%;
@@ -190,13 +191,31 @@ body {
   height: 100%;
 }
 
+#curriculuminfowrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: -1419px;
+}
+
+#curriculuminfowrapper h1 {
+  text-align: center;
+  color: #36A8DF;
+  font-size: 69.5px;
+}
+
+#curriculuminfowrapper h5 {
+  text-align: center;
+  margin: 6px 0;
+}
+
 #pillars {
   width: 1029;
   height: 674px;
   position: relative;
   left: -23px;
   top: 236px;
-  opacity: .4;
+  opacity: .2;
   overflow: hidden;
   background-image: url(/assets/pillars2.png);
   background-size: 100%;
@@ -232,8 +251,65 @@ body {
   z-index: -1;
 }
 
+
+
+#curheadline {
+  position: relative;
+  width: 950px;
+  top: 390px;
+  left: 40px;
+  line-height: 14px;
+}
+
+.curmessage {
+  position: relative;
+  line-height: 16px;
+}
+
+#curmessageone {
+  width: 723px;
+  top: 20px;
+  left: 226px;
+}
+
+#curmessagetwo {
+  width: 864px;
+  top: 98px;
+  left: 40px;
+}
+
+#curmessagethree {
+  width: 635px;
+  top: 359px;
+  left: 323px;
+}
+
+#curmessagefour {
+  width: 695px;
+  top: 448px;
+  left: 55px;
+}
+
+#welcomeinvite {
+  height: 800px;
+  background-color: #67C3EF;
+}
+
+#welcomeinvitewrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: 800px;
+  height: 800px;
+  color: #126791;
+}
+
+#welcomeinvitewrapper h1 {
+  text-align: center;
+  padding-top: 35px;
+}
+
 #welcomefooter {
-  height: 400px;
+  height: 200px;
   background-color: #4888A7;
 }
 

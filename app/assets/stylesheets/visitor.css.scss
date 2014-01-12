@@ -1,0 +1,61 @@
+// Place all the styles related to the visitor controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.divinline {
+  display: inline-block;
+}
+
+#welcomeinvitewrapper input {
+  height: 30px;
+  width: 220px;
+  border-radius: 4px;
+  border-color: #36A8DF;
+  border: 2px;
+  outline: none;
+}
+
+#welcomeinvitewrapper textarea {
+  border-radius: 4px;
+  border: 2px;
+  border-color: #36A8DF;
+  outline: none;
+  resize: none;
+}
+
+#welcomeinvitewrapper select {
+  width: 57px;
+}
+
+#new_visitor button {
+  width: 100px;
+  outline: none !important;
+}
+
+#new_visitor label {
+  padding-top: 10px;
+}
+
+#new_visitor a {
+  outline: none !important;
+}
+
+#new_visitor .dropdown-menu {
+  min-width: 60px;
+}
+
+#new_visitor .btn-group {
+  width: 100px;
+}
+
+#visitorForm {
+  border-radius: 4px;
+  border: 1px solid #FFF;
+  padding: 20px;
+  width: 260px;
+}
+
+#ageDiv {
+  float: right;
+}

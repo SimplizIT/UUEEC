@@ -25,7 +25,8 @@ gem 'cancan'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+# gem 'twitter-bootstrap-rails'
+gem 'bootstrap-on-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

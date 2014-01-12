@@ -128,14 +128,14 @@
 
 #philosophywrapper {
   position: relative;
-  top: -1269px;
-  left: 334px;
+  top: -1401px;
+  left: 333px;
   width: 100px;
 }
 
 #philosophytop {
   width: 530px;
-  height: 330px;
+  height: 237px;
   position: relative;
   padding-top: 105px;
   padding-left: 37px;
@@ -146,13 +146,14 @@
   background-size: 100%;
   background-repeat: no-repeat;
   font-family: 'MrDeHaviland', cursive;
+  z-index: 2;
 }
 
 #philosophybottom {
-  width: 537px;
-  height: 156px;
+  width: 527px;
+  height: 275px;
   position: relative;
-  top: -268px;
+  top: -175px;
   left: 37px;
   color: #FFF;
   font-size: 200px;
@@ -160,7 +161,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   font-family: 'MrDeHaviland', cursive;
-  z-index: 100;
+  z-index: 1;
 }
 
 #dotpath {
@@ -197,54 +198,56 @@
 
 #circleone .circleword {
   left: 36px;
-  top: 102px;
+  top: 79px;
   width: 144px;
 }
 
 #circletwo .circleword {
   left: 43px;
-  top: 105px;
+  top: 76px;
   width: 125px;
 }
 
 #circlethree .circleword {
   left: 13px;
-  top: 100px;
+  top: 67px;
   width: 195px;
 }
 
 .sentance {
-  position: relative;
+  position: absolute;
   font-size: 17px;
   font-style: italic;
   line-height: 22px;
   z-index: 101;
 }
 
-#philosophysentanceone {
+#philosentancewrapper {
   position: relative;
-  top: -1605px;
+  top: -1711px;
+  height: 470px;
+}
+
+#philosophysentanceone {
+  top: 77px;
   left: 155px;
   width: 440px;
-  font-size: 17px;
-  font-style: italic;
-  line-height: 22px;
 }
 
 #philosophysentancetwo {
-  top: -1557px;
+  top: 200px;
   left: -70px;
   width: 460px;
 }
 
 #philosophysentancethree {
-  top: -1525px;
+  top: 285px;
   left: 190px;
   width: 465px;
 }
 
 #philosophysentancefour {
-  top: -1465px;
+  top: 400px;
   left: 459px;
   width: 435px;
 }
@@ -259,12 +262,23 @@
    transition: all 0.4s ease-in-out;
 }
 
-#clickHere {
+#clickHerewrapper {
   width: 89px;
   height: 90px;
   position: relative;
-  top: -2078px;
-  left: 79px;
+  top: -2321px;
+  left: 100px;
+  background-image: url(/assets/questionmark.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+#clickHere {
+  width: 89px;
+  height: 90px;
+  position: absolute;
+  top: -1530px;
+  left: 100px;
   background-image: url(/assets/questionmark.png);
   background-size: 100%;
   background-repeat: no-repeat;

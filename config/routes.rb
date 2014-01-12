@@ -5,6 +5,8 @@ Uueec::Application.routes.draw do
   get "roles/index"
   put "roles/update"
 
+  resources :visitors, only: [:create]
+
   resources :events, only: [:index, :create, :new, :destroy]
   resources :user, only: [:index, :update]
   # get "user/index"
