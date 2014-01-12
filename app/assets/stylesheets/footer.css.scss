@@ -1,0 +1,31 @@
+#uueecfootericon {
+  width: 150px;
+  height: 401px;
+  overflow: hidden;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(/assets/UUEECwordsfooterblue.png);
+  transition: all 0.4s ease-in-out;
+  display: inline-block;
+}
+
+#uueecfootericon:hover {
+  background-image: url(/assets/UUEECwordsfooterwhite.png);
+  transition: all 0.4s ease-in-out;
+}
+
+#simplizitfootericon {
+  width: 230px;
+  height: 401px;
+  overflow: hidden;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url(/assets/simplizitwordblue.png);
+  transition: all 0.4s ease-in-out;
+  display: inline-block;
+}
+
+#simplizitfootericon:hover {
+  background-image: url(/assets/simplizitwordwhite.png);
+  transition: all 0.4s ease-in-out;
+}
