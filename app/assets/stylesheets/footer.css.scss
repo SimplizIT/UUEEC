@@ -1,6 +1,11 @@
+#welcomefooter {
+  height: 200px;
+  background-color: #4888A7;
+}
+
 #uueecfootericon {
   width: 150px;
-  height: 401px;
+  height: 155px;
   overflow: hidden;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -14,18 +19,84 @@
   transition: all 0.4s ease-in-out;
 }
 
-#simplizitfootericon {
+#simplizitfootericon {  
+  margin-top: -35px;
   width: 230px;
-  height: 401px;
+  height: 135px;
   overflow: hidden;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-image: url(/assets/simplizitwordblue.png);
-  transition: all 0.4s ease-in-out;
   display: inline-block;
+  transition: all 0.4s ease-in-out;
 }
 
-#simplizitfootericon:hover {
+.simplizitfootericonblue {
+  background-image: url(/assets/simplizitwordblue.png);
+}
+
+.simplizitfootericonwhite {
   background-image: url(/assets/simplizitwordwhite.png);
+}
+
+#footericonwrapper {
+  margin-right: auto;
+  margin-left: auto;
+  width: 227px;
+  height: 200px;
+}
+
+#footericonwrapper h5 {
+  padding-top: 50px;
+  color: #144f6d;
+  margin-top: 0px;
+  text-align: center;
+}
+
+#grasswrapper {
+  position: relative;
+  width: 1013px;
+  height: 200px;
+  top: -180px;
+  left: -400px;
+
+}
+
+#grassmain {  
+  width: 1000px;
+  height: 317px;
+  overflow: hidden;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: absolute;
+  top: -117px;
+  right: 0px; 
+}
+
+.grassmainblue {
+  background-image: url(/assets/grassmainblue.png);
   transition: all 0.4s ease-in-out;
+}
+
+.grassmaincolor {
+  background-image: url(/assets/grassmaincolor.png);
+  transition: all 0.4s ease-in-out;
+}
+
+#flowerwrapper {
+  position: relative;
+  left: -387px;
+  top: -380px;
+  width: 1000px;
+  height: 200px;
+}
+
+#footeractivate {
+  position: relative;
+  left: 0px;
+  top: -200px;
+  width: 1000px;
+  height: 200px;
+  margin-right: auto;
+  margin-left: auto;
 }
