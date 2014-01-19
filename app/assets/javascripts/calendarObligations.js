@@ -2,6 +2,7 @@ var obligationCalendar = function(){
 
   return $('#calendarObligations').fullCalendar({
     editable: true,
+    aspectRatio: 1.2,
     header: {
       left: 'prev,next today',
       center: 'title',

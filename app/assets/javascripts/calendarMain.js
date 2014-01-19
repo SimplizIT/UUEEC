@@ -5,9 +5,9 @@ var updateEvent;
   return $('#calendarEvents').fullCalendar({
     editable: true,
     header: {
-      left: 'prev,next today',
+      left: 'prev, next today',
       center: 'title',
-      right: 'month,agendaWeek,agendaDay'
+      right: ''
     },
     defaultView: 'month',
     height: 500,
@@ -26,15 +26,17 @@ var updateEvent;
       return updateEvent(event);
     },
 
-    dayClick: function(date, allDay, jsEvent, view){
-      if(view.name == 'month'){
-        $('#calendarEvents').fullCalendar('gotoDate', date);
-        view.calendar.changeView('agendaWeek');
-      }
-    },
+    // dayClick: function(date, allDay, jsEvent, view){
+    //   if(view.name == 'month'){
+    //     $('#calendarEvents').fullCalendar('gotoDate', date);
+    //     view.calendar.changeView('agendaWeek');
+    //   }
+    // },
 
     eventClick: function(calEvent, jsEvent, view){
       if(calEvent){
+        var start = calEvent.start;
+        var end = calEvent.end || start;
         $('#EventModal').find('#eventbody').html(displayEventHTML(calEvent))
         $('#EventModal').modal('show')
       }
@@ -42,14 +44,12 @@ var updateEvent;
       $('.button_closeEvent').on('click', function(){
         $('#EventModal').modal('hide')
       });
-      $('.button_deleteEvent').on('click', function(e){
+      $('.eventDelete').on('click', function(e){
         e.preventDefault();
-        console.log('preventDefault worked')
         $.ajax({
           url: 'events/' + calEvent.id,
           type: 'DELETE',
           success: function() {
-            console.log('we did get ajax success')
             $('#EventModal').modal('hide')
             $('#calendarEvents').fullCalendar('removeEvents', [calEvent.id]);
           }
@@ -61,30 +61,32 @@ var updateEvent;
 
 
 displayEventHTML = function(calEvent){
+  console.log(calEvent)
   if($('#hiddenUserEvents')){
     var userDelete = eventDeleteHTML(calEvent.user_id, $('#hiddenUserEvents').text());
   }else{
     var userDelete = ''
   }
+
   if(calEvent.start){
     var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ')
-    var startDate = calEvent.start.toLocaleDateString()
+    var startDate = calEvent.start
   }else{
    var startTime = "No Time Given" 
-   var startDate = "No Date Given"
+   var startDate = "No start Date Given"
   }
   if(calEvent.end){
     var endTime = calEvent.end.toLocaleTimeString().replace(/:\d+ /, ' ')
-    var endDate = calEvent.end.toLocaleDateString()
+    var endDate = calEvent.end
   }else{
    var endTime = "No Time Given"
-   var endDate = "No Date Given" 
+   var endDate = "No end Date Given" 
   }
   if(calEvent.allDay == true){
-    return ('<b>Title: </b>' + calEvent.title + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>')
+    return ('<div class="modaldivcolor"><b>Title: </b>' + capitalizeWords(calEvent.title) + '<br>' + '<p>This is an all day event</p>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>')
     
   }else{
-    return ('<b>Title: </b>' + calEvent.title + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>')
+    return ('<i id="modaltitleicon" class="fa fa-pagelines"></i><div class="eventtitle">' + capitalizeWords(calEvent.title) + '</div><br>' + '<p>Please join us on <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em><br>starting at <em>' + startTime + '</em><hr><p>Our event will end on ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + ' ending at ' + endTime + '</p><hr>' + '<b>Description: </b>' + calEvent.description + '</span><p>' + userDelete + '</p>')
   }
 }
 
@@ -94,6 +96,30 @@ eventDeleteHTML = function(event_userID, current_userID){
   }else{
     return ('')
   }
+}
+
+function writeDay(day){
+  var weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+  return weekday[day];
+}
+
+function writeMonth(month){
+  var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+  return months[month];
+}
+
+function addEndToDate(date){
+  var ends = new Array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+  return date.toString().concat(ends[(date % 10)]);
+}
+
+function capitalizeWords(str) {
+  var pieces = str.split(" ");
+  for ( var i = 0; i < pieces.length; i++ ){
+    var j = pieces[i].charAt(0).toUpperCase();
+    pieces[i] = j + pieces[i].substr(1);
+  }
+  return pieces.join(" ");
 }
 
 

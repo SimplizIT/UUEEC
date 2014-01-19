@@ -1,36 +1,176 @@
-// Place all the styles related to the event controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#eventimagewrapper {
+  width: 760px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  top: 60px;
+  margin-bottom: 30px;
+}
 
+.eventimage {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #FFF;
+  width: 250px;
+  height: 250px;
+  padding: 15px;
+}
+
+.eventimage img {
+  border-radius: 4px;
+  vertical-align: top;
+}
 
 #EventModal {
+  display: inline-block;
   background-color: white;
   margin-right: auto;
   margin-left: auto;
   margin-top: 100px;
   border-radius: 8px;
-  width: 285px;
+  width: 400px;
   height: auto;
+  padding: 20px;
 }
 
-/*.add-on {
-  border-radius: 0 4px 4px 0;
-  display: inline-block;
-  width: auto;
-  height: 20px;
-  min-width: 16px;
-  padding: 4px 5px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 20px;
+.eventtitle {
+  font-family: 'MrDeHaviland', cursive;
+  font-size: 52px;
   text-align: center;
-  text-shadow: 0 1px 0 #fff;
-  background-color: #eee;
-  border: 1px solid #ccc;
-}*/
+}
 
-/*.icon-input-right {
+.eventtitle hr {
+  margin-top: -23px;
+}
+
+#EventModal span {
+  font-size: 16px;
+}
+
+#EventModal hr {
+  border-top: 1px solid #000;
+  opacity: .3;
+}
+
+#EventModal p {
+  text-align: center;
+}
+
+#modaltitleicon {
+  font-size: 50px;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  opacity: .8;
+}
+
+.calendarmodalclose {
   position: relative;
-  left: -24px;
-  pointer-events: none;
-}*/
+  float: right;
+  z-index: 1;
+}
+
+.modaldivcolor {
+  background-color: #A1B7C1;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#eventcalendarwrapper {
+  position: relative;
+  width: 760px;
+  border-radius: 4px;
+  border: 1px solid #FFF;
+  padding: 20px;
+  background-color: #AABAC1;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  z-index: 90;
+  top: 55px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#upcomingevents {
+  text-align: center;
+  color: #FFF;
+  letter-spacing: 1px;
+  position: relative;
+  top: 45px;
+}
+
+#calendarEvents .fc-event-time {
+  display: none;
+}
+
+#calendarEvents .fc-state-highlight {
+  background-color: #DADADA;
+}
+
+#calendarEvents .fc-event {
+  border: 1px solid #395765;
+  background-color: #395765;
+}
+
+#eventpage {
+  position: relative;
+  top: -24px;
+  background-color: #57656C;
+  height: 1500px;
+}
+
+.ribbon-wrapper-green {
+  width: 164px;
+  height: 198px;
+  overflow: hidden;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.ribbon-green {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -13px;
+  top: 36px;
+  width: 229px;
+  height: 53px;
+  z-index: 500;
+  background-color: #BFDC7A;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green p {
+  margin: 0 0 6px;
+}
+
+.ribbon-green:before, .ribbon-green:after {
+  content: "";
+  border-top:   3px solid #797979;   
+  border-left:  3px solid transparent;
+  border-right: 3px solid transparent;
+  position:absolute;
+  bottom: -3px;
+}
+
+.ribbon-green:before {
+  left: 0;
+}
+.ribbon-green:after {
+  right: 0;
+}

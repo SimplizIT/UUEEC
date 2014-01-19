@@ -1,8 +1,7 @@
-<div id="EventModal" class='modal fade' tabindex="-1" style="display: none;">
+<div id="EventModal" class='modal fade' tabindex="-1" style="display: none;" data-backdrop="true" data-keyboard="true">
   <div>
-    <h3>Event</h3><button type='button' class="button_closeEvent btn btn-xs" data-type='EventModal'>Close</button>
+    <button type='button' class="button_closeEvent btn btn-xs calendarmodalclose" data-type='EventModal'><i class='fa fa-location-arrow'></i> Close</button>
+    <button type='button' class="eventDelete btn btn-danger btn-xs" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
   </div>
-
-  <div id='eventbody' class="modal-body">
-  </div>
+  <div id='eventbody' class="modal-body"></div>
 </div>

@@ -1,0 +1,42 @@
+#eventForm {
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  background-color: #395765;
+  width: 350px;
+  border-radius: 4px;
+}
+
+.dropdown-menu ul {
+  padding: 2px;
+}
+
+#eventForm input {
+  height: 30px;
+  width: 220px;
+  border-radius: 4px;
+  border-color: #36A8DF;
+  border: 2px;
+  outline: none;
+}
+
+#eventForm textarea {
+  border-radius: 4px;
+  border: 2px;
+  border-color: #36A8DF;
+  outline: none;
+  resize: none;
+}
+
+#event_allDay {
+  width: 25px;
+}
+
+.bootstrap-datetimepicker-widget td.active {
+  background-image: linear-gradient(to bottom,#428bca,#428bca) !important;
+}
+
+.bootstrap-datetimepicker-widget span.active {
+  background-image: linear-gradient(to bottom,#428bca,#428bca) !important;
+}
+

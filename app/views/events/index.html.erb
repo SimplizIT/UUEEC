@@ -1,10 +1,36 @@
-<br><%= link_to 'New Event', new_event_path %><br>
-<%= link_to 'Home page', root_path %><br><br>
-
-
-<div id='calendarEvents'></div>
+<div class='homeimagenav'><%= link_to image_tag("UUEECcolorwordssmall.png", size: "150x150"), root_path %></div>
+<div id='eventpage'>
+  <div id='upcomingevents'>
+    <h1>Upcoming Events</h1>
+    <p>- Click on any calendar event to view more details -</p>
+  </div>
+  <div id='eventimagewrapper'>
+    <% if @divimages %>
+      <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+      <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+      <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+    <% end %>
+  </div>
+  <div id='eventcalendarwrapper'>
+    <div class='ribbon-wrapper-green'>
+      <div class="ribbon-green">
+        <p>Next Event</p>
+        <% if @nextEvent %>
+          <%= @nextEvent.start.strftime("%A, %b %d at %H:%M") %>
+        <% end %>
+      </div>
+    </div>
+    <div id='calendarEvents'></div>
+    <% if current_user %>
+      <% if can? :create, Event %>
+        <br><%= link_to 'Add Event', new_event_path, class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <%= render partial: 'events/partials/view_event' %>
-
-<% if can? :delete, Event %>
-  <span id='hiddenUserEvents' type='hidden'><%= current_user.id %></span>
+<% if current_user %>
+  <% if can? :delete, Event %>
+    <span id='hiddenUserEvents' style='visibility: hidden'><%= current_user.id %></span>
+  <% end %>
 <% end %>

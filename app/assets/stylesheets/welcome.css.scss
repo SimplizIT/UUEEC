@@ -214,8 +214,7 @@ body {
   height: 674px;
   position: relative;
   left: -23px;
-  top: 236px;
-  opacity: .2;
+  top: 272px;
   overflow: hidden;
   background-image: url(/assets/pillars2.png);
   background-size: 100%;
@@ -227,9 +226,8 @@ body {
   width: 168px;
   height: 315px;
   position: relative;
-  left: 16px;
-  top: -724px;
-  opacity: .4;
+  left: -35px;
+  top: -694px;
   overflow: hidden;
   background-image: url(/assets/swing.png);
   background-size: 100%;
@@ -241,9 +239,8 @@ body {
   width: 100px;
   height: 420px;
   position: relative;
-  left: 880px;
-  top: -1104px;
-  opacity: .4;
+  left: 895px;
+  top: -1070px;
   overflow: hidden;
   background-image: url(/assets/twoswing.png);
   background-size: 100%;
@@ -267,29 +264,112 @@ body {
 }
 
 #curmessageone {
-  width: 723px;
-  top: 20px;
-  left: 226px;
+  width: 780px;
+  top: -26px;
+  left: 85px;
 }
 
+#curmessageone:before {
+  border-color: transparent #666 transparent transparent;
+  top: 0px;
+  left: -46px;
+}
+
+#curmessageone:after {
+  border-color: transparent #fff transparent transparent;
+  top: 10px;
+  left: -26px;
+}
+
+
 #curmessagetwo {
-  width: 864px;
-  top: 98px;
+  width: 912px;
+  top: 92px;
   left: 40px;
 }
 
+#curmessagetwo:before {
+  border-color: transparent #666 #666 transparent;
+  top: -50px;
+  left: 829px;
+}
+
+#curmessagetwo:after {
+  border-color: transparent #fff #fff transparent;
+  top: -30px;
+  left: 841px;
+}
+
 #curmessagethree {
-  width: 635px;
+  width: 685px;
   top: 359px;
-  left: 323px;
+  left: 267px;
+}
+
+#curmessagethree:before {
+  border-color: #666 #666 transparent transparent;
+  top: 49px;
+  left: 587px;
+}
+
+#curmessagethree:after {
+  border-color: #fff #fff transparent transparent;
+  top: 49px;
+  left: 599px;
 }
 
 #curmessagefour {
-  width: 695px;
+  width: 748px;
   top: 448px;
   left: 55px;
 }
 
+#curmessagefour:before {
+  border-color: transparent transparent transparent #666;
+  top: 0px;
+  left: 730px;
+}
+
+#curmessagefour:after {
+  border-color: transparent  transparent transparent #fff;
+  top: 10px;
+  left: 728px;
+}
+
+div.speachbubble {
+  position: relative;
+  text-align: center;
+  line-height: 12px;
+  background-color: #fff;
+  border: 8px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+  z-index: 5;
+}
+
+div.speachbubble:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 25px solid;
+  border-color: #666 transparent transparent #666;
+}
+
+div.speachbubble:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  top: 49px;
+  border: 15px solid;
+  border-color: #fff transparent transparent #fff;
+}
 
 
 
@@ -300,6 +380,29 @@ body {
 
 
 /*navbar below*/
+
+#navbarwrapper {
+  width: 100%;
+  height: 100px;
+}
+
+.homeimagenav {
+  position: absolute;
+  top: 0px;
+  margin-left: 50px;
+  width: 177px;
+  height: 177px;
+  background-color: #FFF;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.homeimagenav a {
+  position: relative;
+  top: 17px;
+  left: 13px;
+}
+
 #navbar {
   margin-top: 32px;
   margin-bottom: 23px;
@@ -307,6 +410,7 @@ body {
 
 #navbar li {
   padding-right: 20px;
+  z-index: 2;
 }
 
 #navbar a {
@@ -314,7 +418,7 @@ body {
   -webkit-transition: background .5s;
   color: #87949a;
   font-size: 1.2em;
-
+  position: relative;
 }
 
 #navbar a:hover {
