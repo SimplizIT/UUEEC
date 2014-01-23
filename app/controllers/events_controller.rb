@@ -21,7 +21,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    current_user.events.create(event_params)
+    eventobject = current_user.events.new(event_params)
+    increment_end_date(eventobject).save
     redirect_to events_path
   end
 
@@ -36,6 +37,13 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def increment_end_date(eventobject)
+    if eventobject.start == eventobject.end
+      eventobject.end = eventobject.end + 1.minutes
+    end
+    eventobject
+  end
 
   def event_params
     params.require(:event).permit!

@@ -1,0 +1,12 @@
+<h1>Create a Blog Entry</h1>
+
+<%= form_for @blog do |f| %>
+  <%= f.label :title %>
+  <%# TODO-JW: more neatly format the errors for each field %>
+  <%= f.text_field :title, placeholder: "Title" %>
+  <%= f.label :body %>
+  <%# TODO-JW: more neatly format the errors for each field %>
+  <%= f.text_area :body, placeholder: "Body" %>
+  <%= f.file_field :image %>
+  <%= f.submit "Create Blog!", class: "btn btn-primary btn-sm" %>
+<% end %>

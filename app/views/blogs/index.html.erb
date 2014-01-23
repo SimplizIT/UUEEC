@@ -1,0 +1,39 @@
+<div id='blogspage'>
+  <div id='blogspagewrapper'>
+    <h1>Blogs</h1>
+    <p>Here are the blogs</p>
+    <br><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-primary' %>
+
+   <div class='blogswarpper'>
+      <% if @blogs %>
+        <% @blogs.each do |blog| %>
+          <%= link_to blog_path(blog) do %>
+            <div class='blogwrapper'>
+              <div class='divinline'>
+                <img src='<%= blog.image.thumb.to_s %>' class="img-thumbnail">
+              </div>
+
+
+              <div class='divinline blogsmain overflowbody'>
+                <h3 class='overflowtext'><%= blog.title %></h3>
+                <p><%= blog.body %></p>
+              </div>
+
+
+              <div class='redwaxmark'>
+                <div>
+                  <span>
+                    <%= blog.created_at.strftime('%d, %b').delete(',') %>
+                  </span>
+                </div>
+              </div>
+              <div class='visitors'>
+                <p>Views ~ <span class='badge'><%= number_with_delimiter(blog.views, delimiter: ',') %></span></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :obligations
   has_many :bugs
   has_many :events
+  has_many :blogs
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

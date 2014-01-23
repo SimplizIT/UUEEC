@@ -1,0 +1,10 @@
+<p>here we are</p>
+
+<% if @blog %>
+  <div class='blogindex'>
+    <img src='<%= @blog.image.thumb.to_s %>', style='float: right' >
+    <%= @blog.title %>
+    <%= markdown(@blog.body) %>
+    <p>This blog viewed <span><%= @blog.views %></span> times.</p>
+  </div>
+<% end %>

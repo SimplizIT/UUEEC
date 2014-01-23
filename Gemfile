@@ -19,8 +19,17 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'cancan'
 
+# Add images to site
+gem 'carrierwave'
+gem 'mini_magick'
+
+# Add markup to blog
+gem 'redcarpet'
 
 # gem 'bootstrap-sass'
+
+# Add pagination
+gem 'kaminari'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer'

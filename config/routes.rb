@@ -1,4 +1,6 @@
 Uueec::Application.routes.draw do
+
+  resources :blogs, only: [:index, :create, :new, :destroy, :update, :show]
   resources :bugs
   resources :obligations
 
