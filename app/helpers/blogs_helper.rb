@@ -6,4 +6,8 @@ module BlogsHelper
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(renderOptions), markdownOptions)
     markdown.render(blogtext).html_safe
   end
+
+  def http_checker(url)
+    /^http/.match(url) ? url : 'http://' + url
+  end
 end

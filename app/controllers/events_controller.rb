@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     @events = Event.all
     currentEvents = Event.all.where('start > ?', DateTime.now)
     @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
-    imagenames = Dir.glob('app/assets/images/*.{png,jpg}')
+    imagenames = Dir.glob('app/assets/images/*.{png,jpg,JPG,JPEG,jpeg,PNG}')
     images = []
     imagenames.each do |image|
       images.push(image.split('/').last)
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def destroy
    event = Event.find(params[:id])
-    if can? :delete
+    if can? :delete, Event
       event.delete
     else
       flash[:error] = 'Access is denied for this action.'

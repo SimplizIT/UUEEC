@@ -1,7 +1,10 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = Blog.all
-    @blogs = @blogs.sort! { |a,b| a.created_at <=> b.created_at }.reverse
+    @blogs = Blog.order(created_at: :desc).page(params[:page]).per(5)
+    @links = Link.order(created_at: :desc)
+    @events = Event.where(['start > ?', Date.today]).limit(4)
+    p '4:' * 40
+    p @events
   end
 
   def new

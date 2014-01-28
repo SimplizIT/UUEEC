@@ -5,12 +5,12 @@ var updateEvent;
   return $('#calendarEvents').fullCalendar({
     editable: true,
     header: {
-      left: 'prev, next today',
+      left: '',
       center: 'title',
-      right: ''
+      right: 'prev, next today'
     },
     defaultView: 'month',
-    height: 500,
+    height: 1000,
     slotMinutes: 30,
     eventSources: [
       {
@@ -45,6 +45,7 @@ var updateEvent;
         $('#EventModal').modal('hide')
       });
       $('.eventDelete').on('click', function(e){
+        console.log('here')
         e.preventDefault();
         $.ajax({
           url: 'events/' + calEvent.id,
@@ -61,7 +62,6 @@ var updateEvent;
 
 
 displayEventHTML = function(calEvent){
-  console.log(calEvent)
   // if($('#hiddenUserEvents')){
   //   var userDelete = eventDeleteHTML(calEvent.user_id, $('#hiddenUserEvents').text());
   // }else{

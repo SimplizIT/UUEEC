@@ -1,16 +1,20 @@
-<div id='blogspage'>
+<body id='blogspage'>
   <div id='blogspagewrapper'>
+    <div class='flower'></div>
     <h1>Blogs</h1>
     <p>Here are the blogs</p>
-    <br><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-primary' %>
+    <br><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-warning' %>
 
-   <div class='blogswarpper'>
+  
+    <div class='blogswrapper'>
       <% if @blogs %>
+        <%= paginate @blogs %>
         <% @blogs.each do |blog| %>
-          <%= link_to blog_path(blog) do %>
-            <div class='blogwrapper'>
-              <div class='divinline'>
-                <img src='<%= blog.image.thumb.to_s %>' class="img-thumbnail">
+          <div class='blogwrapper'>
+            <%= link_to blog_path(blog) do %>
+          
+              <div class='blogdate'>
+                <p><%= blog.created_at.strftime('%A / %B %d / %Y') %></p>
               </div>
 
 
@@ -18,7 +22,15 @@
                 <h3 class='overflowtext'><%= blog.title %></h3>
                 <p><%= blog.body %></p>
               </div>
-
+              <div class='divinline'>
+                <% if blog.image.thumb.to_s.empty? %>
+                  <div class='default_image'>
+                    <i class='fa fa-cogs'></i>
+                  </div>
+                <% else %>
+                  <img src='<%= blog.image.thumb.to_s %>' class="img-thumbnail">
+                <% end %>
+              </div>
 
               <div class='redwaxmark'>
                 <div>
@@ -30,10 +42,32 @@
               <div class='visitors'>
                 <p>Views ~ <span class='badge'><%= number_with_delimiter(blog.views, delimiter: ',') %></span></p>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>
+     <div class='addswrapper divinline'>
+      <div id='addevents' class='blogadds'>
+        <i class='fa fa-bullhorn'></i>
+        <h4>- Upcoming Events!</h4>
+        <% if @events.present? %>
+          <% @events.each do |event| %>
+            <h5><%= event.title.humanize %></h5>
+            <p><i class='fa fa-clock-o'></i><%= event.start.strftime('%A, %B %d - %Y') %></p><br>
+          <% end %>
+        <% else %>
+          <p>No upcoming events scheduled...</p>
+        <% end %>
+      </div>
+      <div id='addlinks' class='blogadds'>
+        <i class='fa fa-link fa-rotate-90'></i>
+          <h4>- Informative Websites</h4>
+          <% if @links %>
+            <% @links.each do |link| %>
+              <p><%= link_to link.title.humanize, http_checker(link.url) %></p>
+            <% end %>
+          <% end %>
+      </div>
   </div>
-</div>
+</body>

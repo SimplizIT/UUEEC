@@ -17,7 +17,7 @@ body {
 }
 
 #uueecBanner {
-  width: 400px;
+  width: 470px;
   height: 526px;
   overflow: hidden;
   background-image: url(/assets/uueecbanner.png);
@@ -381,20 +381,18 @@ div.speachbubble:after {
 
 /*navbar below*/
 
-#navbarwrapper {
+.navbarwrapper {
   width: 100%;
   height: 100px;
 }
 
 .homeimagenav {
-  position: absolute;
-  top: 0px;
-  margin-left: 50px;
+  position: relative;
+  top: -70px;
+  margin-left: 8px;
   width: 177px;
   height: 177px;
-  background-color: #FFF;
   border-radius: 50%;
-  z-index: 5;
 }
 
 .homeimagenav a {
@@ -403,17 +401,17 @@ div.speachbubble:after {
   left: 13px;
 }
 
-#navbar {
+.navbar {
   margin-top: 32px;
   margin-bottom: 23px;
 }
 
-#navbar li {
+.navbar li {
   padding-right: 20px;
   z-index: 2;
 }
 
-#navbar a {
+.navbar a {
   background: #FFF;
   -webkit-transition: background .5s;
   color: #87949a;
@@ -421,7 +419,7 @@ div.speachbubble:after {
   position: relative;
 }
 
-#navbar a:hover {
+.navbar a:hover {
   background: #87949a;
   -webkit-transition: background .5s;
   color: #FFF;

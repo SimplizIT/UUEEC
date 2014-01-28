@@ -7,7 +7,7 @@
 }
 
 #blogspagewrapper {
-  width: 760px;
+  width: 1000px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -23,52 +23,34 @@
   margin-bottom: 10px;
 }
 
-/*.blogwrapper {
-  width: 100%;
-  display: block;
-  height: 150px;
-  background: white;
-  border: 1px solid;
-  border-color: #e5e5e5 #dbdbdb #d2d2d2;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
-  -moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
-  margin-bottom: 30px;
+.blogswrapper {
+  display: inline-block;
 }
-
-.blogwrapper img {
-  border: 2px solid blue;
-}
-
-.blogwrapper .col {
-  float: left;
-  box-sizing: border-box;
-  width: 250px;
-  height: 150px;
-  padding: 16px 7px 6px 22px;
-  font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
-  color: #343434;
-  border-right: 1px solid #dadada;
-}
-
-.blogwrapper .col.last {
-  width: 240px;
-  border-right-color: #fff;
-}
-
-.iconwhite {
-  padding-right: 3px;
-  color: #FFF;
-}
-
-.fa-stack-2x {
-  color: #8B0000;
-}*/
 
 .blogwrapper {
+  position: relative;
+  width: 500px;
+  padding: 50px;
+  background-color: #FFF;
+  border-radius: 12px;
+  margin-bottom: 75px;
+}
+
+.blogwrapper div {
+  color: #4888A7; 
+}
+
+.pagination a {
+  color: #4888A7;
+}
+
+/*use below to change color of pagination cells*/
+/*.pagination > .active > a {
+  background-color: #4888A7 !important;
+  border-color: #4888A7 !important;
+}*/
+
+/*.blogwrapper {
   position: relative;
   width: 490px;
   padding: 50px;
@@ -78,9 +60,9 @@
   -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 50px rgba(0, 0, 0, 0.18);
   margin-bottom: 75px;
-}
+}*/
 
-.blogwrapper:before, .blogwrapper:after
+/*.blogwrapper:before, .blogwrapper:after
 {
   position: absolute;
   width: 40%;
@@ -108,7 +90,7 @@
   -ms-transform: skew(5deg) rotate(5deg);
   -o-transform: skew(5deg) rotate(5deg);
   transform: skew(5deg) rotate(5deg);
-}
+}*/
 
 .redwaxmark {
   width: 80px;
@@ -122,6 +104,49 @@
   z-index: 1;
   right: -30px;
 }
+
+.flower {
+  width: 1270px;
+  height: 1430px;
+  overflow: hidden;
+  background-image: url(/assets/flower.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -87px;
+  z-index: -1;
+  left: -245px;
+  opacity: .3;
+}
+
+.flowertwo {
+  width: 538px;
+  height: 575px;
+  overflow: hidden;
+  background-image: url(/assets/flowertwo.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -29px;
+  z-index: -1;
+  right: -30px;
+  opacity: .3;
+}
+
+.flowerthree {
+  width: 538px;
+  height: 575px;
+  overflow: hidden;
+  background-image: url(/assets/flowerthree.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -29px;
+  z-index: -1;
+  right: -30px;
+  opacity: .3;
+}
+
 
 .redwaxmark div {
   position: relative;
@@ -153,11 +178,11 @@
   top: -5px;
   width: 235px;
   height: 154px;
-  padding-left: 10px;
+  margin-right: 10px;
 }
 
-#blogswrapper a {
-  text-decoration: none;
+.blogwrapper a {
+  text-decoration: none !important;
 }
 
 .blogsmain h3 {
@@ -176,9 +201,76 @@
   text-overflow: ellipsis;
 }
 
+.default_image {
+  width: 145px;
+  height: 150px;
+  background-color: rgba(128, 128, 128, 0.44);
+  border-radius: 4px;
+}
 
+.default_image i {
+  font-size: 125px;
+  color: #FFF;
+  padding: 14px 5px;
+}
 
+.addswrapper {
+  position: relative;
+  top: 119px;
+  margin-left: 63px;
+  color: #4888A7;
+}
 
+.blogadds {
+  width: 327px;
+  background-color: #FFF;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  padding: 30px 35px;
+}
 
+.blogadds h4 {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
 
+#addevents h5, #addevents p {
+  padding-left: 45px;
+  line-height: 12px;
+}
+
+#addlinks p {
+  padding-left: 35px;
+}
+
+#addevents {
+  min-height: 200px;
+}
+
+#addlinks {
+  min-height: 200px;
+}
+
+#addlinks a {
+  color: #4888A7;
+}
+
+#addevents .fa-bullhorn {
+  position: absolute;
+  left: 25px;
+  font-size: 48px;
+  top: 41px;
+}
+
+#addlinks .fa-link {
+  position: absolute;
+  left: 32px;
+  font-size: 40px;
+  top: 271px;
+}
+
+#addevents .fa-clock-o {
+  margin-right: 7px;
+}
 

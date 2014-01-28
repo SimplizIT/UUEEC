@@ -1,3 +1,16 @@
+#eventcalpage {
+  position: relative;
+  top: -24px;
+  background-color: #45AD72;
+  z-index: 1;
+  padding-bottom: 30px;
+  width: 1280px;
+}
+
+#eventcalpage .navbar {
+  margin-top: 60px;
+}
+
 #eventimagewrapper {
   width: 760px;
   margin-right: auto;
@@ -86,24 +99,63 @@
 
 #eventcalendarwrapper {
   position: relative;
-  width: 760px;
+  width: 1100px;
   border-radius: 4px;
-  border: 1px solid #FFF;
-  padding: 20px;
-  background-color: #AABAC1;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-  z-index: 90;
+/*  border: 1px solid #FFF;
+*/  padding: 20px;
+  background-color: none;
+/*  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+*/  z-index: 90;
   top: 55px;
+  color: #FFF;
   margin-right: auto;
   margin-left: auto;
 }
 
 #upcomingevents {
+  position: relative;
+  top: 45px;
   text-align: center;
   color: #FFF;
   letter-spacing: 1px;
+  z-index: 30;
+}
+
+#upcomingevents h1 {
+  font-size: 80px;
+}
+
+#calendarEvents {
+  letter-spacing: 1px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300 !important;
+}
+
+#calendarEvents .fc-content {
+  font-size: 20px;
+}
+
+#calendarEvents .fc-header-right {
+  font-size: 20px;
   position: relative;
-  top: 45px;
+  top: 7px;
+}
+
+#calendarEvents .fc-header {
+  margin-bottom: 18px;
+}
+
+/*buttons*/
+#calendarEvents .fc-state-default {
+  background-color: #62F3A1;
+  background-image: none;
+  text-shadow: none;
+  color: #FFF;
+  font-weight: 400;
+}
+
+#calendarEvents h2, #calendarEvents th {
+  font-weight: 200;
 }
 
 #calendarEvents .fc-event-time {
@@ -111,19 +163,29 @@
 }
 
 #calendarEvents .fc-state-highlight {
-  background-color: #DADADA;
+  background-color: rgba(218, 183, 143, 0.43);
+  border-radius: 4px;
 }
 
 #calendarEvents .fc-event {
-  border: 1px solid #395765;
-  background-color: #395765;
+  border: 1px solid #BF8A4D;
+  background-color: #BF8A4D;
+  padding: 4px;
 }
 
-#eventpage {
+#eventpagewrapper {
   position: relative;
-  top: -24px;
-  background-color: #57656C;
+  top: -70px;
+  background-color: none;
   height: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1100px;
+}
+
+#eventpagewrapper h2 {
+  font-size: 45px;
+  font-weight: 400;
 }
 
 .ribbon-wrapper-green {
@@ -183,7 +245,7 @@
   right: 0;
 }
 
-.horzscrollone {
+/*.horzscrollone {
   width: 350px;
   height: 60px;
   position: relative;
@@ -195,9 +257,42 @@
   background-repeat: no-repeat;
   z-index: -1;
   opacity: .4;
+}*/
+
+table {
+  border-radius: 4px;
 }
 
+.fc-widget-header, .fc-widget-content {
+border: none;
+}
 
+#eventflower {
+  width: 1194px;
+  height: 1430px;
+  overflow: hidden;
+  background-image: url(/assets/flowerthree.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -75px;
+  z-index: -1;
+  left: -48px;
+  opacity: .2;
+}
 
+#addeventbutton {
+  float: right;
+  position: relative;
+  left: -229px;
+  top: 43px;
+  z-index: 2;
+}
 
+.btn-default, .btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger  {
+  text-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
 
