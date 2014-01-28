@@ -58,7 +58,7 @@ end
 
 gem 'rails_12factor', group: :production
 
-gem 'faker', group: :development
+gem 'faker'
 
 gem 'font-awesome-rails'
 
