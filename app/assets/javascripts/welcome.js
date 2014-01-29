@@ -1,29 +1,20 @@
-var datePicker = function(){
-
-  $('.datetimepickersss').datetimepicker({
-    language: 'en',
-    pick12HourFormat: true,
-    pickSeconds: false,
-  });
-
-  $('.sentance')
-    .mouseenter(function(){
-      $(this).toggleClass('ToGray ToWhite');
-    })
-    .mouseleave(function(){
-      $(this).toggleClass('ToWhite ToGray');
-    });
+// var datePicker = function(){
 
 
-  $('#datetimepicker1').datetimepicker({
-    language: 'en',
-    pick12HourFormat: true,
-    pickSeconds: false,
-  });
+
+//   $('.sentance')
+//     .mouseenter(function(){
+//       $(this).toggleClass('ToGray ToWhite');
+//     })
+//     .mouseleave(function(){
+//       $(this).toggleClass('ToWhite ToGray');
+//     });
 
 
-}
 
 
-$(document).ready(datePicker);
-$(document).on('page:load', datePicker);
+// }
+
+
+// $(document).ready(datePicker);
+// $(document).on('page:load', datePicker);

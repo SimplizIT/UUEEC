@@ -2,7 +2,7 @@ class ObligationsController < ApplicationController
   load_and_authorize_resource
   def index
     @obligations = Obligation.all
-
+    @obligation = Obligation.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @obligations }

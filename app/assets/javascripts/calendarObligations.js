@@ -57,6 +57,16 @@ var obligationCalendar = function(){
   }); 
 }
 
+var createobligation = function(){
+  $('#createobligation').on('click', function(){
+    $('#createobligationmodal').modal('show')
+  });
+
+ $('.button_closeObligation').on('click', function(){
+    $('#createobligationmodal').modal('hide')
+  });
+}
+
 displayObligationHTML = function(calEvent){
   if($('#hiddenUserObligations')){
     var userDelete = obligationDeleteHTML(calEvent.user_id, $('#hiddenUserObligations').text());
@@ -79,10 +89,10 @@ displayObligationHTML = function(calEvent){
    var endDate = "No Date Given" 
   }
   if(calEvent.allDay == true){
-    return ('<b>Title: </b>' + calEvent.title + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>');
+    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>');
     
   }else{
-    return ('<b>Title: </b>' + calEvent.title + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>' );
+    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>' );
   }
 }
 
@@ -94,10 +104,19 @@ obligationDeleteHTML = function(event_userID, current_userID){
     }
   }
 
+String.prototype.capitalizeName = function() {
+  var strings = this.split(/[ _]+/)
+  for(var i=0; i < strings.length; i++){
+    var j = strings[i].charAt(0).toUpperCase();
+    strings[i] = j + strings[i].substr(1);
+  }
+  return strings.join(" ");
+}
+
 $(document).ready(obligationCalendar);
 $(document).on('page:load', obligationCalendar);
-
-
+$(document).ready(createobligation);
+$(document).on('page:load', createobligation);
 
 
 

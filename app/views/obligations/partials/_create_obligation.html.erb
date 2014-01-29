@@ -1,0 +1,42 @@
+<div id="createobligationmodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+  <div>
+    <h3>Volunteer</h3><button type='button' class="button_closeObligation btn btn-xs" data-type='CreateObligationModal'>Close</button>
+  </div>
+
+
+ <%= form_for(@obligation) do |f| %>
+  <div>
+  <%= f.label :title, 'Name' %><br />
+  <%= current_user.first_name.humanize + ' ' + current_user.last_name.humanize %>
+  <%= f.hidden_field :title, {value: current_user.first_name + ' ' + current_user.last_name } %>
+  </div>
+
+  <div class='datetimepickers input-append date obligationStart'>
+  <%= f.label :start %>
+  <%= f.text_field :start, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
+  <span class='add-on divinline'>
+    <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar"></i>
+  </span>
+  </div>
+
+   <div class='datetimepickers input-append date obligationEnd'>
+  <%= f.label :end %>
+  <%= f.text_field :end, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
+  <span class='add-on divinline'>
+    <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar"></i>
+  </span>
+  </div>
+
+ 
+  <div>
+  <%= f.label :description %><br />
+  <%= f.text_area :description %>
+  </div>
+  <div>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+  <% end %>
+
+  <div id='createobligationbody' class="modal-body">
+  </div>
+</div>
