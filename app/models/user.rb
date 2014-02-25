@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-
   ROLES = ['admin', 'teacher', 'volunteer']
 
   def roles=(roles)

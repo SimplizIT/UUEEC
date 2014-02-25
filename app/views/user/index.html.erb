@@ -13,4 +13,38 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Change Password', edit_user_registration_path %>
+<%= link_to 'Change Password', edit_user_registration_path %><br><br>
+
+
+<% if @userobligations %>
+  <p>You have <%= @userobligations.count %> volunteer obligations scheduled</p>
+  <% @userobligations.each do |obligation| %>
+    <div class='profileobligation'>
+      <%= obligation.title %> - 
+      <%= obligation.start.strftime('%A, %B %d - %Y') %>
+      <% if obligation.up_for_swap == false %>
+        <%= button_to "Swap?", obligation_path(obligation, { swapremove: 'swap' }), method: :put, class: "btn btn-success btn-xs" %><%= radio_button_tag(:swap_offer, 'select') %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @obligationsupforswap %>
+  <br><p>These are the obligations up for swap.</p>
+  <% @obligationsupforswap.each do |obligation| %>
+    <div class='profileobligation'>
+      <%= obligation.title %> - 
+      <%= obligation.start.strftime('%A, %B %d - %Y') %>
+      <% if obligation.user_id == current_user.id %>
+        <%= button_to "Remove", obligation_path(obligation, { swapremove: 'remove' }), method: :put, class: "btn btn-warning btn-xs" %>
+      <% end %>
+      <% if obligation.user_id != current_user.id %>
+        <%= link_to "Propose Swap", '#swapobligationmodal', class: "btn btn-info btn-xs swapobligation" %>
+        <%= render partial: 'obligations/partials/swap_obligation', locals: { obligation: obligation, obligations: @obligationsupforswap } %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <br><p>There are currently no obligations up for swap.</p>
+<% end %>
+

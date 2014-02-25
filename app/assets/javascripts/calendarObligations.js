@@ -25,12 +25,12 @@ var obligationCalendar = function(){
       return updateEvent(event);
     },
 
-    dayClick: function(date, allDay, jsEvent, view){
-      if(view.name == 'month'){
-        $('#calendarObligations').fullCalendar('gotoDate', date);
-        view.calendar.changeView('agendaWeek');
-      }
-    },
+    // dayClick: function(date, allDay, jsEvent, view){
+    //   if(view.name == 'month'){
+    //     $('#calendarObligations').fullCalendar('gotoDate', date);
+    //     view.calendar.changeView('agendaWeek');
+    //   }
+    // },
 
     eventClick: function(calEvent, jsEvent, view){
       if(calEvent){
@@ -55,6 +55,8 @@ var obligationCalendar = function(){
       });
     }
   }); 
+
+ 
 }
 
 var createobligation = function(){
@@ -62,18 +64,21 @@ var createobligation = function(){
     $('#createobligationmodal').modal('show')
   });
 
+
+
  $('.button_closeObligation').on('click', function(){
     $('#createobligationmodal').modal('hide')
   });
 }
 
+var setEndDate = function(){
+  $('#obligation_start').change(function(){
+    console.log('here i am')
+    $('#obligation_end').val($('#obligation_start').val());
+  });
+}
+
 displayObligationHTML = function(calEvent){
-  if($('#hiddenUserObligations')){
-    var userDelete = obligationDeleteHTML(calEvent.user_id, $('#hiddenUserObligations').text());
-    console.log(userDelete)
-  }else{
-    var userDelete = ''
-  }
   if(calEvent.start){
     var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ');
     var startDate = calEvent.start.toLocaleDateString();
@@ -89,20 +94,14 @@ displayObligationHTML = function(calEvent){
    var endDate = "No Date Given" 
   }
   if(calEvent.allDay == true){
-    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>');
+    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description);
     
   }else{
-    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description + '<p>' + userDelete + '</p>' );
+    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
   }
 }
 
-obligationDeleteHTML = function(event_userID, current_userID){
-    if(current_userID == event_userID){
-      return ('<hr><p>Delete this event from the calendar?</p><button class="button_deleteObligation btn btn-danger btn-sm">Delete</button>')
-    }else{
-      return ('')
-    }
-  }
+
 
 String.prototype.capitalizeName = function() {
   var strings = this.split(/[ _]+/)
@@ -117,6 +116,8 @@ $(document).ready(obligationCalendar);
 $(document).on('page:load', obligationCalendar);
 $(document).ready(createobligation);
 $(document).on('page:load', createobligation);
+$(document).ready(setEndDate);
+$(document).on('page:load', setEndDate);
 
 
 

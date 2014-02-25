@@ -109,7 +109,7 @@
   <div id='welcomeinvitewrapper'>
 
     <h1>Come Visit Us!</h1>
-    <div id='visitorForm'>
+    <div id='visitorForm' class='divinline'>
       <%= form_for(@visitor) do |f| %>
         <%= f.label :firstname, 'First Name' %><br>
         <%= f.text_field :firstname %><br>
@@ -133,7 +133,7 @@
       <% end %>
     </div>
 
-    <div id='visitorforminstructions'>
+    <div id='visitorforminstructions' class='divinline'>
       <p>If you would like to find out more </p>
       <p>4027 E Lincoln Drive</p>
       <p>Paradise Valley, AZ 85253</p>
@@ -144,11 +144,12 @@
 
 <div id='welcomefooter'>
   <div id='footericonwrapper'>
-    <!-- <div id='uueecfootericon'></div> -->
     <h5>- Site created by -</h5>
-    <div id='simplizitfootericon' class='simplizitfootericonblue'></div>
+    <div id='simplizitfootericonblue' class='simplizitfootericon simplizitfootericonblue'></div>
+    <div id='simplizitfootericonwhite' class='simplizitfootericon simplizitfootericonwhite displaynone'></div>
     <div id='grasswrapper'>
-      <div id='grassmain' class='grassmainblue'></div>
+      <div id='grassmainblue' class='grassmain grassmainblue'></div>
+      <div class='grassmain grassmaincolor'></div>
     </div>
   </div>
 </div>

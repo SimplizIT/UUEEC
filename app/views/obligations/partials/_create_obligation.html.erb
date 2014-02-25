@@ -11,16 +11,16 @@
   <%= f.hidden_field :title, {value: current_user.first_name + ' ' + current_user.last_name } %>
   </div>
 
-  <div class='datetimepickers input-append date obligationStart'>
-  <%= f.label :start %>
+  <div class='datetimepickerobligation input-append date obligationStart'>
+  <%= f.label :start %><br>
   <%= f.text_field :start, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
   <span class='add-on divinline'>
     <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar"></i>
   </span>
   </div>
 
-   <div class='datetimepickers input-append date obligationEnd'>
-  <%= f.label :end %>
+   <div class='datetimepickerobligation input-append date obligationEnd'>
+  <%= f.label :end %><br>
   <%= f.text_field :end, data: { format: "dd-MM-yyyy hh:mm:ss"} %>
   <span class='add-on divinline'>
     <i data-time-icon="fa fa-clock-o" data-date-icon="fa fa-calendar"></i>

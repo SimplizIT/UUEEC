@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  load_and_authorize_resource class: User
+  # load_and_authorize_resource class: User
   helper_method :sort_column, :sort_direction
 
   def index

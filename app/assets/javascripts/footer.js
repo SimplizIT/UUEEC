@@ -1,13 +1,26 @@
 var footerflowers = function(){
 
-  $('#footeractivate')
+  // $('#footeractivate')
+  //   .mouseenter(function(){
+  //     $('#simplizitfootericon').toggleClass('simplizitfootericonblue simplizitfootericonwhite');
+  //     $('#grassmain').toggleClass('grassmainblue grassmaincolor');
+  //   })
+  //   .mouseleave(function(){
+  //     $('#simplizitfootericon').toggleClass('simplizitfootericonwhite simplizitfootericonblue');
+  //     $('#grassmain').toggleClass('grassmaincolor grassmainblue');  
+  //   });
+
+    $('#footeractivate')
     .mouseenter(function(){
-      $('#simplizitfootericon').toggleClass('simplizitfootericonblue simplizitfootericonwhite');
-      $('#grassmain').toggleClass('grassmainblue grassmaincolor');
+      console.log('hello')
+      $('#simplizitfootericonblue').fadeOut('slow');
+      $('#simplizitfootericonwhite').fadeIn('slow');
+      $('#grassmainblue').fadeOut('slow');
     })
     .mouseleave(function(){
-      $('#simplizitfootericon').toggleClass('simplizitfootericonwhite simplizitfootericonblue');
-      $('#grassmain').toggleClass('grassmaincolor grassmainblue');  
+      $('#simplizitfootericonwhite').fadeOut('slow');
+      $('#simplizitfootericonblue').fadeIn('slow');
+      $('#grassmainblue').fadeIn('slow');
     });
 
 }

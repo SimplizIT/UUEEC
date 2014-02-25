@@ -33,7 +33,6 @@ imagenames.each do |image|
   images.push(image.split('/').last)
 end
 images.delete_if { |image| image.include?('thumb') || image.include?('circle_')}
-puts images
 
 users.each do |user|
   if user.is?('admin') || user.is?('teacher')

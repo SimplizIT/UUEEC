@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20140124181758) do
     t.string   "borderColor"
     t.string   "textColor"
     t.integer  "user_id"
+    t.boolean  "swapped",         default: false
+    t.boolean  "up_for_swap",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

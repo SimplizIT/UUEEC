@@ -1,2 +1,20 @@
 <h1>Duties#destroy</h1>
 <p>Find me in app/views/duties/destroy.html.erb</p>
+
+
+<div id='eventimagewrapper'>
+      <% if @divimages %>
+        <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+        <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+        <div class='eventimage'><%= image_tag(@divimages.pop, size: "220x220") %></div>
+      <% end %>
+    </div>
+
+    <div class='ribbon-wrapper-green'>
+        <div class="ribbon-green">
+          <p>Next Event</p>
+          <% if @nextEvent %>
+            <%= @nextEvent.start.strftime("%A, %b %d at %H:%M") %>
+          <% end %>
+        </div>
+      </div>

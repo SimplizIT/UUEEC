@@ -66,7 +66,7 @@ gem 'font-awesome-rails'
 # gem 'bootstrap-datepicker-rails'
 # gem 'bootstrap-timepicker-rails', '= 0.1.3'
 
-# gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
 
 

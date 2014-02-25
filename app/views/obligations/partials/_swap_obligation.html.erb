@@ -1,0 +1,15 @@
+<div id="swapobligationmodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+  <div>
+    <h3>Volunteer</h3><button type='button' class="button_closeObligation btn btn-xs" data-type='SwapObligationModal'>Close</button>
+  </div><br>
+  <div class="modal-body divinline">
+    <%= obligation.title %><br>
+  </div>
+  <div id='obligationsupforswap' class='modal-body divinline'>
+    <% obligations.each do |obligation| %>
+      <% if obligation.user_id == current_user.id %>
+        <div class='obligatinhighlight'><%= obligation.title %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
