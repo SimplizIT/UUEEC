@@ -1,0 +1,23 @@
+<div id="viewswapobligationsmodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+  <div>
+    <h3>Here are your swaps</h3><button type='button' class="button_closeObligation btn btn-xs" data-type='SwapObligationModal'>Close</button>
+  </div><br>
+
+  <%= form_tag(obligation_path(original, { originalswap: original.id }), method: :put) do %>
+
+    <div class="modal-body divinline">
+      <%= original.title %> - 
+        <%= original.start.strftime('%A, %B %d - %Y') %><br>
+    </div>
+    <div id='obligationsupforswap' class='modal-body divinline'>
+      <% offers.each do |proposal| %>
+          <div class='obligatinhighlight'>
+            <%= proposal.title %> - 
+            <%= proposal.start.strftime('%A, %B %d - %Y') %>
+            <%= radio_button_tag(:swap_these_obligations, proposal.id) %>
+          </div>
+      <% end %>
+    </div>
+    <%= submit_tag 'Submit Proposal', class: 'btn btn-primary' %>
+  <% end %>
+</div>

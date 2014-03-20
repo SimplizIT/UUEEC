@@ -6,6 +6,8 @@ class Ability
 
     if user.is? :admin
       can :manage, Obligation
+      can :manage, Event
+      can :manage, Blog
     end
 
     if user.is? :teacher

@@ -1,13 +1,12 @@
 #blogspage {
   position: relative;
-  top: -24px;
   background-color: #67C3EF;
   z-index: 1;
   padding-bottom: 30px;
 }
 
 #blogspagewrapper {
-  width: 1000px;
+  width: 1100px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -42,6 +41,11 @@
 
 .pagination a {
   color: #4888A7;
+}
+
+#blogbutton {
+  margin-top: 40px;
+  margin-left: 11px;
 }
 
 /*use below to change color of pagination cells*/

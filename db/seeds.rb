@@ -12,6 +12,8 @@ userRoles = ['admin', 'teacher', 'volunteer']
 
 user = User.create(first_name: 'john', last_name: 'doe', email: 'dude@dude.com', password: '12345678', password_confirmation: '12345678')
 
+user = User.create(first_name: 'test', last_name: 'test', email: 'test@test.com', password: '12345678', password_confirmation: '12345678')
+
 50.times do
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: '12345678', password_confirmation: '12345678')
 end
@@ -24,6 +26,10 @@ users.each do |user|
 end
 
 user = User.find_by_email('dude@dude.com')
+user.roles = userRoles
+user.save
+
+user = User.find_by_email('test@test.com')
 user.roles = userRoles
 user.save
 

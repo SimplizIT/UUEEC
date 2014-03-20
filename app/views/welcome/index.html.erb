@@ -10,24 +10,32 @@
 </div>
 
 <div id='welcomedivcontainer'>
-  <div id='welcomeevents' class='welcomedivselections'>
-    <h3>Upcoming Events</h3>
-    <div id='eventdiv'></div>
-    <h5>Click for upcoming events</h5>
-    <p>We hold all kinds of events throughout the year for our children and their parents.</p>
-  </div>
-  <div id='welcomeblog' class='welcomedivselections'>
-    <h3>Our Blog</h3>
-    <div id='blogdiv'></div>
-    <h5>Click to read our blog</h5>
-    <p>We update our blog frequently with information you may be searching for. Take a moment and check it out.</p>
-  </div>
+  
+  <a href='/events'>
+    <div id='welcomeevents' class='welcomedivselections'>
+      <h3>Upcoming Events</h3>
+      <div id='eventdiv'></div>
+      <h5>Click for upcoming events</h5>
+      <p>We hold all kinds of events throughout the year for our children and their parents.</p>
+    </div>
+  </a>
+
+  <a href='/blogs'>
+    <div id='welcomeblog' class='welcomedivselections'>
+      <h3>Our Blog</h3>
+      <div id='blogdiv'></div>
+      <h5>Click to read our blog</h5>
+      <p>We update our blog frequently with information you may be searching for. Take a moment and check it out.</p>
+    </div>
+  </a>
+  <a href='/blogs'>
   <div id='welcomeprograms' class='welcomedivselections'>
     <h3>Child Programs</h3>
     <div id='programdiv'></div>
     <h5>Click for program details</h5>
     <p>We offer dynamic programs for three age groups in which to prepare our young minds for the world.</p>
   </div>
+</a>
 </div>
 
 <div id='welcomephilosophy'>
@@ -64,10 +72,10 @@
       <div id='philosophybottom'>Philosophy</div>
     </div>
     <div id='philosentancewrapper'>
-      <p id='philosophysentanceone' class='sentance ToGray'>"Provide parents with positive language and parenting techniques, alongside the opportunity to interact with their child in classroom participation."</p>
-      <p id='philosophysentancetwo' class='sentance ToGray'>"Develop cognitive, social, emotional, linguistic, creative, and physical skills in each unique child."</p>
-      <p id='philosophysentancethree' class='sentance ToGray'>"Encourage each child to make their own choices, and be responsible for their own behavior."</p>
-      <p id='philosophysentancefour' class='sentance ToGray'>"Create a community that fosters and values positive lifelong parent-child relationships."</p>
+      <p id='philosophysentanceone' class='sentance'>"Provide parents with positive language and parenting techniques, alongside the opportunity to interact with their child in classroom participation."</p>
+      <p id='philosophysentancetwo' class='sentance'>"Develop cognitive, social, emotional, linguistic, creative, and physical skills in each unique child."</p>
+      <p id='philosophysentancethree' class='sentance'>"Encourage each child to make their own choices, and be responsible for their own behavior."</p>
+      <p id='philosophysentancefour' class='sentance'>"Create a community that fosters and values positive lifelong parent-child relationships."</p>
     </div>
     <div id='clickHerewrapper'>
       <div id='clickHere'></div>
@@ -128,7 +136,7 @@
           </div>
         </div>
         <%= f.label :howfindus, 'How did you find us?' %><br>
-        <%= f.text_area :howfindus, size: '33x3' %><br><br>
+        <%= f.text_area :howfindus, size: '31x3' %><br><br>
         <%= f.submit 'Submit', class: 'btn btn-primary' %>
       <% end %>
     </div>
@@ -152,7 +160,5 @@
       <div class='grassmain grassmaincolor'></div>
     </div>
   </div>
+  <div id='footeractivate'></div>
 </div>
-
-<div id='footeractivate'></div>
-

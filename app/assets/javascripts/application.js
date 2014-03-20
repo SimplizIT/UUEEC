@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require fullcalendar
 //= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
 

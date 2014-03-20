@@ -2,13 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.picker-switch {
+  border-radius: 4px;
+}
 .picker-switch:hover {
-  background-image: linear-gradient(to bottom,#08c,#04c);
+  background-color: #428bca;
 }
 
-.picker-switch:hover i {
-  color: #F8F8F8;
+.picker-switch:hover span {
+  color: #FFF;
 }
 
 

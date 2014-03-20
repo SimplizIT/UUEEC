@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124181758) do
+ActiveRecord::Schema.define(version: 20140319042208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140124181758) do
     t.integer  "user_id"
     t.boolean  "swapped",         default: false
     t.boolean  "up_for_swap",     default: false
+    t.string   "swap_proposals",  default: [],    array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

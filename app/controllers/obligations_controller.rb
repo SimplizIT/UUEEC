@@ -22,20 +22,55 @@ class ObligationsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    obligation = current_user.obligations.find(params[:id])
-    if obligation
-      message = obligation.swapremove(obligation, params[:swapremove])
-      p '&' * 80
-      p message[:flashkey]
-      p message[:flashvalue]
-      flash[message[:flashkey.to_sym]] = message[:flashvalue]
+    p '^' * 80
+    p params
+
+    if params.has_key?('swapremove')
+      obligation = current_user.obligations.find(params[:id])
+      if obligation
+        message = obligation.swapremove(obligation, params[:swapremove])
+        flash[message[:flashkey.to_sym]] = message[:flashvalue]
+        redirect_to user_index_path
+      else
+        flash[:error] = 'You cannot update this obligation'
+        redirect_to user_index_path
+      end
+    elsif params.has_key?('swap_offered')
+      obligation = current_user.obligations.find(params[:swap_offered])
+      if obligation
+        originalswap = Obligation.find(params[:originalswap])
+        originalswap.swap_proposals.push(obligation.id.to_i) if !originalswap.swap_proposals.include?(obligation.id)
+        originalswap.swap_proposals_will_change!
+        originalswap.save
+        redirect_to user_index_path
+      else 
+        flash[:error] = 'Contact System Admin'
+        redirect_to user_index_path
+      end
+    elsif params.has_key?('swap_these_obligations')
+      current_user_obligation = current_user.obligations.find(params[:originalswap])
+      selected_proposal_from_other = Obligation.find(params[:swap_these_obligations])
+
+      current_user_obligation.user_id = selected_proposal_from_other.id
+      current_user_obligation.title = selected_proposal_from_other.title
+      selected_proposal_from_other.user_id = current_user.id
+      selected_proposal_from_other.title = current_user.first_name + ' ' + current_user.last_name
+
+      current_user_obligation.swap_proposals.clear
+      current_user_obligation.swap_proposals_will_change!
+      current_user_obligation.save
+
+      selected_proposal_from_other.swap_proposals.clear
+      selected_proposal_from_other.swap_proposals_will_change!
+      selected_proposal_from_other.save
       redirect_to user_index_path
     else
-      flash[:error] = 'You cannot update this obligation'
-      redirect_to user_index_path
+      flash[:error] = 'Access is denied for this action.'
+      redirect_to obligations_path
     end
   end
 

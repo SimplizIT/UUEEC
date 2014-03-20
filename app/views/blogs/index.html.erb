@@ -1,14 +1,19 @@
 <body id='blogspage'>
+  <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
   <div id='blogspagewrapper'>
     <div class='flower'></div>
     <h1>Blogs</h1>
     <p>Here are the blogs</p>
-    <br><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-warning' %>
+    
+    
 
   
     <div class='blogswrapper'>
       <% if @blogs %>
         <%= paginate @blogs %>
+          <% if can? :create, Blog %>
+            <div id='blogbutton' class='divinline'><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-warning' %></div>
+          <% end %>
         <% @blogs.each do |blog| %>
           <div class='blogwrapper'>
             <%= link_to blog_path(blog) do %>

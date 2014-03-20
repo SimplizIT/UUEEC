@@ -5,8 +5,22 @@ class UserController < ApplicationController
       @user = current_user
       @userobligations = @user.obligations.currentobligations(Date.today + 1)
       @obligationsupforswap = Obligation.swaps if !Obligation.swaps.empty?
-      p '%' * 80
-      p @obligationsupforswap
+      @obligation_offers = []
+      if @userobligations
+        @userobligations.each do |obligation|
+          p obligation
+          if !obligation.swap_proposals.empty? 
+            offers = {original: [], proposals: []}
+            offers[:original].push(obligation)
+            obligation.swap_proposals.each do |swap|
+              offers[:proposals].push(Obligation.find(swap))
+            end
+            @obligation_offers.push(offers)
+          end
+        end
+      end
+      p '5' * 90
+        p @obligation_offers
     else
       flash[:error] = 'You must sign in'
       redirect_to root_path

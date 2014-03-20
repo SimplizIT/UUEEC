@@ -17,6 +17,7 @@ class CreateObligations < ActiveRecord::Migration
       t.belongs_to :user
       t.boolean :swapped, default: false
       t.boolean :up_for_swap, default: false
+      t.string :swap_proposals, array: true, default: []
       t.timestamps
     end
   end

@@ -23,7 +23,7 @@
       <%= obligation.title %> - 
       <%= obligation.start.strftime('%A, %B %d - %Y') %>
       <% if obligation.up_for_swap == false %>
-        <%= button_to "Swap?", obligation_path(obligation, { swapremove: 'swap' }), method: :put, class: "btn btn-success btn-xs" %><%= radio_button_tag(:swap_offer, 'select') %>
+        <%= button_to "Swap?", obligation_path(obligation, { swapremove: 'swap' }), method: :put, class: "btn btn-success btn-xs" %>
       <% end %>
     </div>
   <% end %>
@@ -40,7 +40,7 @@
       <% end %>
       <% if obligation.user_id != current_user.id %>
         <%= link_to "Propose Swap", '#swapobligationmodal', class: "btn btn-info btn-xs swapobligation" %>
-        <%= render partial: 'obligations/partials/swap_obligation', locals: { obligation: obligation, obligations: @obligationsupforswap } %>
+        <%= render partial: 'obligations/partials/swap_obligation', locals: { obligation: obligation, obligations: @userobligations } %>
       <% end %>
     </div>
   <% end %>
@@ -48,3 +48,15 @@
   <br><p>There are currently no obligations up for swap.</p>
 <% end %>
 
+
+<% if @obligation_offers %>
+  <p>You have <%= @obligation_offers.count %> obligations with swap offers to confirm</p>
+  <% @obligation_offers.each do |offers| %> 
+    <%= offers[:original].first.title %> - 
+      <%= offers[:original].first.start.strftime('%A, %B %d - %Y') %><br>
+      <% if true %>
+        <%= link_to "View proposals", '#viewswapobligationsmodal', class: "btn btn-info btn-xs viewswapobligation" %>
+        <%= render partial: 'obligations/partials/view_swap_obligations', locals: { original: offers[:original].first, offers: offers[:proposals] } %>
+      <% end %>
+  <% end %>
+<% end %>

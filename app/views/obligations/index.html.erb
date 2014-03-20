@@ -1,10 +1,12 @@
 <br><%= link_to 'Volunteer', '#createobligationmodal', id: 'createobligation', class: 'btn btn-primary' %><br>
 <%= link_to 'Home page', root_path %><br><br>
 
+
+
 <div id='calendarObligations'></div>
 <%= render partial: 'obligations/partials/view_obligation' %>
 <%= render partial: 'obligations/partials/create_obligation' %>
 
 <% if can? :delete, Obligation %>
   <span id='hiddenUserObligations' type='hidden'><%= current_user.id %></span>
-<% end %>,      bbbbbvvfcccc c               
+<% end %>
