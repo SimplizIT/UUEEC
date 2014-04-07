@@ -14,8 +14,13 @@ class ObligationsController < ApplicationController
   end
 
   def create
-    current_user.obligations.create(obligation_params)
-    redirect_to obligations_path
+    if current_user
+      current_user.obligations.create(obligation_params)
+      redirect_to obligations_path
+    else
+      flash[:error] = 'You must be signed in'
+        redirect_to obligation_path
+    end
   end
 
   def show
@@ -26,8 +31,7 @@ class ObligationsController < ApplicationController
   end
 
   def update
-    p '^' * 80
-    p params
+   
 
     if params.has_key?('swapremove')
       obligation = current_user.obligations.find(params[:id])
@@ -40,23 +44,31 @@ class ObligationsController < ApplicationController
         redirect_to user_index_path
       end
     elsif params.has_key?('swap_offered')
+      p '^' * 80
+      p params
       obligation = current_user.obligations.find(params[:swap_offered])
       if obligation
         originalswap = Obligation.find(params[:originalswap])
-        originalswap.swap_proposals.push(obligation.id.to_i) if !originalswap.swap_proposals.include?(obligation.id)
+        originalswap.swap_proposals.push(obligation.id) if !originalswap.swap_proposals.include?(obligation.id.to_s)
         originalswap.swap_proposals_will_change!
         originalswap.save
+        p '&' * 80
+        p originalswap
         redirect_to user_index_path
       else 
         flash[:error] = 'Contact System Admin'
         redirect_to user_index_path
       end
     elsif params.has_key?('swap_these_obligations')
+      p '^' * 80
+      p params
       current_user_obligation = current_user.obligations.find(params[:originalswap])
       selected_proposal_from_other = Obligation.find(params[:swap_these_obligations])
 
-      current_user_obligation.user_id = selected_proposal_from_other.id
+      current_user_obligation.user_id = selected_proposal_from_other.user_id
       current_user_obligation.title = selected_proposal_from_other.title
+      current_user_obligation.up_for_swap = false
+
       selected_proposal_from_other.user_id = current_user.id
       selected_proposal_from_other.title = current_user.first_name + ' ' + current_user.last_name
 
@@ -67,6 +79,7 @@ class ObligationsController < ApplicationController
       selected_proposal_from_other.swap_proposals.clear
       selected_proposal_from_other.swap_proposals_will_change!
       selected_proposal_from_other.save
+
       redirect_to user_index_path
     else
       flash[:error] = 'Access is denied for this action.'

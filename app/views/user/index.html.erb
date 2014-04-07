@@ -1,62 +1,135 @@
-<br><%= link_to 'Home page', root_path %><br>
+<body id='userprofile'>
+  <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
+  <div id='userprofilewrapper'>
 
-
-<% if @user %>
-  <%= form_for @user, url: user_path(@user.id) do |f| %>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %><br>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %><br><br>
-    <%= f.submit "Update Profile", class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
-
-<%= link_to 'Change Password', edit_user_registration_path %><br><br>
-
-
-<% if @userobligations %>
-  <p>You have <%= @userobligations.count %> volunteer obligations scheduled</p>
-  <% @userobligations.each do |obligation| %>
-    <div class='profileobligation'>
-      <%= obligation.title %> - 
-      <%= obligation.start.strftime('%A, %B %d - %Y') %>
-      <% if obligation.up_for_swap == false %>
-        <%= button_to "Swap?", obligation_path(obligation, { swapremove: 'swap' }), method: :put, class: "btn btn-success btn-xs" %>
-      <% end %>
+    <div id='userinfo' class='userpagediv'>
+      <div class='divinline userprofileform'>
+        <% if @user %>
+          <%= form_for @user, url: user_path(@user.id) do |f| %>
+            <%= f.label :first_name %><br>
+            <%= f.text_field :first_name, value: f.object.first_name.capitalize %><br>
+            <%= f.label :last_name %><br>
+            <%= f.text_field :last_name, value: f.object.last_name.capitalize %><br>
+            <%= f.label :email %><br>
+            <%= f.text_field :email %>
+            <div class='choose_upload'>
+              <div class='fileUpload divcenter btn btn-primary btn-usergray btn-xs'>
+                <%= f.label :image, 'Upload a User photo' %><br>
+                <%= f.file_field :image, class: 'upload', id: 'uploadBtn' %><br><br>
+              </div><br>
+              <%= f.text_field :id, value: "", id: 'uploadFile', class: 'uploadFileInput', placeholder: 'Choose Image', disabled: true %><br>
+            </div><br>
+            <%= f.submit "Update Profile", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
+          <% end %>
+        <% end %>
+        <div class='divcenter change_password_div'>
+        <%= link_to 'Change Password', edit_user_registration_path, id: 'change_password' %><br><br>
+        </div>
+      </div>
+      <div class='divinline user_photo_wrapper'>
+        <% if @user.image.large.to_s.empty? %>
+          <div class='photo_outline'>
+            <div class='usercircle'>
+              <i class='fa fa-user'></i>
+            </div>
+          </div>
+        <% else %>
+          <div class='photo_outline'>
+            <img class='usercircle' src='<%= @user.image.large.to_s %>'>
+          </div>
+          <div class='divcenter user_image_buttons'>
+          <div class='divinline'>
+            <%= link_to "Crop Photo", '#addphotomodal', id: 'addphotobutton', class: 'btn btn-primary btn-usergray btn-sm' %>
+          </div>
+          <div class='divinline'>
+            <%= render partial: 'user/partials/addphoto' %>
+            <%= button_to "Delete Photo", user_path(@user), method: 'delete',  id: 'deletePhoto', class: 'btn btn-primary btn-usergray user_image_button btn-sm' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-<% end %>
 
-<% if @obligationsupforswap %>
-  <br><p>These are the obligations up for swap.</p>
-  <% @obligationsupforswap.each do |obligation| %>
-    <div class='profileobligation'>
-      <%= obligation.title %> - 
-      <%= obligation.start.strftime('%A, %B %d - %Y') %>
-      <% if obligation.user_id == current_user.id %>
-        <%= button_to "Remove", obligation_path(obligation, { swapremove: 'remove' }), method: :put, class: "btn btn-warning btn-xs" %>
-      <% end %>
-      <% if obligation.user_id != current_user.id %>
-        <%= link_to "Propose Swap", '#swapobligationmodal', class: "btn btn-info btn-xs swapobligation" %>
-        <%= render partial: 'obligations/partials/swap_obligation', locals: { obligation: obligation, obligations: @userobligations } %>
-      <% end %>
+    <div id='user_obligations_wrapper'>
+      <div id='obligations_display_left' class='divinline'>
+        <div id='scheduled_obligations' class='userpagediv divinline'>
+          <% if @userobligations %>
+            <% plural = @userobligations.count == 1 ? '' : 's' %>
+            <p>You have <span class='badge'><%= @userobligations.count %></span> <%= 'obligation' + plural %> scheduled</p>
+            <% @userobligations.each do |obligation| %>
+              <div class='profileobligation'>
+                <div class='divinline'>
+                  <%= obligation.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                </div>
+                <div class='divinline floatright'>
+                  <% if obligation.up_for_swap == false %>
+                    <%= button_to obligation_path(obligation, { swapremove: 'swap' }), method: :put, class: "btn btn-usergreen btn-xs" do %>
+                      <span>Swop <i class='fa fa-mail-forward'></i></span>
+                    <% end %>
+                  <% end %>
+                  <% if obligation.up_for_swap == true %>
+                    <%= button_to nil, disabled: true, class: "btn btn-usergreen btn-disabled btn-xs" do %>
+                      <span>Hold <i class='fa fa-bullhorn'></i></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div id='obligations_display_right' class='divinline'>
+        <div id='obligations_upforswap' class='userpagediv divinline'>
+          <% if @obligationsupforswap %>
+          <% plural = @obligationsupforswap.count == 1 ? '' : 's' %>
+          <% plural_words = @obligationsupforswap.count == 1 ? 'is' : 'are' %>
+            <p>There <%= plural_words %> <span class='badge'><%= @obligationsupforswap.count %></span> <%= 'obligation' + plural %> up for swop.</p>
+            <% @obligationsupforswap.each do |obligation| %>
+              <div class='profileobligation'>
+                <div class='divinline'>
+                  <%= obligation.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                </div>
+                <div class='divinline floatright'>
+                  <% if obligation.user_id == current_user.id %>
+                    <%= button_to obligation_path(obligation, { swapremove: 'remove' }), method: :put, class: "btn btn-useryellow btn-xs" do %>
+                      <span>Remove <i class='fa fa-mail-reply-all'></i></span>
+                    <% end %>
+                  <% end %>
+                </div>
+                <% if obligation.user_id != current_user.id %>
+                  <div class='divinline floatright'>
+                    <%= link_to '#swapobligationmodal' + obligation.id.to_s, class: "btn btn-userblue btn-xs swapobligation", data: { partialID: obligation.id } do %>
+                      <span>Switch <i class='fa fa-mail-reply'></i></span>
+                    <% end %>
+                    <%= render partial: 'obligations/partials/swap_obligation', locals: { original: obligation, obligations: @userobligations } %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div id='obligations_toconfirm' class='userpagediv divinline'>
+          <% if @obligation_offers %>
+          <% plural = @obligation_offers.count == 1 ? '' : 's' %>
+            <p>You have <span class='badge'><%= @obligation_offers.count %></span> swop <%= 'obligation' + plural %> to confirm</p>
+            <% @obligation_offers.each do |offers| %> 
+              <div class='profileobligation'>
+                <div class='divinline'>
+                    <%= offers[:original].first.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                  </div>
+                  <div class='divinline floatright'>
+                    <%= link_to '#viewswapobligationsmodal' + offers[:original].first.id.to_s, class: "btn btn-info btn-xs viewswapobligation", data: { partialID: offers[:original].first.id.to_s } do %>
+                      <span>Confirm <i class='fa fa-exchange'></i></span>
+                    <% end %>
+                    <%= render partial: 'obligations/partials/view_swap_obligations', locals: { original: offers[:original].first, offers: offers[:proposals] } %>
+                  </div>
+                </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-<% else %>
-  <br><p>There are currently no obligations up for swap.</p>
-<% end %>
-
-
-<% if @obligation_offers %>
-  <p>You have <%= @obligation_offers.count %> obligations with swap offers to confirm</p>
-  <% @obligation_offers.each do |offers| %> 
-    <%= offers[:original].first.title %> - 
-      <%= offers[:original].first.start.strftime('%A, %B %d - %Y') %><br>
-      <% if true %>
-        <%= link_to "View proposals", '#viewswapobligationsmodal', class: "btn btn-info btn-xs viewswapobligation" %>
-        <%= render partial: 'obligations/partials/view_swap_obligations', locals: { original: offers[:original].first, offers: offers[:proposals] } %>
-      <% end %>
-  <% end %>
-<% end %>
+  </div>
+</body>

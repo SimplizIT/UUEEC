@@ -1,0 +1,35 @@
+<div id="addphotomodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+  <div>
+    <div class='divcenter centertext'>
+      <h3 class='divcenter'>Crop Your Uploaded Image</h3>
+    </div>
+    <button id='preview_modal_closebtn' type='button' class="button_closephoto btn btn-usergray" data-type='CreateObligationModal'>Close</button><br>
+
+    <% if @user %>
+      <div class='user_image_crop_wrapper divcenter'>
+        <div class='divinline user_image_preview'>
+          <img id='cropbox' class='' src='<%= @user.image.to_s %>'>
+        </div>
+        <div class='divinline centertext previewdiv'>
+          <h4>Preview Window</h4>
+          <div class='photo_outline'>
+            <div class='preview_photo_wrapper usercircle'>
+              <img id='previewphoto' class='' src='<%= @user.image.to_s %>'>
+            </div>
+          </div>
+          <%= form_for @user, url: user_path(@user.id), html: {id: 'imageForm'} do |f| %>
+            <% %w[x y w h].each do |attribute| %>
+              <%= f.hidden_field "crop_#{attribute}" %>
+            <% end %>
+            <div class="actions">
+              <%= f.submit "Crop", class: 'btn-usergreen', id: 'preview_crop_button' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
+//= require jquery.Jcrop
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
 

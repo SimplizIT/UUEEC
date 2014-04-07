@@ -10,7 +10,7 @@ Uueec::Application.routes.draw do
   resources :visitors, only: [:create]
 
   resources :events, only: [:index, :create, :new, :destroy]
-  resources :user, only: [:index, :update]
+  resources :user, only: [:index, :update, :destroy]
   # get "user/index"
   # put "user/update"
   devise_for :users

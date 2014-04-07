@@ -23,10 +23,10 @@
         <% if current_user %>
           <li><%= link_to 'Profile', user_index_path %></li>
           <% if can? :manage, :all %>
-            <li><%= link_to 'Role Management', roles_index_path %><br></li>
+            <li><%= link_to 'Admin', roles_index_path %><br></li>
           <% end %>
           <% if can? :manage, Obligation %>
-            <li><%= link_to 'Volunteer Page', obligations_path %></li>
+            <li><%= link_to 'Volunteer', obligations_path %></li>
           <% end %>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
         <% else %>

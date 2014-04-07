@@ -1,4 +1,8 @@
-#swapobligationmodal {
+.jcrop-holder {
+  border-radius: 6px;
+}
+
+.swapobligationmodal {
   display: inline-block;
   background-color: #FFF;
   margin-right: auto;
@@ -21,3 +25,371 @@
   height: 500px;
   padding: 20px;
 }
+
+#addphotomodal {
+  display: inline-block;
+  background-color: #FFF;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  border-radius: 16px;
+  border: 12px solid #FFF;
+  background-color: #E3F6F7;
+  box-shadow: 2px 2px 2px #888888;
+  width: 1100px;
+  height: 835px;
+  padding: 50px;
+}
+
+#userprofile {
+  position: relative;
+  top: -24px;
+  background-color: #B2CECF;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+#userprofile .navbar {
+  margin-top: 60px;
+}
+
+#userprofilewrapper {
+  width: 875px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.userpagediv {
+  padding: 20px;
+  border-radius: 16px;
+  border: 12px solid #FFF;
+  background-color: #E3F6F7;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 2px #888888;
+}
+
+.userpagediv p span {
+  background-color: #3A8387 !important;
+}
+
+#userinfo form input {
+  border-radius: 4px;
+  border: 1px solid #7AAFB2;
+  outline: none;
+  padding: 6px 10px;
+  margin-bottom: 14px;
+}
+
+#userinfo {
+  width: 875px;
+}
+
+.usercircle {
+  border-radius: 50%;
+  background-color: rgba(58, 131, 135, 0.65);
+  width: 150px !important;
+  height: 150px !important;
+  position: absolute;
+  left: 71px;
+  top: 73px;
+ }
+
+.usercircle i {
+  font-size: 96px;
+  position: relative;
+  left: 38px;
+  top: 26px;
+  opacity: .5;
+}
+
+.userprofileform {
+  margin-right: 40px;
+  margin-left: 5px;
+}
+
+.btn-usergreen {
+  background-color: #7AAFB2 !important;
+  color: #FFF;
+}
+
+.btn-userblue {
+  background-color: #657BB3 !important;
+  color: #FFF;
+}
+
+.btn-userblue:hover {
+  background-color: #2D437C !important;
+  color: #FFF;
+}
+
+.btn-useryellow {
+  background-color: #D19B6D !important;
+  color: #FFF;
+}
+
+.btn-useryellow:hover {
+  background-color: #A66B39 !important;
+  color: #FFF;
+}
+
+.btn-yellow:hover {
+  background-color: #A67347 !important;
+  color: #FFF;
+}
+
+.btn-usergreen:hover {
+  background-color: #427979 !important;
+  color: #FFF;
+}
+
+.btn-usergray {
+  background-color: rgba(139, 155, 155, 0.65) !important;
+  color: #FFF;
+}
+
+.btn-usergray:hover {
+  background-color: rgba(32, 43, 43, 0.65) !important;
+  color: #FFF;
+}
+
+.centertext {
+  text-align: center;
+}
+
+.preview_photo_wrapper {
+  overflow: hidden;
+}
+
+.photo_outline {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  background-image: url(/assets/green_image_background.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+
+.user_photo_wrapper {
+  width: 318px;
+  height: 360px;
+  padding: 10px;
+  border-radius: 6px;
+  float: right;
+}
+
+.divcenter {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.user_image_buttons {
+  width: 178px;
+}
+
+.user_image_buttons div a:hover {
+  border-radius: 3px;
+  background-color: rgba(32, 43, 43, 0.65) !important;
+}
+
+
+
+.user_image_buttons #deletePhoto:hover {
+  border-radius: 3px;
+  background-color: rgba(32, 43, 43, 0.65) !important;
+}
+
+.user_image_buttons form div{
+  height: 30px;
+}
+
+.user_image_button {
+  border:none !important;
+  padding: none !important;
+  margin-bottom: none !important;
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  height: 35px;
+  width: 152px;
+  padding: 0px 13px;
+}
+
+.fileUpload:hover {
+  border-radius: 3px;
+  background-color: rgba(32, 43, 43, 0.65) !important;
+}
+
+.fileUpload label {
+  margin-top: 8px;
+  font-weight: normal;
+}
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.choose_upload {
+  border: 1px solid #FFF;
+  border-radius: 6px;
+  padding: 0px 10px 10px 10px;
+  position: relative;
+  left: -10px;
+}
+
+.choose_upload input {
+  margin-bottom: 0px !important;
+}
+
+#preview_image {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid black;
+
+}
+
+.user_image_preview {
+  background-color: #E3F6F7;
+  width: 600px;
+  height: 600px;
+  border: 1px solid #FFF;
+  border-radius: 6px;
+}
+
+.user_image_preview form {
+  position: relative;
+  top: 350px;
+  background-color: #E3F6F7;
+  margin-bottom: 35px;
+  float: right;
+}
+
+.uploadFileInput {
+  text-align: center;
+}
+
+#user_profile_button {
+   width: 171px;
+}
+
+#user_profile_button:hover {
+  background-color: #427979 !important;
+}
+
+#change_password {
+  text-decoration: none;
+  color: #7AAFB2;
+}
+
+#change_password:hover {
+  color: #427979
+}
+
+.change_password_div {
+  width: 146px;
+}
+
+.previewdiv {
+  float: right;
+  height: 430px;
+  padding: 20px 19px;
+  border: 1px solid #FFF;
+  border-radius: 6px;
+}
+
+.user_image_crop_wrapper {
+  margin-top: 20px;
+  height: 600px;
+}
+
+#preview_crop_button {
+  width: 280px;
+}
+
+#preview_modal_closebtn {
+  position: relative;
+  top: -88px;
+  left: -33px;  
+}
+
+#user_obligations_wrapper {
+  width: 875px;
+}
+
+#user_obligations_wrapper p {
+  font-weight: bold;
+  margin: 0 0 25px;
+  text-align: center;
+}
+
+#scheduled_obligations {
+  width: 415px;
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 21px;
+}
+
+#obligations_upforswap {
+  width: 415px;
+  height: 290px;
+  overflow: auto;
+  margin-bottom: 21px;
+}
+
+#obligations_toconfirm {
+  width: 415px;
+  height: 290px;
+  overflow: auto;
+  margin-bottom: 21px;
+}
+
+#obligations_display_right {
+  width: 415px;
+}
+
+#obligations_display_left {
+  width: 415px;
+  margin-right: 41px;
+}
+
+.profileobligation {
+  margin-bottom: 10px;
+}
+
+.floatright {
+  float: right;
+}
+
+#user_obligations_wrapper .btn {
+  min-width: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

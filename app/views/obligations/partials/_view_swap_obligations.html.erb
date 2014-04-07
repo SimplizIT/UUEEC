@@ -1,19 +1,18 @@
-<div id="viewswapobligationsmodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+<div id="viewswapobligationmodal<%= original.id.to_s %>" class='modal fade in swapobligationmodal' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
   <div>
-    <h3>Here are your swaps</h3><button type='button' class="button_closeObligation btn btn-xs" data-type='SwapObligationModal'>Close</button>
+    <h3>Here are your swaps</h3><button type='button' class="button_closeObligation btn btn-xs" data-partialid='<%= original.id %>'>Close</button>
   </div><br>
 
   <%= form_tag(obligation_path(original, { originalswap: original.id }), method: :put) do %>
 
     <div class="modal-body divinline">
-      <%= original.title %> - 
-        <%= original.start.strftime('%A, %B %d - %Y') %><br>
+        <%= original.start.strftime('%A, %B %d - %Y, %H:%M %P') %><br>
     </div>
     <div id='obligationsupforswap' class='modal-body divinline'>
       <% offers.each do |proposal| %>
+        <% user = User.find(proposal.user_id) %>
           <div class='obligatinhighlight'>
-            <%= proposal.title %> - 
-            <%= proposal.start.strftime('%A, %B %d - %Y') %>
+            <%= proposal.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
             <%= radio_button_tag(:swap_these_obligations, proposal.id) %>
           </div>
       <% end %>

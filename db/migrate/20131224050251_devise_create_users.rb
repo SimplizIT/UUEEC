@@ -7,6 +7,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              :null => false, :default => ""
       t.integer :roles_mask
       t.string :encrypted_password, :null => false, :default => ""
+      
+      #user image
+      t.string :image
 
       ## Recoverable
       t.string   :reset_password_token
@@ -21,6 +24,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+
+      #Used with photo cropping
+      t.integer :crop_x
+      t.integer :crop_y
+      t.integer :crop_w
+      t.integer :crop_h
 
       ## Confirmable
       # t.string   :confirmation_token

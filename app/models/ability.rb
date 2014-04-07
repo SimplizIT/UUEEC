@@ -5,17 +5,15 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.is? :admin
-      can :manage, Obligation
-      can :manage, Event
-      can :manage, Blog
+      can :manage, :all
     end
 
-    if user.is? :teacher
+    if user.is? :staff
       can :manage, Event
       can :manage, Obligation, user_id: user.id
     end
 
-    if user.is? :volunteer
+    if user.is? :member
       can :read, Event
       can :manage, Obligation, user_id: user.id
     end
