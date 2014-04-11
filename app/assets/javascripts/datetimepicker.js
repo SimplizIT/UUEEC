@@ -8,7 +8,7 @@ var datePicker = function(){
       var currentEndDate = d.setDate(new Date(year, month, day, 12, 00));
 
 
-  var currentStartDate = new Date(08, 00);
+  // var currentStartDate = new Date(08, 00);
   $('#obligationStart').datetimepicker({
     useSeconds: false,
     minuteStepping: 15,
@@ -21,6 +21,7 @@ var datePicker = function(){
       down: "fa fa-arrow-down"
     }
   });
+
   $('#obligationEnd').datetimepicker({
     useSeconds: false,
     minuteStepping: 15,
@@ -34,10 +35,18 @@ var datePicker = function(){
     }
   });
 
+  $('#obligationDate').datetimepicker({
+    useSeconds: false,
+    minuteStepping: 15,
+    minDate: moment(),
+    defaultDate: moment().add('days', 1)
+  })
+
   // setDate(currentDate.getDate() - 1)
   $("#obligationStart").on("dp.change",function (e) {
      $('#obligationEnd').data("DateTimePicker").setMinDate(moment(e.date).subtract('days', 1));
      $('#obligationEnd').data('DateTimePicker').setDate(moment(e.date).hour(12));
+     $('#obligationDate').data('DateTimePicker').setDate(moment(e.date));
   });
   $("#obligationEnd").on("dp.change",function (e) {
      // $('#obligationStart').data("DateTimePicker").setMaxDate(e.date);

@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   mount_uploader :image, Uploader
-  before_save :add_settings_to_hstore
-   after_update :crop_image
+  after_update :crop_image
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,6 +18,11 @@ class User < ActiveRecord::Base
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+    if roles.include?('staff')
+      self.add_staff_to_hstore
+    else
+      self.remove_staff_from_hstore
+    end
   end
 
   def roles
@@ -31,17 +35,31 @@ class User < ActiveRecord::Base
     roles.include?(role.to_s)
   end
 
-  def add_settings_to_hstore
-    self.settings = {info: {phone: nil, address: {street: nil, city: nil, state: nil, zip: nil}}}
+  def add_staff_to_hstore
+    work = {job_title: '', work_phone: '', work_street: '', work_city: '', work_state: '', work_zip: ''}
+    work.each_pair do |key, value|
+      self.settings[key] = value
+    end
+    self.settings_will_change!
+    self.save
+  end
+
+  def remove_staff_from_hstore
+    work = {job_title: '', work_phone: '', work_street: '', work_city: '', work_state: '', work_zip: ''}
+    work.each_pair do |temp_key, temp_value|
+      self.settings.delete_if { |key, value| key if key == temp_key.to_s }
+    end
+    self.settings_will_change!
+    self.save
   end
 end
 
-
 def crop_image
     if crop_x.present?
-      mini_magick = MiniMagick::Image.open(self.image.path)
-      crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
-      mini_magick.crop(crop_params)
-      mini_magick.write(self.image.large.path)
-    end
+    mini_magick = MiniMagick::Image.open(self.image.path)
+    crop_params = "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+    mini_magick.crop(crop_params)
+    mini_magick.write(self.image.large.path)
+    mini_magick.write(self.image.pinhead.path)
   end
+end

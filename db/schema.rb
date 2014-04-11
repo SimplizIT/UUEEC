@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324164246) do
+ActiveRecord::Schema.define(version: 20140408192001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140324164246) do
     t.string   "note"
     t.datetime "start"
     t.datetime "end"
+    t.date     "all_date"
     t.string   "url"
     t.string   "className"
     t.boolean  "editable"
@@ -86,19 +87,22 @@ ActiveRecord::Schema.define(version: 20140324164246) do
     t.string   "swap_proposals",  default: [],    array: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.hstore   "swaps_offered",   default: {}
   end
 
+  add_index "obligations", ["user_id", "all_date"], name: "index_obligations_on_user_id_and_all_date", unique: true, using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "first_name",             default: "", null: false
-    t.string   "last_name",              default: "", null: false
-    t.string   "email",                  default: "", null: false
+    t.string   "first_name",             default: "",                                                                                      null: false
+    t.string   "last_name",              default: "",                                                                                      null: false
+    t.string   "email",                  default: "",                                                                                      null: false
     t.integer  "roles_mask"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: "",                                                                                      null: false
     t.string   "image"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,                                                                                       null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -109,7 +113,7 @@ ActiveRecord::Schema.define(version: 20140324164246) do
     t.integer  "crop_h"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.hstore   "settings"
+    t.hstore   "settings",               default: {"info"=>"{:phone=>nil, :address=>{:street=>nil, :city=>nil, :state=>nil, :zip=>nil}}"}
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

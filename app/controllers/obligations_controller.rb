@@ -1,5 +1,9 @@
 class ObligationsController < ApplicationController
   # load_and_authorize_resource
+
+rescue_from StandardError, with: :obligation_create_errors
+# rescue_from ActiveRecord::RecordInvalid, with: :obligation_create_errors
+
   def index
     @obligations = Obligation.all
     @obligation = Obligation.new
@@ -15,8 +19,15 @@ class ObligationsController < ApplicationController
 
   def create
     if current_user
-      current_user.obligations.create(obligation_params)
-      redirect_to obligations_path
+      
+        obligation = current_user.obligations.create(obligation_params)
+      
+      if obligation
+        flash[:notice] = 'Obligation Created'
+        redirect_to obligations_path
+      else
+        flash[:error] = 'Obligation could not be created'
+      end
     else
       flash[:error] = 'You must be signed in'
         redirect_to obligation_path
@@ -31,8 +42,6 @@ class ObligationsController < ApplicationController
   end
 
   def update
-   
-
     if params.has_key?('swapremove')
       obligation = current_user.obligations.find(params[:id])
       if obligation
@@ -43,44 +52,70 @@ class ObligationsController < ApplicationController
         flash[:error] = 'You cannot update this obligation'
         redirect_to user_index_path
       end
-    elsif params.has_key?('swap_offered')
-      p '^' * 80
+
+
+    elsif params.has_key?('swap_offered_remove')
+      
       p params
-      obligation = current_user.obligations.find(params[:swap_offered])
+
+      obligation = Obligation.find(params[:id])
       if obligation
-        originalswap = Obligation.find(params[:originalswap])
-        originalswap.swap_proposals.push(obligation.id) if !originalswap.swap_proposals.include?(obligation.id.to_s)
-        originalswap.swap_proposals_will_change!
-        originalswap.save
-        p '&' * 80
-        p originalswap
+        p obligation.swaps_offered
+        obligation.swaps_offered.delete_if { |key, value| key == params[:swap_offered_remove] && value == current_user.id.to_s }
+        p '%^%$' * 90
+        p obligation.swaps_offered
+        obligation.swaps_offered_will_change!
+        obligation.save
+        flash[:notice] = 'Obligation proposal removed'
+        redirect_to user_index_path
+      else
+        flash[:error] = 'You cannot update this obligation'
+        redirect_to user_index_path
+      end
+
+
+    elsif params.has_key?('swap_offered')
+      # This step adds a users swop to another user's potential swop que
+      p '%' * 90
+      p params
+      originalswap = Obligation.find(params[:originalswap])
+
+      if !params[:swap_offered].empty? && originalswap
+        params[:swap_offered].each do |swop|
+          obligation = current_user.obligations.find(swop)
+          if obligation
+            originalswap.swaps_offered[obligation.id] = obligation.user_id
+            originalswap.swaps_offered_will_change!
+            originalswap.save
+          end
+        end
+        flash[:notice] = 'Swop Offered to Member.'
         redirect_to user_index_path
       else 
-        flash[:error] = 'Contact System Admin'
+        flash[:error] = 'Contact System Admin code obligation203'
         redirect_to user_index_path
       end
     elsif params.has_key?('swap_these_obligations')
+      # This step swops one user's obligation, for another members olbligation
       p '^' * 80
       p params
-      current_user_obligation = current_user.obligations.find(params[:originalswap])
-      selected_proposal_from_other = Obligation.find(params[:swap_these_obligations])
 
-      current_user_obligation.user_id = selected_proposal_from_other.user_id
-      current_user_obligation.title = selected_proposal_from_other.title
-      current_user_obligation.up_for_swap = false
+      original_swop = current_user.obligations.find(params[:originalswap])
+      selected_swop = Obligation.find(params[:swap_these_obligations])
+      p '%' * 10
+      p 'hello'
+      if original_swop && selected_swop
+        p '%' * 10
+      p 'goodbye'
+      Obligation.swop_these_obligations(original_swop, selected_swop)
 
-      selected_proposal_from_other.user_id = current_user.id
-      selected_proposal_from_other.title = current_user.first_name + ' ' + current_user.last_name
 
-      current_user_obligation.swap_proposals.clear
-      current_user_obligation.swap_proposals_will_change!
-      current_user_obligation.save
-
-      selected_proposal_from_other.swap_proposals.clear
-      selected_proposal_from_other.swap_proposals_will_change!
-      selected_proposal_from_other.save
-
-      redirect_to user_index_path
+        flash[:notice] = 'Switch successful!'
+        redirect_to user_index_path
+      else
+        flash[:error] = 'Switch was not successful.'
+        redirect_to user_index_path
+      end
     else
       flash[:error] = 'Access is denied for this action.'
       redirect_to obligations_path
@@ -101,5 +136,18 @@ class ObligationsController < ApplicationController
 
   def obligation_params
     params.require(:obligation).permit!
+  end
+
+  def obligation_create_errors(exception)
+    p '()' * 30
+    p exception
+    error_message = exception.error.match(/(?<=ERROR:  )(\w+\s)+/)[0]
+    if error_message == 'duplicate key value violates unique constraint '
+      flash[:error] = 'You already have an obligation for that date'
+      redirect_to obligations_path
+    else
+      flash[:error] = 'Submit a bug report error code obligation_create_errors'
+      redirect_to obligations_path
+    end
   end
 end

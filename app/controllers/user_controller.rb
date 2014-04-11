@@ -8,12 +8,11 @@ class UserController < ApplicationController
       @obligation_offers = []
       if @userobligations
         @userobligations.each do |obligation|
-          p obligation
-          if !obligation.swap_proposals.empty? 
+          if !obligation.swaps_offered.empty? 
             offers = {original: [], proposals: []}
             offers[:original].push(obligation)
-            obligation.swap_proposals.each do |swap|
-              offers[:proposals].push(Obligation.find(swap))
+            obligation.swaps_offered.each do |key, value|
+              offers[:proposals].push(Obligation.find(key))
             end
             @obligation_offers.push(offers)
           end
@@ -27,17 +26,13 @@ class UserController < ApplicationController
   end
 
   def update
-    p '*' * 80
-    p params
     user = current_user
     user_updated = user.update_attributes(user_update_params)
-    p user_updated
     if user_updated
       respond_to do |format|
         format.html { redirect_to user_index_path,  success: 'Profile updated' }
         format.json { render json: user, image: user.image }
         CarrierWave.clean_cached_files!
-
       end  
     else
       if user.errors.messages.empty?
@@ -46,9 +41,7 @@ class UserController < ApplicationController
       else
         redirect_to user_index_path
         user.errors.messages.each do |error|
-          p ')' * 190
-          p flash[:error] = error[1][0].to_s
-
+          flash[:error] = error[1][0].to_s
         end
       end    
     end

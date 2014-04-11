@@ -54,7 +54,7 @@
 }
 
 #userprofilewrapper {
-  width: 875px;
+  width: 980px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
@@ -83,7 +83,7 @@
 }
 
 #userinfo {
-  width: 875px;
+  width: 980px;
 }
 
 .usercircle {
@@ -134,8 +134,13 @@
   color: #FFF;
 }
 
-.btn-yellow:hover {
-  background-color: #A67347 !important;
+.btn-userred {
+  background-color: #C96462 !important;
+  color: #FFF;
+}
+
+.btn-userred:hover {
+  background-color: #A63B39 !important;
   color: #FFF;
 }
 
@@ -195,8 +200,6 @@
   background-color: rgba(32, 43, 43, 0.65) !important;
 }
 
-
-
 .user_image_buttons #deletePhoto:hover {
   border-radius: 3px;
   background-color: rgba(32, 43, 43, 0.65) !important;
@@ -255,13 +258,19 @@
   margin-bottom: 0px !important;
 }
 
-#preview_image {
-  width: 100px;
-  height: 100px;
+.pinhead_image {
+  position: relative;
+  top: -2px;
+  width: 28px;
+  height: 28px;
   overflow: hidden;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid #FFF;
+  margin-right: 3px;
+}
 
+.pinhead_div_size {
+  height: 10px;
 }
 
 .user_image_preview {
@@ -329,7 +338,7 @@
 }
 
 #user_obligations_wrapper {
-  width: 875px;
+  width: 980px;
 }
 
 #user_obligations_wrapper p {
@@ -339,37 +348,39 @@
 }
 
 #scheduled_obligations {
-  width: 415px;
+  width: 480px;
   height: 600px;
   overflow: auto;
   margin-bottom: 21px;
 }
 
 #obligations_upforswap {
-  width: 415px;
+  width: 480px;
   height: 290px;
   overflow: auto;
   margin-bottom: 21px;
 }
 
 #obligations_toconfirm {
-  width: 415px;
+  width: 480px;
   height: 290px;
   overflow: auto;
   margin-bottom: 21px;
 }
 
 #obligations_display_right {
-  width: 415px;
+  width: 480px;
+  float: right;
 }
 
 #obligations_display_left {
-  width: 415px;
-  margin-right: 41px;
+  width: 480px;
 }
 
 .profileobligation {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  min-height: 25px;
 }
 
 .floatright {
@@ -380,16 +391,52 @@
   min-width: 70px;
 }
 
+#obligationsupforswap p {
+  text-align: left;
+}
 
+.offered_obligation {
+  float: left;
+  margin: 5px 5px 5px 0;
+  border: 1px solid rgba(209, 155, 109, 0.34);
+  border-radius: 8px;
+  padding: 5px 10px;
+  line-height: 1.6;
+}
 
+.offered_obligation p {
+  text-align: left !important;
+  margin: 0 0 2px !important;
+}
 
+.obligation_switch_original {
+  margin-top: 5px;
+}
 
+.btn-remove-xs {
+  font-size: 8px !important;
+  min-width: 0 !important;
+  margin-left: 35px;
+}
 
+.user_icon_pinhead {
+  background: rgba(58, 131, 135, 0.65);
+  text-align: center;
+}
 
+.user_icon_pinhead i {
+  position: relative;
+  top: 4px;
+  left: -1px;
+}
 
-
-
-
-
+#useraddresswrapper {
+  width: 980px;
+  min-height: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-bottom: 30px;
+}
 
 

@@ -7,6 +7,7 @@ class CreateObligations < ActiveRecord::Migration
       t.string :note
       t.datetime :start
       t.datetime :end
+      t.date :all_date
       t.string :url
       t.string :className
       t.boolean :editable

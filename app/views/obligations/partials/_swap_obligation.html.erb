@@ -1,6 +1,6 @@
 <div id='swapobligationmodal<%= original.id.to_s %>' class='modal fade in swapobligationmodal' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
   <div>
-    <h3>Volunteer</h3><button type='button' class="button_closeObligation btn btn-xs" data-partialid='<%= original.id %>'>Close</button>
+    <h3>Propose a Swop</h3><button type='button' class="button_closeObligation btn btn-xs" data-partialid='<%= original.id %>'>Close</button>
   </div><br>
 
   <%= form_tag(obligation_path(original, { originalswap: original.id }), method: :put) do %>
@@ -10,14 +10,18 @@
         <%= original.start.strftime('%A, %B %d - %Y') %><br>
     </div>
     <div id='obligationsupforswap' class='modal-body divinline'>
-      <% obligations.each do |obligation| %>
-        <% if obligation.user_id == current_user.id %>
-          <div class='obligatinhighlight'>
-            <%= current_user.first_name %> <%= current_user.last_name %> - 
-            <%= obligation.start.strftime('%A, %B %d - %Y') %>
-            <%= radio_button_tag(:swap_offered, obligation.id) %>
-          </div>
+      <% if !obligations.empty? %>
+        <% obligations.each do |obligation| %>
+          <% if obligation.user_id == current_user.id %>
+            <div class='obligatinhighlight'>
+              <%= obligation.id %>
+              <%= obligation.start.strftime('%A, %B %d - %Y') %>
+              <%= check_box_tag('swap_offered[]', obligation.id) %>
+            </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>You have no scheduled obligations to swop.</p>
       <% end %>
     </div>
     <%= submit_tag 'Submit Proposal', class: 'btn btn-primary' %>

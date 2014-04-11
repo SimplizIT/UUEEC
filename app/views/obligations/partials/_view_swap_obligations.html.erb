@@ -6,12 +6,14 @@
   <%= form_tag(obligation_path(original, { originalswap: original.id }), method: :put) do %>
 
     <div class="modal-body divinline">
+      <%= original.id %>
         <%= original.start.strftime('%A, %B %d - %Y, %H:%M %P') %><br>
     </div>
     <div id='obligationsupforswap' class='modal-body divinline'>
       <% offers.each do |proposal| %>
         <% user = User.find(proposal.user_id) %>
           <div class='obligatinhighlight'>
+            <%= proposal.id %>
             <%= proposal.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
             <%= radio_button_tag(:swap_these_obligations, proposal.id) %>
           </div>

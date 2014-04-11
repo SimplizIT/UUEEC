@@ -26,12 +26,15 @@ class Uploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [200, 110]
   end
 
+  version :pinhead, :if => :is_user? do
+    process :resize_to_fill => [28, 28]
+  end
+
   def is_user? image
-    model.class.name == 'User' && model.crop_x.present?
+    model.class.name == 'User'
   end
 
   def is_blog? image
-    p '$' * 80
-    p model.class.name == 'Blog'
+    model.class.name == 'Blog'
   end
 end

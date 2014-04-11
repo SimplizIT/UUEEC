@@ -73,8 +73,8 @@ var createobligation = function(){
 
 var setEndDate = function(){
   $('#obligation_start').change(function(){
-    console.log('here i am')
     $('#obligation_end').val($('#obligation_start').val());
+    $('#obligation_all_date').val($('#obligation_start').val());
   });
 }
 
@@ -97,7 +97,7 @@ displayObligationHTML = function(calEvent){
     return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description);
     
   }else{
-    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
+    return ('<b>Title: </b>' + calEvent.user_id + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
   }
 }
 
