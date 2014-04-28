@@ -74,12 +74,14 @@
   background-color: #3A8387 !important;
 }
 
-#userinfo form input {
+#userprofilewrapper form input {
   border-radius: 4px;
   border: 1px solid #7AAFB2;
   outline: none;
   padding: 6px 10px;
   margin-bottom: 14px;
+    margin-right: 10px;
+
 }
 
 #userinfo {
@@ -439,4 +441,41 @@
   margin-bottom: 30px;
 }
 
+.title {
+  width: 250px;
+}
 
+.phone {
+  width: 120px;
+}
+
+.phonespan {
+  margin-right: 440px;
+}
+
+.street {
+  width: 300px;
+}
+
+.city {
+  width: 135px;
+}
+
+#home_address_div {
+  border: 1px solid #7AAFB2;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+}
+
+#work_address_div {
+  border: 1px solid #7AAFB2;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+}
+
+.input-error {
+  background-color: rgba(231, 76, 60, 0.75) !important;
+  color: #FFF !important;
+}

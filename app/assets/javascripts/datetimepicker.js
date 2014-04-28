@@ -1,11 +1,12 @@
 var datePicker = function(){
 
-      var d = new Date();
-      var month = d.getMonth();
-      var day = d.getDate();
-      var year = d.getFullYear();
-      var currentStartDate = new Date(year, month, day, 08, 00);
-      var currentEndDate = d.setDate(new Date(year, month, day, 12, 00));
+  var d = new Date();
+  var datepickerdate = new Date();
+  var month = d.getMonth();
+  var day = d.getDate();
+  var year = d.getFullYear();
+  var currentStartDate = new Date(year, month, day, 08, 00);
+  var currentEndDate = d.setDate(new Date(year, month, day, 12, 00));
 
 
   // var currentStartDate = new Date(08, 00);
@@ -52,6 +53,17 @@ var datePicker = function(){
      // $('#obligationStart').data("DateTimePicker").setMaxDate(e.date);
   });
 
+
+  $('.datetimepickerbirthdate').datetimepicker({
+    format: "dd MM yyyy",
+    startView: 4,
+    minView: 2,
+    autoclose: true,
+    todayHighlight: false,
+  });
+
+  console.log(datepickerdate.setMonth(datepickerdate.getMonth() -- 60))
+  
   // $('.datetimepickerevent').datetimepicker({
   //   language: 'en',
   //   pick12HourFormat: true,

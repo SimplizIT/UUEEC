@@ -2,8 +2,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       ## Database authenticatable
-      t.string :first_name,              :null => false, :default => ""
-      t.string :last_name,               :null => false, :default => ""
+      t.string :first_name,         :null => false, :default => ""
+      t.string :last_name,          :null => false, :default => ""
       t.string :email,              :null => false, :default => ""
       t.integer :roles_mask
       t.string :encrypted_password, :null => false, :default => ""
@@ -31,6 +31,29 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :crop_w
       t.integer :crop_h
 
+      t.string :primary_phone, :null => false, :default => ""
+      t.string :secondary_phone, :null => false, :default => ""
+      t.string :home_street, :null => false, :default => ""
+      t.string :home_city, :null => false, :default => ""
+      t.string :home_state, :null => false, :default => ""
+      t.string :home_zip, :null => false, :default => ""
+
+      t.string :work_title, :null => false, :default => ""
+      t.string :occupation, :null => false, :default => ""
+      t.string :employer, :null => false, :default => ""
+      t.string :work_phone, :null => false, :default => ""
+      t.string :work_street, :null => false, :default => ""
+      t.string :work_city, :null => false, :default => ""
+      t.string :work_state, :null => false, :default => ""
+      t.string :work_zip, :null => false, :default => ""
+      
+      t.string :useful_skills, :null => false, :default => ""
+      t.string :custody, :null => false, :default => ""
+      t.boolean :uua_member, :null => false, :default => false
+      t.string :find_us, :null => false, :default => ""
+
+      t.string :best_contact, :null => false, :default => ""
+      t.boolean :share_contact_info, :null => false, :default => false
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

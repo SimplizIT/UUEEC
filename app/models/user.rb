@@ -3,22 +3,25 @@ class User < ActiveRecord::Base
   has_many :bugs
   has_many :events
   has_many :blogs
+  has_and_belongs_to_many :children
+  accepts_nested_attributes_for :children
 
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   mount_uploader :image, Uploader
   after_update :crop_image
+  before_create :add_guest_role
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  ROLES = ['admin', 'staff', 'member']
+  ROLES = ['admin', 'staff', 'member', 'guest']
 
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
-    if roles.include?('staff')
+    if roles.include?('staff') || roles.include?('admin')
       self.add_staff_to_hstore
     else
       self.remove_staff_from_hstore
@@ -35,21 +38,25 @@ class User < ActiveRecord::Base
     roles.include?(role.to_s)
   end
 
+  def add_guest_role
+    self.roles.push('guest')
+  end
+
   def add_staff_to_hstore
-    work = {job_title: '', work_phone: '', work_street: '', work_city: '', work_state: '', work_zip: ''}
+    work = { a_work_title: '', b_work_phone: '', c_work_street: '', d_work_city: '', e_work_state: '', f_work_zip: '', g_work_occupation: '', h_work_employer: ''}
     work.each_pair do |key, value|
-      self.settings[key] = value
+      self.work_address[key] = value
     end
-    self.settings_will_change!
+    self.work_address_will_change!
     self.save
   end
 
   def remove_staff_from_hstore
-    work = {job_title: '', work_phone: '', work_street: '', work_city: '', work_state: '', work_zip: ''}
+    work = { a_work_title: '', b_work_phone: '', c_work_street: '', d_work_city: '', e_work_state: '', f_work_zip: ''}
     work.each_pair do |temp_key, temp_value|
-      self.settings.delete_if { |key, value| key if key == temp_key.to_s }
+      self.work_address.delete_if { |key, value| key if key == temp_key.to_s }
     end
-    self.settings_will_change!
+    self.work_address_will_change!
     self.save
   end
 end

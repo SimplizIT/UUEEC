@@ -3,6 +3,7 @@ Uueec::Application.routes.draw do
   resources :blogs, only: [:index, :create, :new, :destroy, :update, :show]
   resources :bugs
   resources :obligations
+  resources :programs, only: [:index, :create, :new, :update, :show]
 
   get "roles/index"
   put "roles/update"
@@ -13,7 +14,7 @@ Uueec::Application.routes.draw do
   resources :user, only: [:index, :update, :destroy]
   # get "user/index"
   # put "user/update"
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :blogs do
     get 'page/:page', :action => :index, :on => :collection

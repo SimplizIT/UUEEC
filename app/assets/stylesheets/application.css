@@ -11,7 +11,6 @@
  *= require fullcalendar
  *= require_self
  *= require font-awesome
- *= require bootstrap-datetimepicker
  *= require jquery.Jcrop
  *= require_tree .
  *= require_tree ../../../vendor/assets/stylesheets/.

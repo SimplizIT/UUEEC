@@ -1,12 +1,12 @@
 class RolesController < ApplicationController
-  # load_and_authorize_resource class: User
+  load_and_authorize_resource class: User
   helper_method :sort_column, :sort_direction
 
   def index
 
     admins = []
-    teachers = []
-    volunteers = []
+    staff = []
+    members = []
     guests = []
 
     users = User.order(sort_column + " " + sort_direction)
@@ -15,17 +15,18 @@ class RolesController < ApplicationController
       if user.roles.include?('admin')
         admins << user
         
-      elsif user.roles.include?('teacher')
-        teachers << user
+      elsif user.roles.include?('staff')
+        staff << user
 
-      elsif user.roles.include?('volunteer')
-        volunteers << user
+      elsif user.roles.include?('member')
+        members << user
       else 
         guests << user
       end
     end
 
-    @all_users = {admins: admins, teachers: teachers, volunteers: volunteers, guests: guests}
+    @all_users = {admins: admins, staff: staff, members: members, guests: guests}
+    @all_students = Child.all
   end
 
   def update

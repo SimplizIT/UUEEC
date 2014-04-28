@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'RockSalt';
+  src: url(RockSalt.ttf); 
+}
+
+@font-face {
+  font-family: 'ChalkBoard';
+  src: url(NothingYouCouldDo.ttf); 
+}
+
+#new_application {
+  position: relative;
+  top: -24px;
+  background-color: #BCC4D7;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+#new_application_wrapper {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-bottom: 30px;
+  color: #474747;
+}
+
+#new_application_wrapper form input {
+  border-radius: 4px;
+  border: 1px solid #FFF;
+  outline: none;
+  padding: 6px 10px;
+  margin-bottom: 14px;
+  margin-right: 10px;
+}
+
+.application_field_div {
+  padding: 20px;
+  border-radius: 16px;
+  border: 12px solid #FFF;
+  background-color: #9297A1;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 2px #888888;
+}
+
+.application_field_div h4 {
+  font-family: 'ChalkBoard';
+  color: #FFF;
+  font-size: 30px;
+}
+
+.tab-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+#datetimepickerbirthdate {
+  width: 300px;
+}
+
+.datetimepicker {
+  left: 41px !important;
+  top: 322px !important;
+}
+
+.datetimepicker td.active, .datetimepicker td span.active {
+  background-color: #FFF !important;
+  background-image: none !important;
+  color: #333 !important;
+}
+
+.datetimepicker td.active:hover, .datetimepicker td span.active:hover {
+  background-color: #EEE !important;
+}

@@ -12,6 +12,10 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <% if params[:programs] %>
+    <%= hidden_field_tag(params[:programs]) %>
+  <% end %>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

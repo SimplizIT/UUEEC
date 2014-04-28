@@ -1,0 +1,195 @@
+<body id='new_application'>
+  <div id='new_application_wrapper'>
+
+    <% if !@user %>
+      <p>First, we'll create a user account so that you can login and change information when needed</p>
+      <%= link_to "Sign Up", new_user_registration_path(:programs => 'program_application'), method: 'get' %>
+    <% else %>
+      <% if @user %>
+        <%= form_for @user, url: program_path(@user.id) do |f| %>
+          <%= fields_for :children do |child| %>
+            <div class='application_field_div'>
+              <h4>Enroll my child</h4>
+              <div class='divinline'>
+                <%= child.label :first_name %><br>
+                <%= child.text_field :first_name %>
+              </div>
+              <div class='divinline'>
+                <%= child.label :last_name %><br>
+                <%= child.text_field :last_name %>
+              </div>
+              <div class='divinline'>
+                <%= child.label :nickname %><br>
+                <%= child.text_field :nickname %>
+              </div><br>
+              <div id='datetimepickerbirth' class='datetimepickerbirth input-group date'>
+                <%= child.label :birthdate %><br>
+                <div class='input-append date datetimepickerbirthdate' data-date-format="dd-mm-yyyy">
+                  <div class='divinline'>
+                    <%= child.text_field :birthdate, class: 'form-control divinline' %>
+                  </div>
+                  <div class='divinline input-button'>
+                    <span class="add-on"><i class="icon-th fa fa-calendar"></i></span>
+                  </div>
+                  <div class='divinline input-button'>
+                    <span class="add-on"><i class="icon-remove fa fa-times-circle-o"></i></span>
+                  </div>
+                </div>
+              <div>
+                <p><strong>My child's vaccinations are current.</strong></p>
+                <div class='divinline'>
+                  <%= radio_button_tag('children[vaccinations_current]', true) %>
+                  <%= label_tag(:vaccinations_current_true, 'Yes') %>
+                </div>
+                <div class='divinline'>
+                  <%= radio_button_tag('children[vaccinations_current]', false) %>
+                  <%= label_tag(:vaccinations_current_false, 'No') %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class='application_field_div'>
+          <div class='divinline'>
+            <%= f.label :first_name %><br>
+            <%= f.text_field :first_name, value: f.object.first_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '50', placeholder: 'First Name' %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :last_name %><br>
+            <%= f.text_field :last_name, value: f.object.last_name.capitalize %><br>
+          </div>
+          <div>
+            <p><strong>Are you or any member of your household members of the UUCP or another congregation affiliated with the UUA?</strong></p>
+            <div class='divinline'>
+              <%= radio_button_tag(:uua_member, true) %>
+              <%= label_tag(:uua_member_true, 'Yes') %>
+            </div>
+            <div class='divinline'>
+              <%= radio_button_tag(:uua_member, false) %>
+              <%= label_tag(:uua_member_false, 'No') %>
+            </div>
+          </div>
+          <div>
+            <%= f.label "How did you hear about us?" %><br>
+            <%= f.text_area :find_us %>
+          </div>
+          <%= f.submit "Submit Application", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
+        </div>
+        
+        <% end %>
+        <%= form_for @user, url: user_path(@user.id) do |f| %>
+
+        <div class='application_field_div'>
+          <h4>Contact Information</h4>
+          <div class='divinline'>
+            <%= f.label :primary_phone %><br>
+            <%= f.text_field :primary_phone, value: f.object.primary_phone.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :secondary_phone %><br>
+            <%= f.text_field :secondary_phone, value: f.object.secondary_phone.capitalize %>
+          </div>
+          <div class='divinline'>
+            <%= f.label :email %><br>
+            <%= f.text_field :email %>
+          </div><br>
+          <div>
+            <p><strong>The most effective way to reach me is by</strong></p>
+            <div class='divinline'>
+              <%= radio_button_tag(:best_contact, 'phone') %>
+              <%= label_tag(:best_contact_phone, 'Phone') %>
+            </div>
+            <div class='divinline'>
+              <%= radio_button_tag(:best_contact, 'text') %>
+              <%= label_tag(:best_contact_text, 'Text') %>
+            </div>
+            <div class='divinline'>
+              <%= radio_button_tag(:best_contact, 'email') %>
+              <%= label_tag(:best_contact_email, 'Email') %>
+            </div>
+          </div>
+          <%= f.label :home_street %><br>
+          <%= f.text_field :home_street, value: f.object.home_street.capitalize %><br>
+          <div class='divinline'>
+            <%= f.label :home_city %><br>
+            <%= f.text_field :home_city, value: f.object.home_city.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :home_state %><br>
+            <%= f.text_field :home_state, value: f.object.home_state.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :home_zip %><br>
+            <%= f.text_field :home_zip, value: f.object.home_zip.capitalize %><br>
+          </div>
+        </div>
+
+        <div class='application_field_div'>
+          <h4>Work Information</h4>
+          <div class='divinline'>
+            <%= f.label :work_title %><br>
+            <%= f.text_field :work_title, value: f.object.work_title.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :work_phone %><br>
+            <%= f.text_field :work_phone, value: f.object.work_phone.capitalize %><br>
+          </div><br>
+          <div class='divinline'>
+            <%= f.label :occupation %><br>
+            <%= f.text_field :occupation, value: f.object.occupation.capitalize %>
+          </div>
+          <div class='divinline'>
+            <%= f.label :employer %><br>
+            <%= f.text_field :employer, value: f.object.employer.capitalize %>
+          </div><br>
+          <%= f.label :work_street %><br>
+          <%= f.text_field :work_street, value: f.object.work_street.capitalize %><br>
+          <div class='divinline'>
+            <%= f.label :work_city %><br>
+            <%= f.text_field :work_city, value: f.object.work_city.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :work_state %><br>
+            <%= f.text_field :work_state, value: f.object.work_state.capitalize %><br>
+          </div>
+          <div class='divinline'>
+            <%= f.label :work_zip %><br>
+            <%= f.text_field :work_zip, value: f.object.work_zip.capitalize %><br>
+          </div>
+        </div>
+
+        <div class='application_field_div'>
+          <h4>Personal Skills</h4>
+          <div class='divinline'>
+            <%= f.label 'What professional skills or personal interests do you have that might be helpful to the uueec community?'
+ %><br>
+            <%= f.text_area :useful_skills, value: f.object.useful_skills.capitalize %><br>
+          </div>
+        </div>
+
+        <div class='application_field_div'>
+          <h4>Child Custody</h4>
+          <div class='divinline'>
+            <%= f.label 'Please describe any custody or visitation issues that affect your child\'s routine and/or schedule' %><br>
+            <%= f.text_area :custody, value: f.object.custody.capitalize %><br>
+          </div>
+        </div>
+        
+          <%= f.submit "Submit Application", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</body>
+

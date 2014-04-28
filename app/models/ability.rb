@@ -18,6 +18,8 @@ class Ability
       can :manage, Obligation, user_id: user.id
     end
 
+   
+
     can :read, Event
 
     # Define abilities for the passed in user here. For example:
