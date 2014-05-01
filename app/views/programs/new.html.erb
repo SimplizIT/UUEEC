@@ -1,5 +1,7 @@
-<body id='new_application'>
+<body id='new_application' “data-no-turbolink”>
+  
   <div id='new_application_wrapper'>
+    <div id='new_application_full_image'></div>
 
     <% if !@user %>
       <p>First, we'll create a user account so that you can login and change information when needed</p>
@@ -8,185 +10,270 @@
       <% if @user %>
         <%= form_for @user, url: program_path(@user.id) do |f| %>
           <%= fields_for :children do |child| %>
+            <div id='child_div' class='application_field_div'>
+              <div class='application_image application_child_div'></div>
+              <div class='front'>
+                <h4>Enroll my child !</h4>
+                <div class='divinline'>
+                  <%= child.label :first_name %><br>
+                  <%= child.text_field :first_name, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'First Name' %>
+                </div>
+                <div class='divinline'>
+                  <%= child.label :last_name %><br>
+                  <%= child.text_field :last_name, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Last Name' %>
+                </div>
+                <div class='divinline'>
+                  <%= child.label :nickname %><br>
+                  <%= child.text_field :nickname, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Nickname' %>
+                </div><br><br>
+                <div>
+                  <%= child.label :birthdate %><br>
+                  <div id='child_birthdate' class='input-append date child_birthdate' data-date-format="dd-mm-yyyy">
+                    <div class='divinline'>
+                      <%= child.text_field :birthdate, readonly: true, class: 'form-control divinline child_birthdate', pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Birthdate' %>
+                    </div>
+                    <div class='divinline input-button'>
+                      <span class="add-on"><i class="icon-th fa fa-calendar"></i></span>
+                    </div>
+                    <div class='divinline input-button'>
+                      <span class="add-on"><i class="icon-remove fa fa-times-circle-o"></i></span>
+                    </div>
+                  </div><br>
+                </div>
+                <div>
+                  <div id='program-select' class='divinline program-select'>
+                    <%= child.label :program, 'Child\'s Program' %>
+                    <p class='form-note'><strong>Note:</strong> Child must be program age by September 1st to enroll</p>
+                    <%= child.select :program, options_for_programs, {include_blank: true, default: nil}, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Select a Program'} %>
+                  </div><br><br>
+                  <p><strong>My child's vaccinations are current.</strong></p>
+                  <div class='divinline radio'>
+                    <%= radio_button_tag('children[vaccinations_current]', true) %>
+                    <%= label_tag(:children_vaccinations_current_true, 'Yes') %>
+                  </div>
+                  <div class='divinline radio'>
+                    <%= radio_button_tag('children[vaccinations_current]', false) %>
+                    <%= label_tag(:children_vaccinations_current_false, 'No') %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id='name_div' class='application_field_div'>
+              <div class='image_prep_div'>
+                <div class='application_image application_name_div'></div>
+              </div>
+              <div class='front'>
+                <h4>Tell us about yourself</h4>
+                <div class='divinline'>
+                  <%= f.label :first_name %><br>
+                  <%= f.text_field :first_name, value: f.object.first_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'First Name' %><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :last_name %><br>
+                  <%= f.text_field :last_name, value: f.object.last_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Last Name' %><br>
+                </div><br><br>
+                <div>
+                  <p><strong>Are you or any member of your household members of the UUCP or another congregation affiliated with the UUA?</strong></p>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:uua_member, true) %>
+                    <%= f.label(:uua_member_true, 'Yes') %>
+                  </div>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:uua_member, false) %>
+                    <%= f.label(:uua_member_false, 'No') %>
+                  </div>
+                </div><br>
+                <div>
+                  <%= f.label "How did you hear about us?" %><br>
+                  <%= f.text_area :find_us, :cols => "80", :rows => "5", maxlength: '200', placeholder: 'Google, Bing, other search engines.  Friends, Family, etc...' %>
+                </div>
+              </div>
+            </div>
+      
             <div class='application_field_div'>
-              <h4>Enroll my child</h4>
-              <div class='divinline'>
-                <%= child.label :first_name %><br>
-                <%= child.text_field :first_name %>
+              <div class='image_prep_div'>
+                <div class='application_image application_home_div'></div>
               </div>
-              <div class='divinline'>
-                <%= child.label :last_name %><br>
-                <%= child.text_field :last_name %>
-              </div>
-              <div class='divinline'>
-                <%= child.label :nickname %><br>
-                <%= child.text_field :nickname %>
-              </div><br>
-              <div id='datetimepickerbirth' class='datetimepickerbirth input-group date'>
-                <%= child.label :birthdate %><br>
-                <div class='input-append date datetimepickerbirthdate' data-date-format="dd-mm-yyyy">
-                  <div class='divinline'>
-                    <%= child.text_field :birthdate, class: 'form-control divinline' %>
-                  </div>
-                  <div class='divinline input-button'>
-                    <span class="add-on"><i class="icon-th fa fa-calendar"></i></span>
-                  </div>
-                  <div class='divinline input-button'>
-                    <span class="add-on"><i class="icon-remove fa fa-times-circle-o"></i></span>
-                  </div>
-                </div>
-              <div>
-                <p><strong>My child's vaccinations are current.</strong></p>
+              <div class='front'>
+                <h4>Contact Information</h4>
                 <div class='divinline'>
-                  <%= radio_button_tag('children[vaccinations_current]', true) %>
-                  <%= label_tag(:vaccinations_current_true, 'Yes') %>
+                  <%= f.label :primary_phone %><br>
+                  <%= f.text_field :primary_phone, value: f.object.primary_phone.capitalize, pattern: '^\d{3}-\d{3}-\d{4}$', maxlength: '12', placeholder: 'Primary Phone', class: 'phone-input phone' %><br>
                 </div>
                 <div class='divinline'>
-                  <%= radio_button_tag('children[vaccinations_current]', false) %>
-                  <%= label_tag(:vaccinations_current_false, 'No') %>
+                  <%= f.label :secondary_phone %><br>
+                  <%= f.text_field :secondary_phone, value: f.object.secondary_phone.capitalize, pattern: '^\d{3}-\d{3}-\d{4}$', maxlength: '12', placeholder: 'Secondary Phone', class: 'phone-input phone' %>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :email %><br>
+                  <%= f.text_field :email, value: f.object.email, pattern: '^[0-9a-zA-Z&#34;&#38;&#39;&#92;&#33;&#36;&#42;&#45;&#61;&#94;&#96;&#124;&#126;&#35;&#37;&#43;&#47;&#63;&#95;&#123;&#125;]+@{1}[0-9a-zA-Z&#34;&#38;&#39;&#92;&#33;&#36;&#42;&#45;&#61;&#94;&#96;&#124;&#126;&#35;&#37;&#43;&#47;&#63;&#95;&#123;&#125;]+\.[a-zA-Z]{2,4}$', maxlength: '40', placeholder: "Email" %>
+                </div><br><br>
+                <div>
+                  <p><strong>The most effective way to reach me is by</strong></p>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:best_contact, 'phone') %>
+                    <%= f.label(:best_contact_phone, 'Phone') %>
+                  </div>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:best_contact, 'text') %>
+                    <%= f.label(:best_contact_text, 'Text') %>
+                  </div>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:best_contact, 'email') %>
+                    <%= f.label(:best_contact_email, 'Email') %>
+                  </div>
+                </div><br>
+                <%= f.label :home_street %><br>
+                <%= f.text_field :home_street, value: f.object.home_street.capitalize, maxlength: '92', placeholder: 'Street Address' %><br>
+                <div class='divinline'>
+                  <%= f.label :home_city %><br>
+                  <%= f.text_field :home_city, value: f.object.home_city.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'City' %><br>
+                </div>
+                <div class='divinline program-select'>
+                  <%= f.label :home_state %><br>
+                  <% homestate = f.object.home_state.capitalize ? f.object.home_state.capitalize : nil %>
+                  <%= f.select :home_state, select_state, { include_blank: true, default: homestate }, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Pick a State'} %><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :home_zip %><br>
+                  <%= f.text_field :home_zip, value: f.object.home_zip.capitalize, class: 'zip-input', pattern: '^\d{5}$', maxlength: '5', placeholder: "Zip" %><br>
                 </div>
               </div>
             </div>
+
+            <div class='application_field_div'>
+              <div class='image_prep_div'>
+                <div class='application_image application_work_div'></div>
+              </div>
+              <div class='front'>
+                <h4>Work Information</h4>
+                <div class='divinline'>
+                  <%= f.label :occupation %><br>
+                  <%= f.text_field :occupation, value: f.object.occupation.capitalize, pattern: '^[a-zA-Z ]+$', maxlength: '30', placeholder: 'What do you do?' %>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :employer %><br>
+                  <%= f.text_field :employer, value: f.object.employer.capitalize, pattern: '^[a-zA-Z ]+$', maxlength: '30', placeholder: 'Who do you work for?' %>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :work_phone %><br>
+                  <%= f.text_field :work_phone, value: f.object.work_phone.capitalize, pattern: '^\d{3}-\d{3}-\d{4}$', maxlength: '12', placeholder: 'Work Phone', class: 'phone-input phone' %><br>
+                </div><br><br>
+                <%= f.label :work_street %><br>
+                <%= f.text_field :work_street, value: f.object.work_street.capitalize, maxlength: '92', placeholder: 'Street Address' %><br>
+                <div class='divinline'>
+                  <%= f.label :work_city %><br>
+                  <%= f.text_field :work_city, value: f.object.work_city.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'City' %><br>
+                </div>
+                <div class='divinline program-select'>
+                  <%= f.label :work_state %><br>
+                  <% workstate = f.object.work_state.capitalize ? f.object.work_state.capitalize : nil %>
+                  <%= f.select :work_state, select_state, { include_blank: true, default: workstate }, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Pick a State'} %><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :work_zip %><br>
+                  <%= f.text_field :work_zip, value: f.object.work_zip.capitalize, class: 'zip-input', pattern: '^\d{5}$', maxlength: '5', placeholder: "Zip" %><br>
+                </div>
+              </div>
+            </div>
+
+            <div class='application_field_div'>
+              <div class='image_prep_div'>
+                <div class='application_image application_skills_div'></div>
+              </div>
+              <div class='front'>
+                <h4>Personal Skills</h4>
+                <div class='divinline'>
+                  <%= f.label 'What professional skills or personal interests do you have that might be helpful to the uueec community?' %><br>
+                  <%= f.text_area :useful_skills, value: f.object.useful_skills.capitalize, :cols => "80", :rows => "5", maxlength: '200', placeholder: 'Drawing, Carpentry, Photography, etc...' %><br>
+                </div>
+              </div>
+            </div>
+
+            <div class='application_field_div'>
+              <div class='front'>
+                <h4>Child Custody</h4>
+                <div class='divinline'>
+                  <%= f.label 'Please describe any custody or visitation issues that affect your child\'s routine and/or schedule' %><br>
+                  <%= f.text_area :custody, value: f.object.custody.capitalize, :cols => "80", :rows => "5", maxlength: '200', placeholder: 'Unavailable times, different parents or guardians dropping off the child, etc...' %><br>
+                </div>
+              </div>
+            </div>
+
+            <div class='application_field_div'>
+              <div class='front'>
+                <h4>Tell us about your immediate family</h4>
+                <div class='divinline'>
+                  <%= f.label :spouse_first_name %><br>
+                  <%= f.text_field :spouse_first_name, value: f.object.spouse_first_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'First Name' %><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :spouse_last_name %><br>
+                  <%= f.text_field :spouse_last_name, value: f.object.spouse_last_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Last Name' %><br>
+                </div><br><br>
+                <div>
+                  <%= f.label :spouse_birthdate %><br>
+                  <div id='spouse_birthdate' class='input-append date spouse_birthdate' data-date-format="dd-mm-yyyy">
+                    <div class='divinline'>
+                      <%= f.text_field :spouse_birthdate, readonly: true, class: 'form-control divinline spouse_birthdate', pattern: '^[a-zA-Z]+$', maxlength: '30', placeholder: 'Birthdate' %>
+                    </div>
+                    <div class='divinline input-button'>
+                      <span class="add-on"><i class="icon-th fa fa-calendar"></i></span>
+                    </div>
+                    <div class='divinline input-button'>
+                      <span class="add-on"><i class="icon-remove fa fa-times-circle-o"></i></span>
+                    </div>
+                  </div><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :spouse_primary_phone %><br>
+                  <%= f.text_field :spouse_primary_phone, value: f.object.spouse_primary_phone.capitalize, pattern: '^\d{3}-\d{3}-\d{4}$', maxlength: '12', placeholder: 'Primary Phone', class: 'phone-input phone' %><br>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :spouse_secondary_phone %><br>
+                  <%= f.text_field :spouse_secondary_phone, value: f.object.spouse_secondary_phone.capitalize, pattern: '^\d{3}-\d{3}-\d{4}$', maxlength: '12', placeholder: 'Secondary Phone', class: 'phone-input phone' %>
+                </div>
+                <div class='divinline'>
+                  <%= f.label :spouse_email %><br>
+                  <%= f.text_field :spouse_email, value: f.object.spouse_email, pattern: '^[0-9a-zA-Z&#34;&#38;&#39;&#92;&#33;&#36;&#42;&#45;&#61;&#94;&#96;&#124;&#126;&#35;&#37;&#43;&#47;&#63;&#95;&#123;&#125;]+@{1}[0-9a-zA-Z&#34;&#38;&#39;&#92;&#33;&#36;&#42;&#45;&#61;&#94;&#96;&#124;&#126;&#35;&#37;&#43;&#47;&#63;&#95;&#123;&#125;]+\.[a-zA-Z]{2,4}$', maxlength: '40', placeholder: "Email" %>
+                </div><br><br>
+                <div class='divinline program-select'>
+                  <%= f.label :spouse_relationship %><br>
+                  <% homestate = f.object.spouse_relationship.capitalize ? f.object.spouse_relationship.capitalize : nil %>
+                  <%= f.select :spouse_relationship, select_relationship, { include_blank: true, default: homestate }, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Relationship to You'} %><br>
+                </div>
+                <div>
+                  <p><strong>Is your spouse allowed to pick up your child?</strong></p>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:spouse_pickup, true) %>
+                    <%= f.label(:spouse_pickup_true, 'Yes') %>
+                  </div>
+                  <div class='divinline radio'>
+                    <%= f.radio_button(:spouse_pickup, false) %>
+                    <%= f.label(:spouse_pickup_false, 'No') %>
+                  </div>
+                </div><br>
+              </div>
+            </div>
+
+            <div class='application_field_div'>
+              <div class='front'>
+                <h4>Any Other Children?</h4>
+                <%= button_tag "Add Child", id: 'add_child_button', class: 'btn btn-primary btn-usergreen' %>
+
+                <div id='children_container'>
+                    <div class='each_child'>
+                      <%= render partial: 'programs/partials/add_child', locals: {child: child} %>
+                    </div>
+  
+                </div>
+
+
+              </div>
+            </div>           
+            <%= f.submit "Submit Application", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
           <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class='application_field_div'>
-          <div class='divinline'>
-            <%= f.label :first_name %><br>
-            <%= f.text_field :first_name, value: f.object.first_name.capitalize, pattern: '^[a-zA-Z]+$', maxlength: '50', placeholder: 'First Name' %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :last_name %><br>
-            <%= f.text_field :last_name, value: f.object.last_name.capitalize %><br>
-          </div>
-          <div>
-            <p><strong>Are you or any member of your household members of the UUCP or another congregation affiliated with the UUA?</strong></p>
-            <div class='divinline'>
-              <%= radio_button_tag(:uua_member, true) %>
-              <%= label_tag(:uua_member_true, 'Yes') %>
-            </div>
-            <div class='divinline'>
-              <%= radio_button_tag(:uua_member, false) %>
-              <%= label_tag(:uua_member_false, 'No') %>
-            </div>
-          </div>
-          <div>
-            <%= f.label "How did you hear about us?" %><br>
-            <%= f.text_area :find_us %>
-          </div>
-          <%= f.submit "Submit Application", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
-        </div>
-        
-        <% end %>
-        <%= form_for @user, url: user_path(@user.id) do |f| %>
-
-        <div class='application_field_div'>
-          <h4>Contact Information</h4>
-          <div class='divinline'>
-            <%= f.label :primary_phone %><br>
-            <%= f.text_field :primary_phone, value: f.object.primary_phone.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :secondary_phone %><br>
-            <%= f.text_field :secondary_phone, value: f.object.secondary_phone.capitalize %>
-          </div>
-          <div class='divinline'>
-            <%= f.label :email %><br>
-            <%= f.text_field :email %>
-          </div><br>
-          <div>
-            <p><strong>The most effective way to reach me is by</strong></p>
-            <div class='divinline'>
-              <%= radio_button_tag(:best_contact, 'phone') %>
-              <%= label_tag(:best_contact_phone, 'Phone') %>
-            </div>
-            <div class='divinline'>
-              <%= radio_button_tag(:best_contact, 'text') %>
-              <%= label_tag(:best_contact_text, 'Text') %>
-            </div>
-            <div class='divinline'>
-              <%= radio_button_tag(:best_contact, 'email') %>
-              <%= label_tag(:best_contact_email, 'Email') %>
-            </div>
-          </div>
-          <%= f.label :home_street %><br>
-          <%= f.text_field :home_street, value: f.object.home_street.capitalize %><br>
-          <div class='divinline'>
-            <%= f.label :home_city %><br>
-            <%= f.text_field :home_city, value: f.object.home_city.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :home_state %><br>
-            <%= f.text_field :home_state, value: f.object.home_state.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :home_zip %><br>
-            <%= f.text_field :home_zip, value: f.object.home_zip.capitalize %><br>
-          </div>
-        </div>
-
-        <div class='application_field_div'>
-          <h4>Work Information</h4>
-          <div class='divinline'>
-            <%= f.label :work_title %><br>
-            <%= f.text_field :work_title, value: f.object.work_title.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :work_phone %><br>
-            <%= f.text_field :work_phone, value: f.object.work_phone.capitalize %><br>
-          </div><br>
-          <div class='divinline'>
-            <%= f.label :occupation %><br>
-            <%= f.text_field :occupation, value: f.object.occupation.capitalize %>
-          </div>
-          <div class='divinline'>
-            <%= f.label :employer %><br>
-            <%= f.text_field :employer, value: f.object.employer.capitalize %>
-          </div><br>
-          <%= f.label :work_street %><br>
-          <%= f.text_field :work_street, value: f.object.work_street.capitalize %><br>
-          <div class='divinline'>
-            <%= f.label :work_city %><br>
-            <%= f.text_field :work_city, value: f.object.work_city.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :work_state %><br>
-            <%= f.text_field :work_state, value: f.object.work_state.capitalize %><br>
-          </div>
-          <div class='divinline'>
-            <%= f.label :work_zip %><br>
-            <%= f.text_field :work_zip, value: f.object.work_zip.capitalize %><br>
-          </div>
-        </div>
-
-        <div class='application_field_div'>
-          <h4>Personal Skills</h4>
-          <div class='divinline'>
-            <%= f.label 'What professional skills or personal interests do you have that might be helpful to the uueec community?'
- %><br>
-            <%= f.text_area :useful_skills, value: f.object.useful_skills.capitalize %><br>
-          </div>
-        </div>
-
-        <div class='application_field_div'>
-          <h4>Child Custody</h4>
-          <div class='divinline'>
-            <%= f.label 'Please describe any custody or visitation issues that affect your child\'s routine and/or schedule' %><br>
-            <%= f.text_area :custody, value: f.object.custody.capitalize %><br>
-          </div>
-        </div>
-        
-          <%= f.submit "Submit Application", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
         <% end %>
       <% end %>
     <% end %>

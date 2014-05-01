@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.makeGreen {
-  color: #009933;
-}
-
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
   background-color: #FFFFCC !important;
@@ -20,15 +15,6 @@
   float: right;
   margin-bottom: 20px;
   margin-right: 37px;
-}
-
-textarea:focus, input:focus {
-  border-color: green !important;
-  box-shadow: none !important;
-}
-
-.input-group-addon:focus {
-  border-color: green !important;
 }
 
 .tableDevider {

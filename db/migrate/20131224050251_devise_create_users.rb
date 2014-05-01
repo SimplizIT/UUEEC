@@ -5,6 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :first_name,         :null => false, :default => ""
       t.string :last_name,          :null => false, :default => ""
       t.string :email,              :null => false, :default => ""
+      t.date :birthdate
       t.integer :roles_mask
       t.string :encrypted_password, :null => false, :default => ""
       
@@ -54,6 +55,16 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :best_contact, :null => false, :default => ""
       t.boolean :share_contact_info, :null => false, :default => false
+
+      t.string :spouse_first_name, :null => false, :default => ""
+      t.string :spouse_last_name, :null => false, :default => ""
+      t.date :spouse_birthdate
+      t.string :spouse_primary_phone, :null => false, :default => ""
+      t.string :spouse_secondary_phone, :null => false, :default => ""
+      t.string :spouse_email, :null => false, :default => ""
+      t.string :spouse_relationship, :null => false, :default => ""
+      t.boolean :spouse_pickup, :null => false, :default => false
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

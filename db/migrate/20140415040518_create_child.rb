@@ -4,11 +4,12 @@ class CreateChild < ActiveRecord::Migration
       t.string :first_name, :null => false, :default => ""
       t.string :last_name, :null => false, :default => ""
       t.string :nickname, :null => false, :default => ""
-      t.datetime :birthdate, :null => false, :default => 'NOW()'
+      t.date :birthdate
       t.boolean :vaccinations_current, :null => false, :default => false
       t.boolean :vaccination_waiver, :null => false, :default => false
       t.boolean :enrolled, :null => false, :default => false
-      t.integer :program_id
+      t.string :program, :null => false, :default => ""
+      t.string :relationship, :null => false, :default => ""
       t.text :child_custody, :null => false, :default => ""
       t.text :info, :null => false, :default => ""
       t.hstore :application_info, :null => false, default: {}

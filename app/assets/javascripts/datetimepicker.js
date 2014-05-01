@@ -54,15 +54,23 @@ var datePicker = function(){
   });
 
 
-  $('.datetimepickerbirthdate').datetimepicker({
+  $('.child_birthdate').datetimepicker({
     format: "dd MM yyyy",
     startView: 4,
     minView: 2,
     autoclose: true,
-    todayHighlight: false,
+    todayHighlight: false
   });
 
-  console.log(datepickerdate.setMonth(datepickerdate.getMonth() -- 60))
+  $('.spouse_birthdate').datetimepicker({
+    format: "dd MM yyyy",
+    startView: 4,
+    minView: 2,
+    autoclose: true,
+    todayHighlight: false
+  });
+  // console.log(datepickerdate)
+  // console.log(datepickerdate.setMonth(datepickerdate.getMonth() -- 60))
   
   // $('.datetimepickerevent').datetimepicker({
   //   language: 'en',

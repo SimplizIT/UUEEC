@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423173618) do
+ActiveRecord::Schema.define(version: 20140430172446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "adults", force: true do |t|
+    t.string  "first_name",    default: "", null: false
+    t.string  "last_name",     default: "", null: false
+    t.string  "primary_phone", default: "", null: false
+    t.date    "birthdate"
+    t.integer "user_id"
+  end
 
   create_table "blogs", force: true do |t|
     t.string   "title"
@@ -40,17 +48,18 @@ ActiveRecord::Schema.define(version: 20140423173618) do
   end
 
   create_table "children", force: true do |t|
-    t.string   "first_name",           default: "",                    null: false
-    t.string   "last_name",            default: "",                    null: false
-    t.string   "nickname",             default: "",                    null: false
-    t.datetime "birthdate",            default: '2014-04-23 18:27:01', null: false
-    t.boolean  "vaccinations_current", default: false,                 null: false
-    t.boolean  "vaccination_waiver",   default: false,                 null: false
-    t.boolean  "enrolled",             default: false,                 null: false
-    t.integer  "program_id"
-    t.text     "child_custody",        default: "",                    null: false
-    t.text     "info",                 default: "",                    null: false
-    t.hstore   "application_info",     default: {},                    null: false
+    t.string  "first_name",           default: "",    null: false
+    t.string  "last_name",            default: "",    null: false
+    t.string  "nickname",             default: "",    null: false
+    t.date    "birthdate"
+    t.boolean "vaccinations_current", default: false, null: false
+    t.boolean "vaccination_waiver",   default: false, null: false
+    t.boolean "enrolled",             default: false, null: false
+    t.string  "program",              default: "",    null: false
+    t.string  "relationship",         default: "",    null: false
+    t.text    "child_custody",        default: "",    null: false
+    t.text    "info",                 default: "",    null: false
+    t.hstore  "application_info",     default: {},    null: false
   end
 
   create_table "children_users", force: true do |t|
@@ -129,6 +138,7 @@ ActiveRecord::Schema.define(version: 20140423173618) do
     t.string   "first_name",             default: "",                                                                                                                                                                     null: false
     t.string   "last_name",              default: "",                                                                                                                                                                     null: false
     t.string   "email",                  default: "",                                                                                                                                                                     null: false
+    t.date     "birthdate"
     t.integer  "roles_mask"
     t.string   "encrypted_password",     default: "",                                                                                                                                                                     null: false
     t.string   "image"
@@ -164,6 +174,14 @@ ActiveRecord::Schema.define(version: 20140423173618) do
     t.string   "find_us",                default: "",                                                                                                                                                                     null: false
     t.string   "best_contact",           default: "",                                                                                                                                                                     null: false
     t.boolean  "share_contact_info",     default: false,                                                                                                                                                                  null: false
+    t.string   "spouse_first_name",      default: "",                                                                                                                                                                     null: false
+    t.string   "spouse_last_name",       default: "",                                                                                                                                                                     null: false
+    t.date     "spouse_birthdate"
+    t.string   "spouse_primary_phone",   default: "",                                                                                                                                                                     null: false
+    t.string   "spouse_secondary_phone", default: "",                                                                                                                                                                     null: false
+    t.string   "spouse_email",           default: "",                                                                                                                                                                     null: false
+    t.string   "spouse_relationship",    default: "",                                                                                                                                                                     null: false
+    t.boolean  "spouse_pickup",          default: false,                                                                                                                                                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.hstore   "home_address",           default: {"e_home_zip"=>"", "c_home_city"=>"", "a_home_phone"=>"", "d_home_state"=>"", "b_home_street"=>""}

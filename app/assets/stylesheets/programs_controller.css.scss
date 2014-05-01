@@ -8,12 +8,103 @@
   src: url(NothingYouCouldDo.ttf); 
 }
 
+/*#application_child_image {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-image: url(/assets/program-flower-blk.png);
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  opacity: .2;
+  z-index: 1;
+}*/
+
+.application_image {
+  background-image: url(/assets/program-flower-blk.png);
+  background-image: 75%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 1;
+  width: 944px;
+}
+
+.application_child_div {
+  height: 457px;
+  top: 7px;
+}
+
+#child_div {
+  position: relative;
+  z-index: 10;
+}
+
+.application_name_div {
+  height: 904px;
+  top: -495px;
+}
+
+.application_home_div {
+  height: 1361px;
+  top: -937px;
+}
+
+.application_work_div {
+  height: 1759px;
+  top: -1415px;
+}
+
+.application_skills_div {
+  height: 2000px;
+  top: -1783px;
+}
+
+#name_div {
+  position: relative;
+  z-index: 9;
+}
+
+.image_prep_div {
+  width: 944px;
+  height: 424px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+
+.front {
+  position: relative;
+  z-index: 2;
+}
+
+.form-note {
+  font-size: 12px;
+}
+
 #new_application {
   position: relative;
   top: -24px;
   background-color: #BCC4D7;
   z-index: 1;
   padding-bottom: 30px;
+}
+
+#new_application_full_image {
+  background-image: url(/assets/program-flower-blk.png);
+  background-image: 75%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+  top: 20px;
+  left: 32px;
+  width: 1060px;
+  height: 2045px;
 }
 
 #new_application_wrapper {
@@ -27,7 +118,7 @@
 
 #new_application_wrapper form input {
   border-radius: 4px;
-  border: 1px solid #FFF;
+  border: 3px solid #FFF;
   outline: none;
   padding: 6px 10px;
   margin-bottom: 14px;
@@ -35,7 +126,10 @@
 }
 
 .application_field_div {
+  position: relative;
+  width: 988px;
   padding: 20px;
+  background: hidden;
   border-radius: 16px;
   border: 12px solid #FFF;
   background-color: #9297A1;
@@ -60,8 +154,8 @@
 }
 
 .datetimepicker {
-  left: 41px !important;
-  top: 322px !important;
+  margin-top: 34px !important;
+  margin-left: -4px !important;
 }
 
 .datetimepicker td.active, .datetimepicker td span.active {
@@ -72,4 +166,64 @@
 
 .datetimepicker td.active:hover, .datetimepicker td span.active:hover {
   background-color: #EEE !important;
+}
+
+.datetimepicker i {
+  color: #474747;
+}
+
+.program-select {
+  margin-right: 10px;
+}
+
+.program-select ul li a {
+  outline: none !important;
+}
+
+.program-select button {
+  background-color: #7AAFB2;
+  color: #FFF !important;
+  outline: none !important;
+  height: 38px;
+}
+
+.program-select button:focus {
+  outline: none !important;
+}
+
+.program-select button:hover {
+  background-color: #427979;
+  color: #FFF;
+  outline: none !important;
+}
+
+.program-select .caret {
+  border-top: 4px solid #FFF
+}
+
+.program-select .dropup .caret {
+  border-bottom: none !important;
+}
+
+.radio {
+  margin-top: 0px !important;
+  padding-left: 0px !important;
+}
+
+textarea:focus, input:focus {
+  border: 3px solid #7AAFB2 !important;
+  border-color: #7AAFB2 !important;
+  box-shadow: none !important;
+}
+
+.input-group-addon:focus {
+  border-color: blue !important;
+}
+
+.phone-input {
+  width: 200px;
+}
+
+.zip-input {
+  width: 124px;
 }
