@@ -1,0 +1,40 @@
+.devise-body {
+  position: relative;
+  top: -24px;
+  background-color: #B2CECF;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+.devise-wrapper {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-bottom: 30px;
+  top: 300px;
+}
+
+.login-wrapper {
+  width: 282px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #FFF;
+  border-radius: 6px;
+  padding: 40px 40px;
+
+}
+
+.login-wrapper input {
+  width: 200px;
+}
+
+.login-wrapper h2 {
+  text-align: center;
+}
+
+.center_header {
+  margin-right: auto;
+  margin-left: auto;
+  width: 106px;
+}

@@ -3,10 +3,16 @@ class User < ActiveRecord::Base
   has_many :bugs
   has_many :events
   has_many :blogs
-  has_and_belongs_to_many :children
-  accepts_nested_attributes_for :children
+  has_many :parents
+  has_many :children, through: :parents
+  has_many :adults
+  accepts_nested_attributes_for :children, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :events, allow_destroy: true
+  accepts_nested_attributes_for :blogs, allow_destroy: true
+  accepts_nested_attributes_for :obligations, allow_destroy: true
+  accepts_nested_attributes_for :adults, reject_if: :all_blank, allow_destroy: true
 
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   mount_uploader :image, Uploader
   after_update :crop_image

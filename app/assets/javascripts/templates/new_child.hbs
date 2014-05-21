@@ -1,0 +1,45 @@
+<div id='add_child' class='add_child'>
+  <div class='each_child'>
+    <hr />
+    <div class='divinline'>
+      <label>First Name</label><br>
+      <input type='text' name='children_container[][:first_name]' pattern='^[a-zA-Z]+$', maxlength='30', placeholder='First Name'>
+    </div>
+    <div class='divinline'>
+      <label>Last Name</label><br>
+      <input type='text' name='children_container[][:last_name]' pattern='^[a-zA-Z]+$', maxlength='30', placeholder='Last Name' >
+    </div>
+
+    <div class='divinline'>
+      <label>Birthdate</label><br>
+      <div id='child_birthdate' class='input-append date child_birthdate' data-date-format="dd-mm-yyyy">
+        <div class='divinline'>
+          <input type='text' name='children_container[][:birthdate]' readonly='true' class='divinline' pattern='^[a-zA-Z]+$' maxlength='30' placeholder='Birthdate' >
+        </div>
+        <div class='divinline input-button'>
+          <span class="add-on"><i class="icon-th fa fa-calendar"></i></span>
+        </div>
+        <div class='divinline input-button'>
+          <span class="add-on"><i class="icon-remove fa fa-times-circle-o"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class='divinline program-select other_child_relationship'>
+      <label>Relationship</label><br>
+      <select name='children_container[][:relationship]' class='selectpicker' data-title="Relationship to You" data-style="btn-inverse">
+        <option value=""></option>
+        <option value='Aunt'>Aunt</option>
+        <option value='Brother'>Brother</option>
+        <option value='Daughter'>Daughter</option>
+        <option value='Friend'>Friend</option>
+        <option value='Grandparent'>Grandparent</option>
+        <option value='Husband'>Husband</option>
+        <option value='Significant Other'>Significant Other</option>
+        <option value='Sister'>Sister</option>
+        <option value='Son'>Son</option>
+        <option value='Uncle'>Uncle</option>
+        <option value='Wife'>Wife</option>
+        </select><br>
+    </div>
+  </div>
+</div>

@@ -49,16 +49,13 @@
   padding-bottom: 30px;
 }
 
-#userprofile .navbar {
-  margin-top: 60px;
-}
-
 #userprofilewrapper {
   width: 980px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   margin-bottom: 30px;
+  top: -150px;
 }
 
 .userpagediv {
@@ -123,6 +120,16 @@
 
 .btn-userblue:hover {
   background-color: #2D437C !important;
+  color: #FFF;
+}
+
+.btn-userred {
+  background-color: #BF9392 !important;
+  color: #FFF;
+}
+
+.btn-userred:hover {
+  background-color: #A63B39 !important;
   color: #FFF;
 }
 

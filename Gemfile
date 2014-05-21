@@ -57,6 +57,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Handlebars tryout
+gem 'handlebars_assets'
+
 
 gem 'faker'
 

@@ -18,10 +18,12 @@ ActiveRecord::Schema.define(version: 20140430172446) do
   enable_extension "hstore"
 
   create_table "adults", force: true do |t|
-    t.string  "first_name",    default: "", null: false
-    t.string  "last_name",     default: "", null: false
-    t.string  "primary_phone", default: "", null: false
+    t.string  "first_name",    default: "",    null: false
+    t.string  "last_name",     default: "",    null: false
+    t.string  "primary_phone", default: "",    null: false
     t.date    "birthdate"
+    t.string  "relationship",  default: "",    null: false
+    t.boolean "can_pickup",    default: false, null: false
     t.integer "user_id"
   end
 
@@ -60,13 +62,6 @@ ActiveRecord::Schema.define(version: 20140430172446) do
     t.text    "child_custody",        default: "",    null: false
     t.text    "info",                 default: "",    null: false
     t.hstore  "application_info",     default: {},    null: false
-  end
-
-  create_table "children_users", force: true do |t|
-    t.integer  "child_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
@@ -121,6 +116,13 @@ ActiveRecord::Schema.define(version: 20140430172446) do
   end
 
   add_index "obligations", ["user_id", "all_date"], name: "index_obligations_on_user_id_and_all_date", unique: true, using: :btree
+
+  create_table "parents", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "programs", force: true do |t|
     t.string  "title",                        default: "",   null: false

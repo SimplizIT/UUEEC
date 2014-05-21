@@ -2,24 +2,122 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.table-hover > tbody > tr:hover > td,
-.table-hover > tbody > tr:hover > th {
-  background-color: #FFFFCC !important;
+#tab_management_wrapper {
+  position: relative;
+  top: 200px;
+  color: #474747;
 }
 
-#roletable a.current {
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: #668485 !important;
+  color: #FFF;
+}
+
+.tab-wrapper table {
+  position: relative;
+  top: -102px;
+}
+
+.tab-wrapper table thead {
+  background-color: #DDD;
+  border-bottom: 3px solid #888888 !important;
+  color: #474747;
+}
+
+.tab-wrapper table a {
+  color: #474747;
+  font-style: normal;
+}
+
+.tab-wrapper table a.current {
   padding-left: 5px;
 }
 
+.roles_update_button {
+  background-color: rgba(211, 121, 45, 0.63);
+}
+
+.tab-wrapper table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tab-wrapper table td {
+  vertical-align: middle;
+}
+
+.tab-wrapper table td.center_text {
+  text-align: center;
+}
+
 #roleSearch {
-  float: right;
-  margin-bottom: 20px;
-  margin-right: 37px;
+  position: relative;
+  margin-top: 35px;
+  left: 762px;
+  top: -34px;
+}
+
+.tab-content {
+  border: 1px solid #DDD;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  padding: 102px 0 0 0;
+  position: relative;
+  top: -102px;
+}
+
+.tab-pane {
+  margin-bottom: -120px;
+}
+
+.tab-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1100px;
 }
 
 .tableDevider {
-  background-color: #B0B0B0 !important;
+  background-color: rgba(179, 215, 217, 0.71) !important;
   height: 35px;
   border-top: 2px solid #888888 !important;
-  border-bottom: 2px solid #888888 !important;
+  border-style: double;
+  border-right: none;
+  border-left: none;
 }
+
+#auth_rights_form {
+  width: 400px;
+  float: right;
+}
+
+#auth_rights_form div {
+  margin-top: 10px;
+}
+
+.nav-tabs {
+  height: 42px;
+  width: 284px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-tabs div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-tabs a {
+  color: #668485;
+}
+
+.nav-tabs a:active {
+  color: #474747;
+}
+
+
+
+
+
+

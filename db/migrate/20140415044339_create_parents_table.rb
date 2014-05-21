@@ -1,6 +1,6 @@
-class CreateChildUserJoinTable < ActiveRecord::Migration
+class CreateParentsTable < ActiveRecord::Migration
   def change
-    create_table :children_users do |t|
+    create_table :parents do |t|
       t.integer :child_id
       t.integer :user_id
       t.timestamps

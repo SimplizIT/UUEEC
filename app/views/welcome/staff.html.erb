@@ -1,0 +1,33 @@
+<body id='staff_page'>
+  <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
+  <div id='staff-wrapper'>
+    <div id='staff_heading'>
+
+    </div>
+    <div id='staff_image_wrapper'>
+      <% if @all_staff %>
+      <% counter = 0 %>
+        <% @all_staff.each do |employee| %>
+          <% counter += 1 %>
+          <% float_right = counter.even? ? 'right' : '' %>
+          <div class='staff_div divinline <%= float_right %>'>
+            <% if employee.image.large.to_s.empty? %>
+              <div class='image_circle_white'>
+                <i class='fa fa-user'></i>
+              </div>
+            <% else %>
+              <div class='center_div'>
+                <img class='image_circle_white' src='<%= employee.image.large.to_s %>'>
+              </div>
+            <% end %>
+            <div class='staff_bio'>
+              <h4><%= employee.first_name + " " + employee.last_name %></h4>
+              <h6><%= employee.work_title %></h6>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</body>
+

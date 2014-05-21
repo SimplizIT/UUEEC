@@ -1,28 +1,33 @@
 var addChild = function(){
-  $('#add_child_button').click(function(e){
+  $('.add_person_fields').click(function(e){
     e.preventDefault();
-  var child_field = $('#add_child').children().clone();
 
-
- 
-  // $(child_field).insertAfter('.add_child').last().show();
-    $('#children_container').prepend(child_field).show();
-
-  var variable = $(this).parent().find('select').first()
-  $('input[type="text"]', child_field).each(function() {     
-      $(this).val('');
+      var variable = $(this).parent().parent().find('select').first();
+      console.log(variable)
+      $(variable).selectpicker('deselectAll');
+      var birthdate = $(this).parent().parent().find('.child_birthdate').first();
+       $(birthdate).datetimepicker({
+    format: "dd MM yyyy",
+    startView: 4,
+    minView: 2,
+    autoclose: true,
+    todayHighlight: false
     });
-  $(variable).selectpicker('deselectAll');
-  
-
-    
-
-
   });
-
 }
 
 $(document).ready(addChild);
 $(document).on('page:load', addChild);
 
-// $((Math.random() * 9999) + 1).toString()
+function remove_fields(link) {
+  console.log('hellow')
+  console.log(link)
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".add_person").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).after(content.replace(regexp, new_id));
+}

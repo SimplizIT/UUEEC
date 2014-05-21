@@ -1,10 +1,11 @@
-<body id='userprofile'>
+<body id='userprofile' class='navbar-help'>
   <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
   <div id='userprofilewrapper'>
 
     <div id='userinfo' class='userpagediv'>
       <div class='divinline userprofileform'>
         <% if @user %>
+        <%= @user.id %>
           <%= form_for @user, url: user_path(@user.id) do |f| %>
             <%= f.label :first_name %><br>
             <%= f.text_field :first_name, value: f.object.first_name.capitalize %><br>
@@ -12,6 +13,11 @@
             <%= f.text_field :last_name, value: f.object.last_name.capitalize %><br>
             <%= f.label :email %><br>
             <%= f.text_field :email %>
+            <% if @user.is?('staff') %>
+              <br><%= f.label :work_title %><br>
+              <%= f.text_field :work_title %>
+            <% end %>
+              
             <div class='choose_upload'>
               <div class='fileUpload divcenter btn btn-primary btn-usergray btn-xs'>
                 <%= f.label :image, 'Upload a User photo' %><br>
@@ -50,50 +56,14 @@
       </div>
     </div>
 
-    <!-- This is where we'll put the address -->
-    <div id='userprofilewrapper'>
-      <div class='userpagediv'>
-        <div class='divinline userprofileform'>
-        <% if @user %>
-          <%= form_for @user, url: user_path(@user.id) do |f| %>
-          <% home_address_sorted = @user.home_address.sort_by { |key, value| key } %>
-          <h4>Home Contact Information</h4>
-          <div id='home_address_div'>
-            <% home_address_sorted.each do |element| %>
-              <% variable = element[0].split(/home_/).last %>
-              <div class='divinline'>
-                <%= f.label element[0].slice(2..-1) %><br>
-                <%= f.text_field 'home_address[' + element[0] + ']', value: element[1], class: variable %>
-                <span class='<%= variable %>span' >
-              </span>
-            </div>
-            <% end %>
-          </div>
-          <% work_address_sorted = @user.work_address.sort_by { |key, value| key } %>
-          <h4>Work Contact Information</h4>
-            <div id='work_address_div'>
-              <% work_address_sorted.each do |element| %>
-                <% variable = element[0].split(/work_/).last %>
-                <div class='divinline'>
-                  <%= f.label element[0].slice(2..-1) %><br>
-                  <%= f.text_field 'work_address[' + element[0] + ']', value: element[1], class: variable %>
-                  <span class='<%= variable %>span' ></span>
-                </div>
-              <% end %> 
-            </div>   
-            <%= f.submit "Update Profile", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
-          <% end %>
-        <% end %>
-        <div class='divcenter change_password_div'>
-        </div>
-      </div>
-      </div>
-    </div>
     <div class='userpagediv'>
-    <% if @user %>
-    <%= "You have " + @user.children.count.to_s + " children." %><br>
-      <% @user.children.each do |child| %>
-        <%= child.first_name %><br>
+    <% if @children_enrolled %>
+      <% plural = @children_enrolled.count == 1 ? 'child' : 'children' %>
+    <%= "You have " + @children_enrolled.count.to_s + " " + plural + " presently enrolled." %><br>
+      <% @children_enrolled.each do |child| %>
+        <%= child.first_name %>
+        <% vaccinations_current = child.vaccinations_current? ? 'Yes' : 'No' %>
+        <%= vaccinations_current %>
       <% end %>
     <% end %>
     </div>

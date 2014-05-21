@@ -69,6 +69,14 @@ var datePicker = function(){
     autoclose: true,
     todayHighlight: false
   });
+
+  $('.adult_birthdate').datetimepicker({
+    format: "dd MM yyyy",
+    startView: 4,
+    minView: 2,
+    autoclose: true,
+    todayHighlight: false
+  })
   // console.log(datepickerdate)
   // console.log(datepickerdate.setMonth(datepickerdate.getMonth() -- 60))
   

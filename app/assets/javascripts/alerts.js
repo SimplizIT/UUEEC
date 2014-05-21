@@ -11,7 +11,9 @@ var alertShow = function(){
   }
 
   if($('.alert-error').length > 0){
-    alertify.error($('.alert-error').text());
+    if($('.alert-error').text().length > 25 ){
+      alertify.error($('.alert-error').text());
+    }
     $('.alert-error').remove();
   }
 }

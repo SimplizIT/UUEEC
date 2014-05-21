@@ -20,18 +20,24 @@
         <li><%= link_to 'Events', events_path %></li>
         <li><%= link_to 'Blog', blogs_path %></li>
         <li><%= link_to 'FAQ', events_path %></li>
+        <li><%= link_to 'Staff', welcome_staff_path %></li>
         <% if current_user %>
           <li><%= link_to 'Profile', user_index_path %></li>
-          <% if can? :manage, :all %>
-            <li><%= link_to 'Admin', roles_index_path %><br></li>
-          <% end %>
-          <% if can? :manage, Obligation %>
-            <li><%= link_to 'Volunteer', obligations_path %></li>
-          <% end %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li></br>
         <% else %>
           <li><%= link_to "Sign Up", new_user_registration_path, method: 'get' %></li>
-          <li><%= link_to "Sign In", new_user_session_path, method: 'get' %></li>
+          <li><%= link_to "Sign In", new_user_session_path, method: 'get' %></li><br>
+        <% end %>
+        <% if current_user && current_user.is?('member') %>
+          <hr id='navbar_hr'>
+          <ul id='bottom_nav_bar' class='navbar nav nav-pills pull-right bottom_nav_bar'>
+            <% if can? :manage, :all %>
+              <li><%= link_to 'Admin', roles_index_path %><br></li>
+            <% end %>
+            <% if can? :manage, Obligation %>
+              <li><%= link_to 'Volunteer', obligations_path %></li>
+            <% end %>
+          </ul>
         <% end %>
       </ul>
     </div>

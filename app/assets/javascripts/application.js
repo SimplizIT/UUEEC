@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require moment
 //= require jquery.Jcrop
+//= require handlebars
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
 

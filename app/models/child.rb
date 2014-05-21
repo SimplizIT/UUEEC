@@ -1,3 +1,6 @@
 class Child < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_many :parents
+  has_many :users, through: :parents
+
+  scope :enrolled, -> (enrolled) { where('enrolled >= ?', enrolled) }
 end

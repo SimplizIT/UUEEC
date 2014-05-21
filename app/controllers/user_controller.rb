@@ -3,6 +3,7 @@ class UserController < ApplicationController
   def index
     if current_user
       @user = current_user
+      @children_enrolled = @user.children.enrolled(true)
       @userobligations = @user.obligations.currentobligations(Date.today + 1)
       @obligationsupforswap = Obligation.swaps 
       @obligation_offers = []

@@ -29,19 +29,18 @@
   overflow: hidden;
   background-repeat: no-repeat;
   position: absolute;
-  z-index: 1;
   width: 944px;
 }
 
 .application_child_div {
-  height: 457px;
+  height: 461px;
   top: 7px;
 }
 
-#child_div {
+/*#child_div {
   position: relative;
   z-index: 10;
-}
+}*/
 
 .application_name_div {
   height: 904px;
@@ -79,7 +78,6 @@
 
 .front {
   position: relative;
-  z-index: 2;
 }
 
 .form-note {
@@ -88,7 +86,6 @@
 
 #new_application {
   position: relative;
-  top: -24px;
   background-color: #BCC4D7;
   z-index: 1;
   padding-bottom: 30px;
@@ -96,13 +93,13 @@
 
 #new_application_full_image {
   background-image: url(/assets/program-flower-blk.png);
-  background-image: 75%;
+  background-image: 80%;
   overflow: hidden;
   background-repeat: no-repeat;
   position: absolute;
   z-index: -1;
-  top: 20px;
-  left: 32px;
+  top: 25px;
+  left: 33px;
   width: 1060px;
   height: 2045px;
 }
@@ -116,7 +113,7 @@
   color: #474747;
 }
 
-#new_application_wrapper form input {
+form input {
   border-radius: 4px;
   border: 3px solid #FFF;
   outline: none;
@@ -141,12 +138,6 @@
   font-family: 'ChalkBoard';
   color: #FFF;
   font-size: 30px;
-}
-
-.tab-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  width: 800px;
 }
 
 #datetimepickerbirthdate {
@@ -174,6 +165,15 @@
 
 .program-select {
   margin-right: 10px;
+}
+
+.program-select.dropdown-menu{
+  position: relative !important;
+  z-index: 2000 !important;
+}
+
+.program-select.other_child_relationship {
+  margin-left: 40px;
 }
 
 .program-select ul li a {
@@ -206,7 +206,7 @@
 }
 
 .radio {
-  margin-top: 0px !important;
+  margin-top: 6px !important;
   padding-left: 0px !important;
 }
 
@@ -227,3 +227,23 @@ textarea:focus, input:focus {
 .zip-input {
   width: 124px;
 }
+
+.add_person_div {
+  margin-top: 7px;
+  margin-left: 15px;
+}
+
+.add_person_fields {
+  color: #FFF;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.destroy_person {
+  padding-top: 18px;
+}
+
+
+
+
+

@@ -1,5 +1,9 @@
 Uueec::Application.routes.draw do
 
+  get "faqs/index"
+  get "faqs/create"
+  get "faqs/update"
+  get "faqs/destroy"
   resources :blogs, only: [:index, :create, :new, :destroy, :update, :show]
   resources :bugs
   resources :obligations
@@ -7,6 +11,7 @@ Uueec::Application.routes.draw do
 
   get "roles/index"
   put "roles/update"
+  get "welcome/staff"
 
   resources :visitors, only: [:create]
 
