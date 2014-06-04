@@ -1,2 +1,17 @@
-<h1>Faqs#index</h1>
-<p>Find me in app/views/faqs/index.html.erb</p>
+<body id='faqs' class='navbar-help'>
+  <div id='faqswrapper'>
+    <div id='faqstables'>
+
+      <br><%= link_to 'Create FAQ', '#createfaqmodal', id: 'createobligation', class: 'btn btn-primary' %>
+      <%= render partial: 'faqs/partials/view_faq' %>
+      <%= render partial: 'faqs/partials/create_faq' %>
+
+
+    </div>
+
+  </div>
+</body>
+
+
+
+  

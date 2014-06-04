@@ -1,9 +1,6 @@
 Uueec::Application.routes.draw do
 
-  get "faqs/index"
-  get "faqs/create"
-  get "faqs/update"
-  get "faqs/destroy"
+  resources :faqs, only: [:index, :create, :new, :destroy, :update]
   resources :blogs, only: [:index, :create, :new, :destroy, :update, :show]
   resources :bugs
   resources :obligations

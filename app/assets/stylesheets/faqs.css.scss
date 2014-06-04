@@ -1,3 +1,16 @@
-// Place all the styles related to the faqs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#faqs {
+  position: relative;
+  top: -24px;
+  background-color: #8B9B9B;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+
+#faqswrapper {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  margin-bottom: 30px;
+  top: -150px;
+}
