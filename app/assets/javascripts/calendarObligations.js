@@ -60,23 +60,18 @@ var obligationCalendar = function(){
 }
 
 var createobligation = function(){
-  $('#createobligation').on('click', function(){
-    $('#createobligationmodal').modal('show')
-  });
+
+  $('.btn-modal-open').on('click', function(){
+    $(this.getAttribute('href')).modal('show');
+  })
 
 
-
- $('.button_closeObligation').on('click', function(){
-    $('#createobligationmodal').modal('hide')
-  });
-}
-
-var setEndDate = function(){
-  $('#obligation_start').change(function(){
-    $('#obligation_end').val($('#obligation_start').val());
-    $('#obligation_all_date').val($('#obligation_start').val());
+ $('.btn-modal-close').on('click', function(){
+    $(this.getAttribute('href')).modal('hide');
   });
 }
+
+
 
 displayObligationHTML = function(calEvent){
   if(calEvent.start){
@@ -116,8 +111,8 @@ $(document).ready(obligationCalendar);
 $(document).on('page:load', obligationCalendar);
 $(document).ready(createobligation);
 $(document).on('page:load', createobligation);
-$(document).ready(setEndDate);
-$(document).on('page:load', setEndDate);
+// $(document).ready(setEndDate);
+// $(document).on('page:load', setEndDate);
 
 
 
