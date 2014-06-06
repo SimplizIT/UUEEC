@@ -1,7 +1,11 @@
-class FaqsController < ApplicationController
+class FaqCategoriesController < ApplicationController
+
   def index
+    user = current_user
     @faqs = Faq.all
-    @faq = Faq.new
+    if user
+      @faq_category = user.faq_categories.build
+    end
   end
 
   def new
@@ -46,4 +50,10 @@ class FaqsController < ApplicationController
   def faq_params
     params.require(:faq).permit(:question, :answer)
   end
+
+  def user_update_params
+    params.require(:faq_category).permit(:name, faqs_attributes: [:id, '_destroy', :question, :answer])
+  end
 end
+
+

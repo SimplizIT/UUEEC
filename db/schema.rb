@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513185703) do
+ActiveRecord::Schema.define(version: 20140606214909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,18 +50,22 @@ ActiveRecord::Schema.define(version: 20140513185703) do
   end
 
   create_table "children", force: true do |t|
-    t.string  "first_name",           default: "",    null: false
-    t.string  "last_name",            default: "",    null: false
-    t.string  "nickname",             default: "",    null: false
-    t.date    "birthdate"
-    t.boolean "vaccinations_current", default: false, null: false
-    t.boolean "vaccination_waiver",   default: false, null: false
-    t.boolean "enrolled",             default: false, null: false
-    t.string  "program",              default: "",    null: false
-    t.string  "relationship",         default: "",    null: false
-    t.text    "child_custody",        default: "",    null: false
-    t.text    "info",                 default: "",    null: false
-    t.hstore  "application_info",     default: {},    null: false
+    t.string   "first_name",           default: "",    null: false
+    t.string   "last_name",            default: "",    null: false
+    t.string   "nickname",             default: "",    null: false
+    t.date     "birthdate"
+    t.boolean  "vaccinations_current", default: false, null: false
+    t.boolean  "vaccination_waiver",   default: false, null: false
+    t.boolean  "enrolled",             default: false, null: false
+    t.datetime "applied_on"
+    t.boolean  "application_pending",  default: true,  null: false
+    t.string   "program",              default: "",    null: false
+    t.string   "relationship",         default: "",    null: false
+    t.text     "child_custody",        default: "",    null: false
+    t.text     "info",                 default: "",    null: false
+    t.hstore   "application_info",     default: {},    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
@@ -83,9 +87,17 @@ ActiveRecord::Schema.define(version: 20140513185703) do
     t.datetime "updated_at"
   end
 
+  create_table "faq_categories", force: true do |t|
+    t.string   "name",       default: "", null: false
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "faqs", force: true do |t|
-    t.text     "question",   default: "", null: false
-    t.string   "answer",     default: "", null: false
+    t.text     "question",        default: "", null: false
+    t.text     "answer",          default: "", null: false
+    t.integer  "faq_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

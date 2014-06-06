@@ -1,6 +1,6 @@
 Uueec::Application.routes.draw do
 
-  resources :faqs, only: [:index, :create, :new, :destroy, :update]
+  resources :faq_categories, only: [:index, :create, :new, :destroy, :update]
   resources :blogs, only: [:index, :create, :new, :destroy, :update, :show]
   resources :bugs
   resources :obligations

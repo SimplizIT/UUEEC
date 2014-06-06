@@ -1,0 +1,61 @@
+<body id='faqs' class='navbar-help'>
+  <div id='faqswrapper'>
+    <div id='faqstables'>
+
+      <% if can? :manage, @faq_category %>
+        <%= link_to 'Create FAQ', '#createfaqmodal', class: 'btn btn-primary btn-modal-open' %>
+        <%= render partial: 'faq_categories/partials/view_faq' %>
+        <%= render partial: 'faq_categories/partials/create_faq' %>
+        <%= link_to 'Create FAQ Category', '#create_faq_category_modal', class: 'btn btn-primary btn-modal-open' %>
+        <%= render partial: 'faq_categories/partials/create_faq_category' %>
+      <% end %>
+      
+
+
+     
+
+
+      <ul class="nav nav-pills divinline">
+        <li class="active"><a href='#tab1' data-toggle='tab'>Website</a></li><br>
+        <li><a href='#tab2' class='icon-group' data-toggle='tab'>School</a></li>
+        <li><a href='#tab3' class='icon-folder-open' data-toggle='tab'></a></li>
+      </ul>
+
+           
+      <% if @faqs %>
+        <div class='tab-box divinline'>
+          <div class='tab-pane active' id='tab1'>
+            <% counter = 0 %>
+            <table class="table table-striped table-hover tablesorter">
+              <tbody class='role_table_body'>
+                <% @faqs.each do |faq| %>
+                    <% if true == true %>
+                      <% counter += 1 %>
+                      <tr class='question-row'>
+                        <td><strong>Q: <span hidden><%= faq.id %></span></strong></td>
+                        <td><%= faq.question %></td>
+                        <td><%= button_to "Delete FAQ", faq_path(faq), method: 'delete',  id: 'deleteFAQ', class: 'btn btn-primary btn-usergray user_image_button btn-sm' %></td>
+                      </tr>
+                      <tr class='answer-row' hidden>
+                        <td>a: </td>
+                        <td><%= faq.answer %></td>
+                        <td></td>
+                      </tr>
+                    <% end %>  
+                  <% end %>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+
+      <div class='tab-pane' id='tab2'>
+        
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+  

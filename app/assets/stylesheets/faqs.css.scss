@@ -7,10 +7,40 @@
 }
 
 #faqswrapper {
-  width: 980px;
+  width: 680px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   margin-bottom: 30px;
-  top: -150px;
+}
+
+#createfaqmodal {
+  display: inline-block;
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  border-radius: 8px;
+  width: 400px;
+  min-height: auto;
+  padding: 20px;
+}
+
+.tab-box {
+  border: 1px dashed #DDD;
+  border-radius: 6px;
+  overflow: scroll;
+  width: 80%;
+  padding: 102px 0 0 0;
+  position: relative;
+  min-height: 800px;
+}
+
+#faqs table tr {
+  border-top: 1px dashed gray;
+  border-bottom: 1px dashed gray;
+}
+
+#faqs table tr td {
+  border: none;
 }

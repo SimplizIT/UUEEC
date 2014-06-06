@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :parents
   has_many :children, through: :parents
   has_many :adults
+  has_many :faq_categories
   accepts_nested_attributes_for :children, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :events, allow_destroy: true
   accepts_nested_attributes_for :blogs, allow_destroy: true

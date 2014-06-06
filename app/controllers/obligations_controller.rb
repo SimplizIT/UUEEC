@@ -139,8 +139,6 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   def obligation_create_errors(exception)
-    p '()' * 30
-    p exception
     error_message = exception.error.match(/(?<=ERROR:  )(\w+\s)+/)[0]
     if error_message == 'duplicate key value violates unique constraint '
       flash[:error] = 'You already have an obligation for that date'

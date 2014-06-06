@@ -1,0 +1,17 @@
+<div id="create_faq_category_modal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+
+  <div>
+    <h3>Create a FAQ Category</h3>
+    <%= link_to 'Close', '#create_faq_category_modal', class: 'btn btn-primary btn-sm btn-modal-close' %>
+  </div>
+
+  <%= form_for(@faq_category) do |f| %>
+    <div>
+      <%= f.label :name %><br />
+      <%= f.text_area :name %>
+    </div>
+    <div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
