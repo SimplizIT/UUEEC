@@ -5,22 +5,20 @@
     <%= link_to 'Close', '#createfaqmodal', class: 'btn btn-primary btn-sm btn-modal-close' %>
   </div>
 
-  <%= form_for(@faq_category) do |f| %>
+  <%= form_for @faq,  url: faq_categories_path(@faq) do |f| %>
+  <div class='program-select'>
+    <%= f.label :faq_category %><br>
+    <%= f.select :faq_category, select_category, { include_blank: true, default: nil }, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Select FAQ Category'} %><br>
+  </div>
     <div>
-      <%= f.label :name %><br />
-      <%= f.text_area :name %>
-    </div>
-    <%= f.fields_for :faqs do |faq| %>
-    <div>
-      <%= faq.label :question %><br />
-      <%= faq.text_area :question %>
+      <%= f.label :question %><br />
+      <%= f.text_area :question %>
     </div>
 
     <div>
-      <%= faq.label :answer %><br />
-      <%= faq.text_area :answer %>
+      <%= f.label :answer %><br />
+      <%= f.text_area :answer %>
     </div>
-  <% end %>
 
     <div>
       <%= f.submit 'Submit', class: 'btn btn-primary' %>

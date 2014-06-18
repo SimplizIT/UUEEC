@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   # attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
+  validates_presence_of :email
+  validates_uniqueness_of :email
+  validates_format_of :email, with: /\A([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)\z/i
+
   mount_uploader :image, Uploader
   after_update :crop_image
   before_create :add_guest_role

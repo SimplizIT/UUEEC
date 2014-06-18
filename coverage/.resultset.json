@@ -1,0 +1,125 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/emailbin/rails_projects/uueec/app/helpers/application_helper.rb": [
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/blogs_helper.rb": [
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/bugs_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/event_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/faq_categories_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/faqs_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/obligations_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/programs_controller_helper.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/registrations_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/roles_helper.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/userprofile_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/visitor_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/emailbin/rails_projects/uueec/app/helpers/welcome_helper.rb": [
+        1,
+        null
+      ]
+    },
+    "timestamp": 1403126232
+  }
+}

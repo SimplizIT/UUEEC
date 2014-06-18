@@ -73,6 +73,14 @@ gem 'bootstrap3-datetimepicker-rails'
 
 # gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'spring-commands-rspec'
+  gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
+  gem 'guard-rspec', require: false
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
 
 
 # Use ActiveModel has_secure_password

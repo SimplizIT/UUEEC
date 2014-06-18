@@ -11,4 +11,12 @@ module ProgramsControllerHelper
   def select_relationship
     ['Aunt', 'Brother', 'Daughter', 'Friend', 'Grandparent', 'Husband', 'Significant Other', 'Sister','Son', 'Uncle', 'Wife' ]
   end
+
+  def select_category
+    array = []
+    FaqCategory.all.each do |cat|
+      array.push(cat.name)
+    end
+    array
+  end
 end

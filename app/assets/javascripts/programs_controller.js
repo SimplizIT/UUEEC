@@ -3,7 +3,6 @@ var addChild = function(){
     e.preventDefault();
 
       var variable = $(this).parent().parent().find('select').first();
-      console.log(variable)
       $(variable).selectpicker('deselectAll');
       var birthdate = $(this).parent().parent().find('.child_birthdate').first();
        $(birthdate).datetimepicker({
