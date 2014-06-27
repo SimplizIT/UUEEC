@@ -1,0 +1,33 @@
+<div id="<%= 'modal' + category.id.to_s %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+
+  <div>
+    <h3>Create a FAQ</h3>
+    <%= link_to 'Close', '#modal' + category.id.to_s, class: 'btn btn-primary btn-sm btn-modal-close' %>
+  </div>
+
+  <% category.faqs.build %>
+  <%= form_for category do |f| %>
+    <div class='program-select'>
+      <h5><%= category.name %></h5>
+      <%= f.hidden_field :id %>
+    </div>
+    <%= f.fields_for :faq do |faq| %>
+ 
+      <div>
+        <%= faq.label :question %><br />
+        <%= faq.text_area :question %>
+      </div>
+
+      <div>
+        <%= faq.label :answer %><br />
+        <%= faq.text_area :answer %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div> 
+  <% end %>
+
+</div>
+

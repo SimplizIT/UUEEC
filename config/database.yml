@@ -18,6 +18,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: uueec_development
+  host: localhost
   pool: 5
 
 
@@ -46,6 +47,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: uueec_test
+  host: localhost
   pool: 5
 
 production:

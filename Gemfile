@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -76,10 +76,9 @@ gem 'bootstrap3-datetimepicker-rails'
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
   gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
   gem 'guard-rspec', require: false
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 
