@@ -1,17 +1,18 @@
-<div id="<%= 'modal' + category.id.to_s %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+<div id="<%= 'modal' + category.name %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
 
   <div>
     <h3>Create a FAQ</h3>
     <%= link_to 'Close', '#modal' + category.id.to_s, class: 'btn btn-primary btn-sm btn-modal-close' %>
   </div>
 
-  <% category.faqs.build %>
-  <%= form_for category do |f| %>
+  <%= form_for category  do |f| %>
+    
     <div class='program-select'>
       <h5><%= category.name %></h5>
       <%= f.hidden_field :id %>
+      <%= hidden_field_tag 'tab', category.name %>
     </div>
-    <%= f.fields_for :faq do |faq| %>
+    <%= f.fields_for :faqs, category.faqs.new do |faq| %>
  
       <div>
         <%= faq.label :question %><br />

@@ -6,13 +6,16 @@
   padding-bottom: 30px;
 }
 
-#faqswrapper {
-  width: 680px;
+.pagewrapper {
+  width: 1100px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   margin-bottom: 30px;
+  background-color: blue;
 }
+
+
 
 #createfaqmodal {
   display: inline-block;
@@ -47,4 +50,31 @@
 
 .tab-hidden {
   display: none;
+}
+
+.faq-left-nav {
+  width: 300px;
+}
+
+.faq-left-nav ul {
+  width: 100%;
+}
+
+.faq-left-nav ul li {
+  width: 100%;
+  background-color: green;
+}
+
+.faq-left-nav ul li:nth-child(odd) {
+  background-color: yellow;
+}
+
+.faq-left-nav ul li a {
+  border-radius: 0 !important;
+}
+
+
+
+.faq-right-nav {
+  width: 72% !important;
 }

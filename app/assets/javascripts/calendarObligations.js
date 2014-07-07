@@ -67,6 +67,7 @@ var createobligation = function(){
 
 
  $('.btn-modal-close').on('click', function(){
+    $(this.getAttribute('href') + ' form').find("input,textarea").val('');
     $(this.getAttribute('href')).modal('hide');
   });
 }

@@ -7,6 +7,7 @@ class FaqCategoriesController < ApplicationController
     if user
       @faq_category = user.faq_categories.build
       @faq = Faq.new
+      @tab_session = params.has_key?('format') ? params[:format] : @faq_categories.first.name
     end
   end
 
@@ -18,9 +19,10 @@ class FaqCategoriesController < ApplicationController
     p params
    
     if current_user.is?('admin') || current_user.is?('staff')
-      p 'Yessssssssssssssss to stafffffffffffffffffffffffffff'
-      if params.has_key?('faqs')
-        faq_cat = FaqCategory.find_by_name(params[:faqs][:faq_category])
+      if params[:faq_category].has_key?('faqs_attributes')
+        p 'we are were we should be now'
+        faq_cat = FaqCategory.find(params[:faq_category][:id])
+        p faq_cat
         faq_cat.update!(faq_params)
         respond_to do |format|
             format.html { redirect_to faq_categories_path,  success: 'FAQ created' }
@@ -43,14 +45,17 @@ class FaqCategoriesController < ApplicationController
   end
 
   def update
-    p 'well hello thererrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
+    p 'we are in update'
     if current_user.is?('admin') || current_user.is?('staff')
       category = FaqCategory.find(params[:faq_category][:id])
-      if true
-        category.update_attributes(faq_params)
-         respond_to do |format|
-            format.html { redirect_to faq_categories_path,  success: 'FAQ created' }
-          end
+      if category
+        if params.has_key?('tab')       
+          session = params[:tab]
+        end
+        category.update(faq_params)
+        respond_to do |format|
+           format.html { redirect_to faq_categories_path(session), success: 'FAQ created' }
+         end
       else 
         respond_to do |format|
             format.html { redirect_to faq_categories_path,  error: 'FAQ could not be created at this time.' }
@@ -70,13 +75,23 @@ class FaqCategoriesController < ApplicationController
 
   def destroy
     if current_user.is?('admin') || current_user.is?('staff')
-      if Faq.find(params[:id]).delete
+      category = FaqCategory.find(params[:faq_category][:id])
+      has_nested_faq_params = params[:faq_category].has_key?('faqs_attributes')
+              session = params[:tab] if params.has_key?('tab')
+
+      if has_nested_faq_params
+        category.update(faq_params)
         respond_to do |format|
-          format.html { redirect_to faq_categories_path,  success: 'FAQ deleted' }
+          format.html { redirect_to faq_categories_path(session),  success: 'FAQ deleted' }
+        end
+      elsif category && !has_nested_faq_params
+        category.destroy
+        respond_to do |format|
+          format.html { redirect_to faq_categories_path(session),  success: 'FAQ deleted' }
         end
       else
         respond_to do |format|
-          format.html { redirect_to faq_categories_path,  error: 'FAQ could not be deleted.' }
+          format.html { redirect_to faq_categories_path,  error: 'Could not be deleted code: 711' }
         end
       end
     end
@@ -87,7 +102,7 @@ class FaqCategoriesController < ApplicationController
   def faq_params
     p ')' * 80
     p 'got into the strong params'
-    params.require(:faq_category).permit(:id, :name, faqs_attributes: [:id, '_destroy', :question, :answer])
+    params.require(:faq_category).permit(:id, :name, '_destroy', faqs_attributes: [:id, '_destroy', :question, :answer])
   end
 end
 
