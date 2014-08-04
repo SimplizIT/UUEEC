@@ -2,7 +2,7 @@
 
   <div>
     <h3>Create a FAQ</h3>
-    <%= link_to 'Close', '#modal' + category.id.to_s, class: 'btn btn-primary btn-sm btn-modal-close' %>
+    <%= link_to 'Close', '#modal' + category.name, class: 'btn btn-primary btn-sm btn-modal-close' %>
   </div>
 
   <%= form_for category  do |f| %>

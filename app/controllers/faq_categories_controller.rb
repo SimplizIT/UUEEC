@@ -45,33 +45,51 @@ class FaqCategoriesController < ApplicationController
   end
 
   def update
-    p 'we are in update'
     if current_user.is?('admin') || current_user.is?('staff')
       category = FaqCategory.find(params[:faq_category][:id])
+
       if category
+
         if params.has_key?('tab')       
           session = params[:tab]
         end
-        category.update(faq_params)
-        respond_to do |format|
-           format.html { redirect_to faq_categories_path(session), success: 'FAQ created' }
-         end
-      else 
-        respond_to do |format|
-            format.html { redirect_to faq_categories_path,  error: 'FAQ could not be created at this time.' }
+
+        if params.has_key?('faq_move')
+          faq = Faq.find(params[:faq_move])
+          faq.faq_category_id = params[:faq_category][:id]
+
+          if faq.save
+
+            respond_to do |format|
+              format.html { redirect_to faq_categories_path(session), success: 'FAQ moved' }
+            end
+          else
+
+            respond_to do |format|
+              format.html { redirect_to faq_categories_path, error: 'FAQ could not be moved' }
+            end
           end
+        else
+          if category.update(faq_params)
+            
+            respond_to do |format|
+              format.html { redirect_to faq_categories_path(session), success: 'FAQ created' }
+            end
+          else
+           
+            respond_to do |format|
+              format.html { redirect_to faq_categories_path(session), error: 'FAQ created' }
+            end
+          end
+        end
+      else 
+
+        respond_to do |format|
+          format.html { redirect_to faq_categories_path,  error: 'FAQ could not be created at this time.' }
+        end
       end
     end
   end
-
-
-
-
-
-
-
-
-
 
   def destroy
     if current_user.is?('admin') || current_user.is?('staff')

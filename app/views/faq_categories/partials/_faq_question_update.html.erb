@@ -1,0 +1,22 @@
+<div id="<%= 'modalquestionupdate' + faq.id.to_s + type.to_s %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+
+  <div>
+    <h3>Rename FAQ Category</h3>
+    <%= link_to 'Close', '#modalquestionupdate' + faq.id.to_s + type.to_s, class: 'btn btn-primary btn-sm btn-modal-close' %>
+  </div>
+
+  <%= form_for(category) do |f| %>
+      <%= f.hidden_field :id %>
+      <%= f.fields_for :faqs, faq do |faq| %>
+        <div>
+          <%= faq.label type %><br />
+          <%= faq.text_area type %>
+        </div>
+      <% end %>
+
+
+    <div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

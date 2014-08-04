@@ -1,7 +1,7 @@
 #faqs {
   position: relative;
   top: -24px;
-  background-color: #8B9B9B;
+  background-color: #66B2B2;
   z-index: 1;
   padding-bottom: 30px;
 }
@@ -10,11 +10,50 @@
   width: 1100px;
   margin-right: auto;
   margin-left: auto;
-  position: relative;
   margin-bottom: 30px;
-  background-color: blue;
+  padding: 40px 0px;
 }
 
+.faqbuttons {
+  width: 65px;
+  height: 35px;
+}
+
+#faqstables {
+  height: 100%;
+  padding: 25px 0;
+}
+
+.deleteFAQ {
+  width: 79px;
+  height: 34px;
+  margin-right: 0 !important;
+}
+
+.button_setup_cat {
+  width: 160px;
+  height: 75px;
+  padding-top: 21px;
+  padding-left: 20px;
+  font-size: 25px;
+}
+
+
+.left_nav_buttons {
+  width: 176px;
+  height: 100%;
+}
+
+.question-row {
+  background-color: #76BBBB;
+  padding: 20px 15px;
+  margin: 3px 0;
+}
+
+/*.changeLink, .changeLink:hover {
+  text-decoration: none;
+  color: inherit;
+}*/
 
 
 #createfaqmodal {
@@ -44,8 +83,10 @@
   border-bottom: 1px dashed gray;
 }
 
+
 #faqs table tr td {
   border: none;
+  background-color: #66b2b2;
 }
 
 .tab-hidden {
@@ -53,28 +94,92 @@
 }
 
 .faq-left-nav {
-  width: 300px;
+  width: 270px;
+  margin-right: 20px;
 }
 
 .faq-left-nav ul {
   width: 100%;
 }
 
+
+
 .faq-left-nav ul li {
   width: 100%;
-  background-color: green;
-}
-
-.faq-left-nav ul li:nth-child(odd) {
-  background-color: yellow;
 }
 
 .faq-left-nav ul li a {
-  border-radius: 0 !important;
+  text-decoration: none;
+  color: #334E41;
 }
 
+.faq-left-nav ul li a:hover {
+  color: #334E41;
+}
+
+.linkButton a {
+  border-radius: 4px;
+  color: #FFF;
+}
+
+.faq-left-nav ul li:nth-child(odd) {
+  background-color: rgba(63, 145, 145, 0.44);
+}
+
+.faq-left-nav ul li:nth-child(even) {
+  background-color: rgba(196, 231, 231, 0.43);
+}
+
+.question-row div.divinline {
+  vertical-align: middle;
+}
 
 
 .faq-right-nav {
   width: 72% !important;
+  margin-top: 17px;
 }
+
+.right-table-buttons {
+  float: right;
+  padding: 19px 0 0 0;
+
+  .btn-primary {
+    border-radius: 0;
+  }
+
+  .btn-primary:hover {
+    background-color: #217F80;
+  }
+}
+
+.faq-left-nav {
+
+  .btn-primary {
+    border-radius: 0;
+    color: #FFF;
+    margin-right: 0;
+  }
+
+  .btn-primary:hover {
+    background-color: rgba(21, 44, 105, 0.81);
+    color: #FFF;
+  }
+
+  a {
+    width: 100%;
+  }
+}
+
+.button-greenhaze {
+  background-color: #4C9C9C;
+}
+
+.button-blue {
+  background-color: rgba(48, 73, 138, 0.81);
+}
+
+.button-orange {
+  background-color: #CD7B37;
+}
+

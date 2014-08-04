@@ -1,15 +1,16 @@
 var faqpage = function(){
 
   $('.question-row').click(function(){
-     $(this).next('.answer-row').toggle('slow');
+     $(this).next('.answer-row').toggle(300);
   })
 
   $('.tab-pane.active').tab('show')
 
-  $('.tabbed a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  });
+
+  $('.faq-left-nav li').click(function(){
+    $(this).find('a').tab('show');
+    return false;
+  })
 }
 
 $(document).ready(faqpage);
