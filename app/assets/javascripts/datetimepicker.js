@@ -48,7 +48,6 @@ var datePicker = function(){
 
   // setDate(currentDate.getDate() - 1)
   $(".start_date input").change(function (e) {
-    console.log()
     // console.log($('#obligationEnd').data("DateTimePicker").setMinDate(moment(e.date).subtract('days', 1)))
     //  $('#obligationEnd').data("DateTimePicker").setMinDate(moment(e.date).subtract('days', 1));
       // $('.end_date').datetimepicker(moment(moment.unix(e.timeStamp), 'MM-DD-YYYY h:m'))

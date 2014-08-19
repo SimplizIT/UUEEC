@@ -4,10 +4,10 @@ class FaqCategoriesController < ApplicationController
     user = current_user
     @faqs = Faq.all
     @faq_categories = FaqCategory.all
+    @tab_session = params.has_key?('format') ? params[:format] : @faq_categories.first.name
     if user
       @faq_category = user.faq_categories.build
       @faq = Faq.new
-      @tab_session = params.has_key?('format') ? params[:format] : @faq_categories.first.name
     end
   end
 

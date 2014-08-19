@@ -1,17 +1,20 @@
-<div id="<%= 'modalmovefaq' + faq.id.to_s %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+<div id="<%= 'modalmovefaq' + faq.id.to_s %>" class='modal fade in modal-overflow ' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
 
   <div>
-    <h3>Rename FAQ Category</h3>
-    <%= link_to 'Close', '#modalmovefaq' + faq.id.to_s, class: 'btn btn-primary btn-sm btn-modal-close' %>
+    <div class='divinline floatright'>
+      <%= link_to 'Close', '#modalmovefaq' + faq.id.to_s, class: 'btn btn-primary button-greenhaze btn-sm btn-modal-close' %>
+    </div>
+    <div class='divinline'>
+      <h3>Choose Move Category</h3>
+      <p><strong>Note: </strong>Selected Q and A will be moved to the selected cateogry upon submit.</p>
+    </div>
   </div>
 
   <%= form_for(category) do |f| %>
-      <%= f.select :id, FaqCategory.all.collect { |p| [ p.name, p.id] }, { include_blank: true, default: nil }, class: 'selectpicker', data: {style: 'btn-inverse', title: 'Relationship to You'} %><br>
+      <%= f.select :id, FaqCategory.all.collect { |p| [ p.name, p.id] }, { include_blank: true, default: nil }, class: 'selectpicker', data: {style: 'btn-inverse'} %><br>
       <%= hidden_field_tag :faq_move, faq.id %>
-
-
     <div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <%= f.submit 'Submit', class: 'btn btn-primary button-greenhaze' %>
     </div>
   <% end %>
 </div>

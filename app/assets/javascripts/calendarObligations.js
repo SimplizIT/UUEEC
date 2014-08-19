@@ -60,13 +60,16 @@ var obligationCalendar = function(){
 }
 
 var createobligation = function(){
-
-  $('.btn-modal-open').on('click', function(){
+  $('.btn-modal-open').on('click', function(link){
+    console.log('open')
+    link.preventDefault();
     $(this.getAttribute('href')).modal('show');
   })
 
 
- $('.btn-modal-close').on('click', function(){
+ $('.btn-modal-close').on('click', function(link){
+  console.log('close')
+    link.preventDefault();
     $(this.getAttribute('href') + ' form').find("input,textarea").val('');
     $(this.getAttribute('href')).modal('hide');
   });

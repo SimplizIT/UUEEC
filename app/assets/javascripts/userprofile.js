@@ -33,7 +33,6 @@ userProfile = function () {
   };
 
   $('#new_application_wrapper form').on('ajax:success', function(e, data, status, xhr) {
-    console.log(e)
   })
 
   createJcrop = function() {

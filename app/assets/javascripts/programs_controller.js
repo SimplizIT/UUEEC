@@ -19,8 +19,6 @@ $(document).ready(addChild);
 $(document).on('page:load', addChild);
 
 function remove_fields(link) {
-  console.log('hellow')
-  console.log(link)
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".add_person").hide();
 }

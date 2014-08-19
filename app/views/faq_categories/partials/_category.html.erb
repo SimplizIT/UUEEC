@@ -1,14 +1,18 @@
-<div id="<%= 'modal' + category.name %>" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+<div id="<%= 'modal' + category.name %>" class='modal fade in create-faq-modal-size' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
 
   <div>
-    <h3>Create a FAQ</h3>
-    <%= link_to 'Close', '#modal' + category.name, class: 'btn btn-primary btn-sm btn-modal-close' %>
+    <div class="divinline">
+      <h3>Create a FAQ</h3>
+    </div>
+    <div class="divinline floatright">
+      <%= link_to 'Close', '#modal' + category.name, class: 'btn btn-primary button-blue btn-sm btn-modal-close' %>
+    </div>
   </div>
 
   <%= form_for category  do |f| %>
     
     <div class='program-select'>
-      <h5><%= category.name %></h5>
+      <h5>Category: <%= category.name %></h5>
       <%= f.hidden_field :id %>
       <%= hidden_field_tag 'tab', category.name %>
     </div>
@@ -25,10 +29,9 @@
       </div>
     <% end %>
 
-    <div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <div class='modal-submit-button'>
+      <%= f.submit 'Submit', class: 'btn btn-primary button-blue' %>
     </div> 
   <% end %>
-
 </div>
 
