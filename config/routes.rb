@@ -9,6 +9,7 @@ Uueec::Application.routes.draw do
   get "roles/index"
   put "roles/update"
   get "welcome/staff"
+  get "obligations/newindex"
 
   resources :visitors, only: [:create]
 
@@ -25,7 +26,10 @@ Uueec::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  # root 'welcome#index'
+
+  root 'application#index'
+  get '*path' => 'application#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

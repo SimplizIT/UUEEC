@@ -12,13 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular
+//= require angular-route
+//= require angular-rails-templates
 //= require fullcalendar
-//= require turbolinks
+// do NOT require turbolinks
 //= require moment
 //= require jquery.Jcrop
 //= require handlebars
 //= require_tree .
 //= require_tree ../../../vendor/assets/javascripts/.
+
 
 
 

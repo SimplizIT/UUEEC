@@ -4,7 +4,7 @@ class FaqCategoriesController < ApplicationController
     user = current_user
     @faqs = Faq.all
     @faq_categories = FaqCategory.all
-    @tab_session = params.has_key?('format') ? params[:format] :  false # @faq_categories.first.name
+    @tab_session = params.has_key?('format') ? params[:format] :  @faq_categories.first.name
     if user
       @faq_category = user.faq_categories.build
       @faq = Faq.new
@@ -16,6 +16,7 @@ class FaqCategoriesController < ApplicationController
 
   def create
     p '$' * 90
+    p 'hellllllo'
     p params
    
     if current_user.is?('admin') || current_user.is?('staff')
@@ -45,6 +46,11 @@ class FaqCategoriesController < ApplicationController
   end
 
   def update
+
+    p '%' * 90
+    p 'update'
+    p params
+
     if current_user.is?('admin') || current_user.is?('staff')
       category = FaqCategory.find(params[:faq_category][:id])
 

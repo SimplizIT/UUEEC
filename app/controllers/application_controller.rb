@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+  def index # this is for angular take out if needed.
+  end
+
   # This is a workaround for CanCan until updated for rails 4.0 - Remove after CanCan update
   before_filter do
     resource = controller_name.singularize.to_sym

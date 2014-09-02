@@ -35,6 +35,7 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   def show
+    # redirect_to obligations_newindex_path
   end
 
   def edit

@@ -1,8 +1,8 @@
 var faqpage = function(){
 
-  $('.question-row').click(function(event){
-    console.log('question')
-    event.preventDefault();
+  $('.question-row.main').click(function(event){
+    // console.log('question')
+    // event.preventDefault();
     $(this).nextAll('.answer-row:first').toggle(100);
   });
 

@@ -1,14 +1,14 @@
 <body id='faqs' class='navbar-help'>
   <div class='pagewrapper'>
     <div id='faqstables'>
-   <div class='faq-left-nav divinline'>
-      <% if can? :manage, @faq_category %>
-        <%= link_to 'Create FAQ Category', '#create_faq_category_modal', class: 'btn btn-primary btn-modal-open button-blue' %>
-        <%= render partial: 'faq_categories/partials/create_faq_category' %>
-      <% end %>  
-
       <% if @faq_categories %>
-      <br>
+
+        <div class='faq-left-nav divinline'>
+          <% if can? :manage, @faq_category %>
+            <%= link_to 'Create FAQ Category', '#create_faq_category_modal', class: 'btn btn-primary btn-modal-open button-blue' %>
+            <%= render partial: 'faq_categories/partials/create_faq_category' %>
+          <% end %>  
+          <br>
           <ul class="nav nav-pills nav-stacked divinline tabbed" role='tablist'>
             <% @faq_categories.each do |category| %>
               <% tabactivation = category.name == @tab_session ? 'active' : '' %>
@@ -16,92 +16,83 @@
                 <div class='divinline button_setup_cat'>
                   <a href="<%= '#' + category.name %>" role='tab'><%= category.name.humanize %></a>
                 </div>
-                <% if can? :manage, @faq_category %>
-                <div class='divinline left_nav_buttons'>
+              </li>
+              <% if can? :manage, @faq_category %>
+                  <div class='divinline left_nav_buttons'>
                     <div class='divinline'>
-
-                      <%= button_to "Delete", faq_category_path(id: category.id, faq_category: {id: category.id, _destroy: '1' }), method: 'delete',  id: 'deleteFAQ', class: 'faqbuttons btn btn-primary button-blue', 
-                      data: { 
-                        confirm: "Category: " + category.name.humanize + " and its content will be deleted!\n\nAre you sure you want to DELETE " + category.name.humanize + " ?"
-                      } %>
+                      <%= button_to "Delete", faq_category_path(id: category.id, faq_category: {id: category.id, _destroy: '1' }), method: 'delete',  id: 'deleteFAQ', class: 'faqbuttons btn btn-primary button-blue', data: { confirm: "Category: " + category.name.humanize + " and its content will be deleted!\n\nAre you sure you want to DELETE " + category.name.humanize + " ?" } %>
                     </div><div class='divinline'>
                       <%= link_to 'Rename', '#modalrename' + category.name, class: 'changeLink btn-modal-open btn btn-primary button-blue' %>
                       <%= render partial: 'faq_categories/partials/category_rename', locals: { category: category } %>
                     </div><div class='divinline'>
                       <%= link_to 'Create FAQ', '#modal' + category.name, class: 'changeLink btn-modal-open btn btn-primary button-blue' %>
-                <%= render partial: 'faq_categories/partials/category', locals: { category: category } %>
-              </div>
+                      <%= render partial: 'faq_categories/partials/category', locals: { category: category } %>
+                    </div>
                   </div>
                 <% end %>
-              </li>
-              <% if can? :manage, @faq_category %>
-                
-              <% end %>
             <% end %>
           </ul>
-        </div>               
+        </div>
         
-        <div class='faq-right-nav divinline tab-content'>
+          <div class='faq-right-nav divinline tab-content'>
+            <% @faq_categories.each_with_index do |category, index| %>
+              <% tabactivation = category.name == @tab_session ? 'in active' : '' %> 
+              <div class="tab-pane fade <%= tabactivation %>" id="<%= category.name %>">
+                <% category.faqs.each do |faq| %>
+                  <% if !faq.new_record? %>
+                   
 
-          <% @faq_categories.each_with_index do |category, index| %>
-
-            <% tabactivation = category.name == @tab_session ? 'in active' : '' %> 
-            <div class="tab-pane fade <%= tabactivation %>" id="<%= category.name %>">
-                  <% category.faqs.each do |faq| %>
-                    <% if !faq.new_record? %>
-                      <div class='question-row main'>
+                    <% if can? :manage, @faq_category %>
+                      <div class='right-table-buttons'>
                         <div class='divinline'>
-                          <strong>Q: <span hidden><%= faq.id %></span></strong>
+                          <%= button_to "Delete FAQ", faq_category_path(id: category.id, tab: category.name, faq_category: { id: category.id, faqs_attributes: { id: faq.id, _destroy: '1' }}), method: 'delete',  id: 'deleteFAQ', class: 'btn btn-primary button-greenhaze user_image_button btn-sm deleteFAQ', data: { confirm: "Are you sure?" } %>
                         </div>
-                        <div class='divinline question-row'>
-                          <%= faq.question %>
-                        </div>
-
-
-
-                      </div>
-    <% if can? :manage, @faq_category %>
-                          <div class='divinline right-table-buttons'>
-                            <div class='divinline'>
-                              <%= button_to "Delete FAQ", faq_category_path(id: category.id, tab: category.name, faq_category: { id: category.id, faqs_attributes: { id: faq.id, _destroy: '1' }}), method: 'delete',  id: 'deleteFAQ', class: 'btn btn-primary button-greenhaze user_image_button btn-sm deleteFAQ', data: { confirm: "Are you sure?" } %>
-                            </div>
-
-                            <div class='divinline'>
-                              <% question_path = 'modalupdatequestion' + faq.id.to_s %>
-                              <%= link_to 'Update', '#' + question_path, class: 'changeLink btn btn-primary button-greenhaze btn-modal-open' %>
-                              <%= render partial: 'faq_categories/partials/faq_question_update', locals: { category: category, faq: faq, type: 'question'.to_sym } %>
-                            </div>
-                          
-                            <div class='divinline'>
-                              <%= link_to 'Move', '#modalmovefaq' + faq.id.to_s, class: 'btn btn-primary button-greenhaze btn-modal-open' %>
-                              <%= render partial: 'faq_categories/partials/faq_move', locals: { category: category, faq: faq } %>
-                            </div>
-                          </div>
-                        <% end %>
-
-                      <div class='answer-row main' hidden>
                         <div class='divinline'>
-                          <strong>- a: </strong>
+                          <% question_path = 'modalupdatequestion' + faq.id.to_s %>
+                          <%= link_to 'Update', '#' + question_path, class: 'changeLink btn btn-primary button-greenhaze btn-modal-open' %>
+                          <%= render partial: 'faq_categories/partials/faq_question_update', locals: { category: category, faq: faq, type: 'question'.to_sym } %>
                         </div>
-                        <div class='divinline answer-row'>
-                          <%= faq.answer %>
+                                
+                        <div class='divinline'>
+                          <%= link_to 'Move', '#modalmovefaq' + faq.id.to_s, class: 'btn btn-primary button-greenhaze btn-modal-open' %>
+                          <%= render partial: 'faq_categories/partials/faq_move', locals: { category: category, faq: faq } %>
                         </div>
-                        <% if can? :manage, @faq_category %>
-                          <div class='divinline right-table-buttons answers-only'>
-                            <div class='divinline'>
-                              <% answer_path = 'modalupdateanswer' + faq.id.to_s %>
-                              <%= link_to 'Update', '#' + answer_path, class: 'btn btn-primary button-greenhaze btn-modal-open' %>
-                              <%= render partial: 'faq_categories/partials/faq_question_update', locals: { category: category, faq: faq, type: 'answer'.to_sym } %>
-                            </div>
-                          </div>
-                        <% end %>
                       </div>
                     <% end %>
-                  <% end %>  
-            </div>
 
-          <% end %>  
-        </div>             
+                     <div class='question-row main'>
+                      <div class='divinline'>
+                        <strong>Q: <span hidden><%= faq.id %></span></strong>
+                      </div>
+                      <div class='divinline question-row'>
+                        <%= faq.question %>
+                      </div>
+                    </div>
+                
+
+                    <div class='answer-row main' hidden>
+                      <div class='divinline'>
+                        <strong>- a: </strong>
+                      </div>
+                      <div class='divinline answer-row'>
+                        <%= faq.answer %>
+                      </div>
+                      <% if can? :manage, @faq_category %>
+                        <div class='divinline right-table-buttons answers-only'>
+                          <div class='divinline'>
+                            <% answer_path = 'modalupdateanswer' + faq.id.to_s %>
+                            <%= link_to 'Update', '#' + answer_path, class: 'btn btn-primary button-greenhaze btn-modal-open' %>
+                            <%= render partial: 'faq_categories/partials/faq_question_update', locals: { category: category, faq: faq, type: 'answer'.to_sym } %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>  
+          </div>             
+        </div>
       <% end %>
     </div>
   </div>
