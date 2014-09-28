@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
+# Ignore secret_token.rb for GITHUB pushes only
+/app/config/initializers/secret_token.rb
+
 # /app/assets/images
