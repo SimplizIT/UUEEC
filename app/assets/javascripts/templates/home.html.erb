@@ -4,3 +4,61 @@
         {{thing}}
     </li>
 </ul>
+<div class="page-holder">
+  <div class='calendar-view'>
+    <div class="wrapper">
+        <div class="main">
+          <section class="sourse-gallery" style="margin-left: 418px;">
+
+
+
+
+
+
+            <!-- This is where the calendar will start -->
+            <div class="field" data-year="2014">
+              <div ng-repeat='week in calendarWeeks' class="col-holder popup-inside active active-item">
+                <div class="popup-area"></div>
+                <div class="col divinline" data-month="8">
+                  <article ng-repeat=" day in calendarDays">
+                    <header>
+                      <em class="date">{{ day | allCAPS }}</em>
+                    </header>
+                    <h2>Maybe Main events highlighted here</h2>
+                    <p>Should put links to people here?</p>
+                 <!--    <a href="http://www.milwaukeepolicenews.com/suspects-spotted-on-bicycle-during-interview-of-crime-victim/?ajax=1" class="link open-article" data-section="source-page">&nbsp;</a> -->
+                  </article>
+                  <!-- <div class="overlay">&nbsp;</div> -->
+                </div>
+              </div>
+            </div>
+          </section>
+           <section class="sourse-gallery" style="margin-left: 418px;">
+        </div>
+      </div>
+
+
+
+      <!-- This is where the left column starts -->
+      <aside class="aside">
+        <i ng-click="moveCalendar('left')" class="fa fa-chevron-left"></i>
+        <i ng-click="moveCalendar('right')" class="fa fa-chevron-right"></i>
+        <div class="aside-content">
+          <div class="holder">
+            <h1>THE <br>NEW THING</h1>
+            <p>Put LINKS to years here dog.  Maybe months too?</p>
+            <section class="widget archive-widget">
+              <h2>LATEST ISSUES JAKE</h2>
+              <ul>
+                <li>
+                  <a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" data-year="2014" class="opener" data-month="1">2014<span class="overlay-box" style="opacity: 0;">2014</span>
+                  </a><ul class="news-list"><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="1">Jan</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="2">Feb</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="3">Mar</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="4">Apr</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="5">May</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="6">Jun</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="7">Jul</a></li><li><a href="http://www.milwaukeepolicenews.com/2014/?ajax=1" class="link ajax-popup" data-year="2014" data-month="8">Aug</a></li></ul></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" data-year="2013" class="opener" data-month="1">2013<span class="overlay-box" style="opacity: 0;">2013</span></a><ul class="news-list"><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="1">Jan</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="2">Feb</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="3">Mar</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="4">Apr</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="5">May</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="6">Jun</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="7">Jul</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="8">Aug</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="9">Sep</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="10">Oct</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="11">Nov</a></li><li><a href="http://www.milwaukeepolicenews.com/2013/?ajax=1" class="link ajax-popup" data-year="2013" data-month="12">Dec</a></li></ul></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" data-year="2012" class="opener" data-month="1">2012<span class="overlay-box" style="opacity: 0;">2012</span></a><ul class="news-list"><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="4">Apr</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="5">May</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="6">Jun</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="7">Jul</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="8">Aug</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="9">Sep</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="10">Oct</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="11">Nov</a></li><li><a href="http://www.milwaukeepolicenews.com/2012/?ajax=1" class="link ajax-popup" data-year="2012" data-month="12">Dec</a></li></ul></li></ul>         </section>
+            </div>
+            <div class="news-area ajax-holder">
+              <div class="news-holder ajax-content"></div>
+            </div>
+          </div>
+             
+        </aside>
+      </div>
+  </div>

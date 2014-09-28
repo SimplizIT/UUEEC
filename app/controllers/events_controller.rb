@@ -1,18 +1,19 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   def index
     @events = Event.all
-    currentEvents = Event.all.where('start > ?', DateTime.now)
-    @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
-    imagenames = Dir.glob('app/assets/images/*.{png,jpg,JPG,JPEG,jpeg,PNG}')
-    images = []
-    imagenames.each do |image|
-      images.push(image.split('/').last)
-    end
-    @divimages = images.sample(3)
+    events = @events
+    # currentEvents = Event.all.where('start > ?', DateTime.now)
+    # @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
+    # imagenames = Dir.glob('app/assets/images/*.{png,jpg,JPG,JPEG,jpeg,PNG}')
+    # images = []
+    # imagenames.each do |image|
+    #   images.push(image.split('/').last)
+    # end
+    # @divimages = images.sample(3)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @events }
+      format.json { render json: events }
     end
   end 
 
