@@ -78,9 +78,11 @@ Uueec::Application.configure do
     port: 587,
     domain: 'heroku.com',
     authentication: :plain,
-    user_name: Rails.application.secrets.email_name,
-    password: Rails.application.secrets.email_password,
+    user_name: ENV['MANDRILL_USERNAME'],
+    password: ENV['MANDRILL_APIKEY'],
   }
+  p '*' * 90
+  p 'confg files is running'
   # ActionMailer::Base.delivery_method = :smtp
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
