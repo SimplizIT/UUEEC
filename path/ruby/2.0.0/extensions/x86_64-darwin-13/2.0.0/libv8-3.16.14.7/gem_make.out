@@ -1,0 +1,14 @@
+/Users/emailbin/.rvm/rubies/ruby-2.0.0-p247/bin/ruby extconf.rb 
+creating Makefile
+Compiling v8 for x64
+Using python 2.7.5
+Using compiler: /usr/bin/c++ (clang version 6.0)
+make[1]: Nothing to be done for `all'.
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+make "DESTDIR=" install
+installing default libraries

@@ -16,10 +16,17 @@ Uueec::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   # change the blow line to true when you want to actually send messages.
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'localhost',
-                                         port: 1025 }
+  config.action_mailer.smtp_settings = { 
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    authentication: :login,
+    user_name: Rails.application.secrets.email_name,
+    password: Rails.application.secrets.email_password,
+    enable_starttls_auto: true 
+  }
 
 
   # Devise instructed to put this in here

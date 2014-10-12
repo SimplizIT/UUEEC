@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-ruby '2.0.0'
-gem 'rails', '4.0.2'
+# Keep for user on Heroku
+source "https://rubygems.org"
+ruby '2.1.3'
+
+
+gem 'rails', '4.1.0'
 gem 'rails_12factor'
 
 # Use postgresql as the database for Active Record
@@ -24,6 +27,9 @@ gem 'cancan'
 # Add images to site
 gem 'carrierwave'
 gem 'mini_magick'
+
+# Add easy environment variable support
+# gem "figaro"
 
 # Add markup to blog
 gem 'redcarpet'

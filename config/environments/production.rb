@@ -66,7 +66,22 @@ Uueec::Application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
+  # Devise instructed to put this in here and apparently many others
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # change the blow line to true when you want to actually send messages.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.smtp_settings = { 
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'heroku.com',
+    authentication: :plain,
+    user_name: Rails.application.secrets.email_name,
+    password: Rails.application.secrets.email_password,
+    enable_starttls_auto: true 
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -81,3 +96,4 @@ Uueec::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
+# ActionMailer::Base.smtp_settings[:enable_starttls_auto] = false

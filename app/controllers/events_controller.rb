@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     currentEvents = Event.all.where('start > ?', DateTime.now)
-    @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
+    # Just for now.
+    # @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
     imagenames = Dir.glob('app/assets/images/*.{png,jpg,JPG,JPEG,jpeg,PNG}')
     images = []
     imagenames.each do |image|
