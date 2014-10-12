@@ -18,7 +18,5 @@
 # ignore my secrets
 /config/secrets.yml
 
-# ignore my secrets
-.env
 
 # /app/assets/images
