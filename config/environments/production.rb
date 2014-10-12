@@ -81,7 +81,10 @@ Uueec::Application.configure do
     user_name: ENV['MANDRILL_USERNAME'],
     password: ENV['MANDRILL_APIKEY'],
   }
-  ActionMailer::Base.delivery_method = :smtp
+  p '(' * 90
+    p ENV['MANDRILL_USERNAME']
+    p ENV['MANDRILL_APIKEY']
+  # ActionMailer::Base.delivery_method = :smtp
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
