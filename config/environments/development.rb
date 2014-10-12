@@ -19,14 +19,14 @@ Uueec::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { 
-    address: 'smtp.gmail.com',
+    address: 'smtp.mandrillapp.com',
     port: 587,
-    domain: 'gmail.com',
-    authentication: :login,
+    domain: 'heroku.com',
+    authentication: :plain,
     user_name: Rails.application.secrets.email_name,
     password: Rails.application.secrets.email_password,
-    enable_starttls_auto: true 
   }
+  ActionMailer::Base.delivery_method = :smtp
 
 
   # Devise instructed to put this in here

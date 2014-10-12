@@ -68,20 +68,20 @@ Uueec::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
   # Devise instructed to put this in here and apparently many others
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'shielded-inlet-8919.herokuapp.com/' }
   # change the blow line to true when you want to actually send messages.
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = { 
-    address: 'smtp.gmail.com',
+    address: 'smtp.mandrillapp.com',
     port: 587,
     domain: 'heroku.com',
     authentication: :plain,
     user_name: Rails.application.secrets.email_name,
     password: Rails.application.secrets.email_password,
-    enable_starttls_auto: true 
   }
+  ActionMailer::Base.delivery_method = :smtp
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
