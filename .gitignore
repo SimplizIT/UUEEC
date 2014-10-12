@@ -15,8 +15,6 @@
 /log/*.log
 /tmp
 
-# ignore my secrets
-/config/secrets.yml
 
 
 # /app/assets/images
