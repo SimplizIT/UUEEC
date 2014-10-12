@@ -10,7 +10,7 @@
     <noscript><strong id='jsDisabled'>Javascript is disabled in your browser.  This site will not fuction to its full potential.  Please turn Javascript on.</strong></noscript>
     
     <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %>">
+      <div class="<%= flash_class(key.to_sym) %>">
         <%= value %>
       </div>
     <% end %>
