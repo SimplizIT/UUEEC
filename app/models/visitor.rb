@@ -4,6 +4,6 @@ class Visitor < ActiveRecord::Base
   before_save :cleanagesarray
 
   def cleanagesarray
-    self.ages.reject! { |element| element.empty?}
+    self.ages.reject! { |element| element.empty? }
   end
 end

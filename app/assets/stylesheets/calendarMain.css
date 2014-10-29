@@ -1,7 +1,7 @@
 #eventcalpage {
   position: relative;
   top: -24px;
-  background-color: #45AD72;
+  background-color: #609E71; /*used to be 45AD72*/
   z-index: 1;
   padding-bottom: 30px;
 }
@@ -39,6 +39,7 @@
   width: 400px;
   height: auto;
   padding: 20px;
+
 }
 
 #eventbody {
@@ -128,6 +129,21 @@
 
 #calendarEvents .fc-content {
   font-size: 20px;
+  background-color: rgba(58, 58, 58, 0.44);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#calendarEvents .fc-content th {
+  border-bottom: 25px solid rgba(0, 0, 0, 0);
+}
+
+#calendarEvents .fc-content td {
+  border: 1px solid #FFF;
+}
+
+#calendarEvents .fc-content tbody {
+ border: 0.5px solid #FFF; 
 }
 
 #calendarEvents .fc-header-right {
@@ -136,9 +152,7 @@
   top: 7px;
 }
 
-#calendarEvents .fc-header {
-  margin-bottom: 18px;
-}
+
 
 /*buttons*/
 #calendarEvents .fc-state-default {
@@ -157,15 +171,16 @@
   display: none;
 }
 
+/*Calendar Today Square*/
 #calendarEvents .fc-state-highlight {
-  background-color: rgba(218, 183, 143, 0.43);
-  border-radius: 4px;
+  background-color: rgba(228, 250, 238, 0.42);
 }
 
 #calendarEvents .fc-event {
   border: 1px solid #BF8A4D;
   background-color: #BF8A4D;
   padding: 4px;
+  font-size: .45em;
 }
 
 #eventpagewrapper {

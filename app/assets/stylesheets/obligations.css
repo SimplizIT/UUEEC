@@ -1,7 +1,3 @@
-// Place all the styles related to the duties controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .picker-switch {
   border-radius: 4px;
 }
@@ -31,7 +27,7 @@
   width: 20px;
 }
 
-#createobligationmodal {
+/*#createobligationmodal {
   display: inline-block;
   background-color: white;
   margin-right: auto;
@@ -53,9 +49,51 @@
   width: 400px;
   min-height: auto;
   padding: 20px;
-}
+}*/
 
 /*calender options*/
-#calendarObligations .fc-event-time {
+/*#calendarObligations .fc-event-time {
   display: none;
+}*/
+
+.calendarModal {
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  border-radius: 8px;
+  width: 400px;
+  padding: 20px;
+  display:table;
+}
+
+.calendarModal input {
+  border: 1px solid #cccccc;
+  width: 100%;
+}
+
+.calendarModal .fc-event-time {
+  display: none;
+}
+
+.calendarModal textarea {
+  width: 100%;
+}
+
+.calendarModal .date input {
+  width: 265px;
+}
+
+.calendarModal .modalSubmitBtn {
+  margin-top: 20px;
+}
+
+.calendarModal .btn-modal-close {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+.calendarModal .modalHeader {
+  margin-bottom: 15px;
 }

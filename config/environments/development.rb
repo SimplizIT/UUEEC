@@ -26,8 +26,6 @@ Uueec::Application.configure do
     user_name: Rails.application.secrets.email_name,
     password: Rails.application.secrets.email_password,
   }
-  # ActionMailer::Base.delivery_method = :smtp
-
 
   # Devise instructed to put this in here
   config.action_mailer.default_url_options = { host: 'localhost:3000' }

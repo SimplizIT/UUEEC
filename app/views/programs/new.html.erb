@@ -282,7 +282,6 @@
               <div class='divinline'>
                 <h4>Any Other Children in Family?</h4>
               </div>
-              <%= link_to_add_fields "Add Child", f, :children, 'programs/partials/' %>
               <div id='children_container'>
                 <%= f.fields_for :children do |builder| %>
                   <% if builder.object.id.present? %>
@@ -298,7 +297,6 @@
               <div class='divinline'>
                 <h4>People allowed to pick up my child.</h4>
               </div>
-              <%= link_to_add_fields "Add Adult", f, :adults, 'programs/partials/' %>
               <div id='adult_container'>
                 <%= f.fields_for :adults do |builder| %>
                   <% if builder.object.id.present? %>

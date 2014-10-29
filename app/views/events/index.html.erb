@@ -8,13 +8,14 @@
     <div id='eventcalendarwrapper'>
       <% if current_user %>
         <% if can? :create, Event %>
-          <br><%= link_to 'Add Event', new_event_path, id: 'addeventbutton', class: 'btn btn-primary' %>
+          <br><%= link_to 'Add Event', '#createeventmodal', class: 'btn btn-primary btn-modal-open' %>
         <% end %>
       <% end %>
       <div id='calendarEvents'></div>
     </div>
   </div>
   <%= render partial: 'events/partials/view_event' %>
+  <%= render partial: 'events/partials/create_event' %>
   <% if current_user %>
     <% if can? :delete, Event %>
       <span id='hiddenUserEvents' style='visibility: hidden'><%= current_user.id %></span>

@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   load_and_authorize_resource
   def index
     @events = Event.all
+    @event = Event.new
     currentEvents = Event.all.where('start > ?', DateTime.now)
     # Just for now.
     # @nextEvent = currentEvents.sort! { |a,b| a.start <=> b.start }.first
@@ -10,6 +11,8 @@ class EventsController < ApplicationController
     imagenames.each do |image|
       images.push(image.split('/').last)
     end
+    p "&" *90
+    p @events
     @divimages = images.sample(3)
     respond_to do |format|
       format.html # index.html.erb
@@ -22,6 +25,8 @@ class EventsController < ApplicationController
   end
 
   def create
+    p 'I am trying to see why the end date is not saving.  Probably in datetimepicker'
+    p params
     eventobject = current_user.events.new(event_params)
     increment_end_date(eventobject).save
     redirect_to events_path

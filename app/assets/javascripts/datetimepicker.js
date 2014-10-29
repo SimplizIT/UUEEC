@@ -90,7 +90,7 @@ var datePicker = function(){
   })
 
  $('.start_date').datetimepicker({
-    format: "MM d, yyyy  @  9:00 p",
+    format: "MM d, yyyy  @  9:00 a",
     startDate: new Date(),
     endDate: dateFuture,
     startView: 4,
