@@ -43,7 +43,6 @@
 
 #userprofile {
   position: relative;
-  top: -24px;
   background-color: #B2CECF;
   z-index: 1;
   padding-bottom: 30px;
@@ -55,7 +54,6 @@
   margin-left: auto;
   position: relative;
   margin-bottom: 30px;
-  top: -150px;
 }
 
 .userpagediv {
@@ -201,7 +199,9 @@
 }
 
 .user_image_buttons {
-  width: 178px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 190px;
 }
 
 .user_image_buttons div a:hover {

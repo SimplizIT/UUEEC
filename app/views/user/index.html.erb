@@ -5,7 +5,6 @@
     <div id='userinfo' class='userpagediv'>
       <div class='divinline userprofileform'>
         <% if @user %>
-        <%= @user.id %>
           <%= form_for @user, url: user_path(@user.id) do |f| %>
             <%= f.label :first_name %><br>
             <%= f.text_field :first_name, value: f.object.first_name.capitalize %><br>
@@ -59,7 +58,7 @@
     <div class='userpagediv'>
     <% if @children_enrolled %>
       <% plural = @children_enrolled.count == 1 ? 'child' : 'children' %>
-    <%= "You have " + @children_enrolled.count.to_s + " " + plural + " presently enrolled." %><br>
+    <p>You have <span class='badge'><%= @children_enrolled.count.to_s %></span> <%= plural %> presently enrolled</p><br>
       <% @children_enrolled.each do |child| %>
         <%= child.first_name %>
         <% vaccinations_current = child.vaccinations_current? ? 'Yes' : 'No' %>
@@ -77,9 +76,7 @@
               <% @userobligations.each do |obligation| %>
                 <div class='profileobligation'>
                   <div class='divinline'>
-                    <%= obligation.id %>
-                    <%= obligation.user_id %>
-                    <%= obligation.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                    <%= obligation.start.strftime('%A, %B %d - %Y, %l : %M %P') %>
                   </div>
                   <div class='divinline floatright'>
                     <% if obligation.up_for_swap == false %>
@@ -108,8 +105,7 @@
               <% @obligationsupforswap.each do |obligation| %>
                 <div class='profileobligation'>
                   <div class='divinline obligation_switch_original'>
-                    <%= obligation.id %>
-                    <%= obligation.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                    <%= obligation.start.strftime('%A, %B %d - %Y, %l : %M %P') %>
                   </div>
                   <div class='divinline floatright pinhead_div_size'>
                     <% if obligation.user_id == current_user.id %>
@@ -167,7 +163,7 @@
               <% @obligation_offers.each do |offers| %> 
                 <div class='profileobligation'>
                   <div class='divinline'>
-                      <%= offers[:original].first.start.strftime('%A, %B %d - %Y, %H:%M %P') %>
+                      <%= offers[:original].first.start.strftime('%A, %B %d - %Y, %l : %M %P') %>
                     </div>
                     <div class='divinline floatright'>
                       <%= link_to '#viewswapobligationsmodal' + offers[:original].first.id.to_s, class: "btn btn-userred btn-xs viewswapobligation", data: { partialID: offers[:original].first.id.to_s } do %>

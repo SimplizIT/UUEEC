@@ -35,12 +35,8 @@ var updateEvent;
 
     eventClick: function(calEvent, jsEvent, view){
       if(calEvent){
-        console.log('here first')
-        console.log(calEvent)
         var start = calEvent.start;
         var end = calEvent.end || start;
-        console.log('here is the event click')
-        console.log(calEvent)
         $('#EventModal').find('#eventbody').html(displayEventHTML(calEvent))
         $('#EventModal').modal('show')
       }
@@ -49,7 +45,6 @@ var updateEvent;
         $('#EventModal').modal('hide')
       });
       $('.eventDelete').on('click', function(e){
-        console.log('here')
         e.preventDefault();
         $.ajax({
           url: 'events/' + calEvent.id,
@@ -91,8 +86,6 @@ displayEventHTML = function(calEvent){
     return ('<div class="modaldivcolor"><b>Title: </b>' + capitalizeWords(calEvent.title) + '<br>' + '<p>This is an all day event</p>' + '<b>Description: </b>' + calEvent.description)
     
   }else{
-    console.log('here')
-    console.log(endDate)
     return ('<i id="modaltitleicon" class="fa fa-pagelines"></i><div class="eventtitle">' + capitalizeWords(calEvent.title) + '</div><br>' + '<p>Please join us on <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em><br>starting at <em>' + startTime + '</em><hr><p>Our event will end on ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + ' ending at ' + endTime + '</p><div class="horzscrollone"></div>' + 'Notes ~' + calEvent.description)
   }
 }

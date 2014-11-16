@@ -485,6 +485,8 @@ textarea {
 
 .navbarwrapper {
   width: 100%;
+  margin-bottom: 60px;
+  height: 160px;
 }
 
 .navbar li {
@@ -492,12 +494,9 @@ textarea {
 }
 
 .homeimagenav {
-  position: relative;
-  top: -70px;
-  margin-left: 8px;
-  width: 177px;
-  height: 177px;
-  border-radius: 50%;
+  position: absolute;
+  top: 0px;
+  left: 20px;
 }
 
 .homeimagenav a {
@@ -509,6 +508,7 @@ textarea {
 .navbar {
   margin-top: 32px;
   margin-bottom: 0 !important;
+  margin-right: 50px;
 }
 
 .navbar hr {
@@ -564,7 +564,7 @@ textarea {
   color: #FFF;
 }
 
-.navbar-help div.navbarwrapper {
+/*.navbar-help div.navbarwrapper {
   height: 160px;
   margin-top: 20px;
-}
+}*/

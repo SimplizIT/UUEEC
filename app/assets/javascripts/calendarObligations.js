@@ -2,14 +2,13 @@ var obligationCalendar = function(){
 
   return $('#calendarObligations').fullCalendar({
     editable: true,
-    aspectRatio: 1.2,
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'month,agendaWeek,agendaDay'
     },
     defaultView: 'month',
-    height: 500,
+    height: 1000,
     slotMinutes: 30,
     eventSources: [
       {
@@ -34,6 +33,8 @@ var obligationCalendar = function(){
 
     eventClick: function(calEvent, jsEvent, view){
       if(calEvent){
+        var start = calEvent.start;
+        var end = calEvent.end || start;
         $('#ObligationModal').find('#obligationbody').html(displayObligationHTML(calEvent))
         $('#ObligationModal').modal('show')
       }
@@ -78,29 +79,71 @@ var createobligation = function(){
 
 
 displayObligationHTML = function(calEvent){
-  if(calEvent.start){
-    var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ');
-    var startDate = calEvent.start.toLocaleDateString();
+   if(calEvent.start){
+    var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ')
+    var startDate = calEvent.start
   }else{
    var startTime = "No Time Given" 
-   var startDate = "No Date Given" 
+   var startDate = "No start Date Given"
   }
   if(calEvent.end){
-    var endTime = calEvent.end.toLocaleTimeString().replace(/:\d+ /, ' ');
-    var endDate = calEvent.end.toLocaleDateString();
+    var endTime = calEvent.end.toLocaleTimeString().replace(/:\d+ /, ' ')
+    var endDate = calEvent.end
   }else{
    var endTime = "No Time Given"
-   var endDate = "No Date Given" 
+   var endDate = "No end Date Given" 
   }
   if(calEvent.allDay == true){
-    return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description);
+    return ('<div class="modaldivcolor"><b>Title: </b>' + capitalizeWords(calEvent.title) + '<br>' + '<p>This is an all day event</p>' + '<b>Description: </b>' + calEvent.description)
     
   }else{
-    return ('<b>Title: </b>' + calEvent.user_id + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
+    return ('<i id="modaltitleicon" class="fa fa-pagelines"></i><div class="eventtitle">' + capitalizeWords(calEvent.title) + '</div><br>' + '<p>Please join us on <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em><br>starting at <em>' + startTime + '</em><hr><p>Our event will end on ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + ' ending at ' + endTime + '</p><div class="horzscrollone"></div>' + 'Notes ~' + calEvent.description)
   }
+  // if(calEvent.start){
+  //   var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   var startDate = calEvent.start.toLocaleDateString();
+  // }else{
+  //  var startTime = "No Time Given" 
+  //  var startDate = "No Date Given" 
+  // }
+  // if(calEvent.end){
+  //   var endTime = calEvent.end.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   var endDate = calEvent.end.toLocaleDateString();
+  // }else{
+  //  var endTime = "No Time Given"
+  //  var endDate = "No Date Given" 
+  // }
+  // if(calEvent.allDay == true){
+  //   return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description);
+    
+  // }else{
+  //   return ('<b>Title: </b>' + calEvent.user_id + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
+  // }
 }
 
+function writeDay(day){
+  var weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+  return weekday[day];
+}
 
+function writeMonth(month){
+  var months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+  return months[month];
+}
+
+function addEndToDate(date){
+  var ends = new Array('th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th');
+  return date.toString().concat(ends[(date % 10)]);
+}
+
+function capitalizeWords(str) {
+  var pieces = str.split(" ");
+  for ( var i = 0; i < pieces.length; i++ ){
+    var j = pieces[i].charAt(0).toUpperCase();
+    pieces[i] = j + pieces[i].substr(1);
+  }
+  return pieces.join(" ");
+}
 
 String.prototype.capitalizeName = function() {
   var strings = this.split(/[ _]+/)

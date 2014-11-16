@@ -2,13 +2,13 @@
   <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
   <div id='eventpagewrapper'>
     <div id='eventflower'></div>
-    <div id='upcomingevents'>
+    <div id='calendarTitle'>
       <h1>Upcoming Events</h1>
     </div>
     <div id='eventcalendarwrapper'>
       <% if current_user %>
         <% if can? :create, Event %>
-          <br><%= link_to 'Add Event', '#createeventmodal', class: 'btn btn-primary btn-modal-open' %>
+          <br><%= link_to 'Add Event', '#createeventmodal', class: 'btn btn-primary btn-modal-open add-event-button' %>
         <% end %>
       <% end %>
       <div id='calendarEvents'></div>
