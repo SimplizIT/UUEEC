@@ -4,7 +4,7 @@ class FaqCategoriesController < ApplicationController
     user = current_user
     @faqs = Faq.all
     @faq_categories = FaqCategory.all
-    if @faq_categories
+    if @faq_categories.length > 0
       @tab_session = params.has_key?('format') ? params[:format] : @faq_categories.first.name
     end
     if user
@@ -17,9 +17,6 @@ class FaqCategoriesController < ApplicationController
   # end
 
   def create
-    p '$' * 90
-    p params
-
     if current_user.is?('admin') || current_user.is?('staff')
       if params[:faq_category].has_key?('faqs_attributes')
         p 'we are were we should be now'

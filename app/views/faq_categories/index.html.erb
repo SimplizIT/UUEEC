@@ -15,6 +15,7 @@
                 <div class='divinline button_setup_cat'>
                   <a href="<%= '#' + category.name %>" role='tab'><%= category.name.humanize %></a>
                 </div>
+              </li>
                 <% if can? :manage, @faq_category %>
                 <div class='divinline left_nav_buttons'>
                     <div class='divinline'>
@@ -32,7 +33,7 @@
               </div>
                   </div>
                 <% end %>
-              </li>
+
               <% if can? :manage, @faq_category %>
 
               <% end %>

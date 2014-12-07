@@ -197,6 +197,18 @@ input[type=checkbox]:checked + label:before {
   background-repeat: no-repeat;
 }
 
+#mapdiv {
+  width: 454px;
+  height: 306px;
+  position: relative;
+  margin-bottom: 35px;
+  top: 20px;
+  overflow: hidden;
+  background-image: url(/assets/uueec-map.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 #blogdiv {
   width: 185px;
   height: 227px;
