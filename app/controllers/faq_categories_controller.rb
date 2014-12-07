@@ -4,20 +4,22 @@ class FaqCategoriesController < ApplicationController
     user = current_user
     @faqs = Faq.all
     @faq_categories = FaqCategory.all
-    @tab_session = params.has_key?('format') ? params[:format] :  false # @faq_categories.first.name
+    if @faq_categories
+      @tab_session = params.has_key?('format') ? params[:format] : @faq_categories.first.name
+    end
     if user
       @faq_category = user.faq_categories.build
       @faq = Faq.new
     end
   end
 
-  def new
-  end
+  # def new
+  # end
 
   def create
     p '$' * 90
     p params
-   
+
     if current_user.is?('admin') || current_user.is?('staff')
       if params[:faq_category].has_key?('faqs_attributes')
         p 'we are were we should be now'
@@ -26,7 +28,7 @@ class FaqCategoriesController < ApplicationController
         faq_cat.update!(faq_params)
         respond_to do |format|
             format.html { redirect_to faq_categories_path,  success: 'FAQ created' }
-          end        
+          end
       else
         if FaqCategory.create(faq_params)
           respond_to do |format|
@@ -50,7 +52,7 @@ class FaqCategoriesController < ApplicationController
 
       if category
 
-        if params.has_key?('tab')       
+        if params.has_key?('tab')
           session = params[:tab]
         end
 
@@ -71,18 +73,18 @@ class FaqCategoriesController < ApplicationController
           end
         else
           if category.update(faq_params)
-            
+
             respond_to do |format|
               format.html { redirect_to faq_categories_path(session), success: 'FAQ created' }
             end
           else
-           
+
             respond_to do |format|
               format.html { redirect_to faq_categories_path(session), error: 'FAQ created' }
             end
           end
         end
-      else 
+      else
 
         respond_to do |format|
           format.html { redirect_to faq_categories_path,  error: 'FAQ could not be created at this time.' }
@@ -123,5 +125,3 @@ class FaqCategoriesController < ApplicationController
     params.require(:faq_category).permit(:id, :name, '_destroy', faqs_attributes: [:id, '_destroy', :question, :answer])
   end
 end
-
-

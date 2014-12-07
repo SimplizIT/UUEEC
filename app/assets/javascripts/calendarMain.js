@@ -40,7 +40,7 @@ var updateEvent;
         $('#EventModal').find('#eventbody').html(displayEventHTML(calEvent))
         $('#EventModal').modal('show')
       }
-    
+
       $('.button_closeEvent').on('click', function(){
         $('#EventModal').modal('hide')
       });
@@ -72,7 +72,7 @@ displayEventHTML = function(calEvent){
     var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ')
     var startDate = calEvent.start
   }else{
-   var startTime = "No Time Given" 
+   var startTime = "No Time Given"
    var startDate = "No start Date Given"
   }
   if(calEvent.end){
@@ -80,11 +80,11 @@ displayEventHTML = function(calEvent){
     var endDate = calEvent.end
   }else{
    var endTime = "No Time Given"
-   var endDate = "No end Date Given" 
+   var endDate = "No end Date Given"
   }
   if(calEvent.allDay == true){
     return ('<div class="modaldivcolor"><b>Title: </b>' + capitalizeWords(calEvent.title) + '<br>' + '<p>This is an all day event</p>' + '<b>Description: </b>' + calEvent.description)
-    
+
   }else{
     return ('<i id="modaltitleicon" class="fa fa-pagelines"></i><div class="eventtitle">' + capitalizeWords(calEvent.title) + '</div><br>' + '<p>Please join us on <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em><br>starting at <em>' + startTime + '</em><hr><p>Our event will end on ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + ' ending at ' + endTime + '</p><div class="horzscrollone"></div>' + 'Notes ~' + calEvent.description)
   }
@@ -125,8 +125,3 @@ function capitalizeWords(str) {
 
 $(document).ready(eventCalendar);
 $(document).on('page:load', eventCalendar);
-
-
-
-
-

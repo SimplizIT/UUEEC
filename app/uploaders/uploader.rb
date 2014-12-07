@@ -2,14 +2,14 @@ class Uploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
 
-  
 
-  process :resize_to_limit => [600, 600]
+
+  process :resize_to_limit => [800, 800]
 
   version :large do
     process :resize_to_fill => [180, 180]
   end
-  
+
   storage :file
 
   def store_dir
@@ -24,6 +24,10 @@ class Uploader < CarrierWave::Uploader::Base
 
   version :thumb, :if => :is_blog? do
     process :resize_to_fit => [200, 110]
+  end
+
+  version :largeDisplay, :if => :is_blog? do
+    process :resize_to_fill => [800, 200]
   end
 
   version :pinhead, :if => :is_user? do

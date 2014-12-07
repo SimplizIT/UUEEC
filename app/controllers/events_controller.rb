@@ -11,31 +11,44 @@ class EventsController < ApplicationController
     imagenames.each do |image|
       images.push(image.split('/').last)
     end
-    p "&" *90
-    p @events
     @divimages = images.sample(3)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
     end
-  end 
+  end
 
   def new
     @event = Event.new
   end
 
   def create
-    p 'I am trying to see why the end date is not saving.  Probably in datetimepicker'
-    p params
-    eventobject = current_user.events.new(event_params)
-    increment_end_date(eventobject).save
-    redirect_to events_path
+    if current_user
+      if validate_dates( params )
+        event = current_user.events.new(event_params)
+        event_saved = increment_end_date(event).save
+        if event_saved
+          flash[:notice] = 'Event Created'
+          redirect_to events_path
+        else
+          flash[:error] = 'Event could not be created'
+          redirect_to events_path
+        end
+      else
+        flash[:error] = 'Start and End time must be present and incremental'
+        redirect_to events_path
+      end
+    else
+      flash[:error] = 'You must be signed in'
+      redirect_to events_path
+    end
   end
 
   def destroy
-   event = Event.find(params[:id])
+    event = Event.find(params[:id])
     if can? :delete, Event
       event.delete
+      render nothing: true
     else
       flash[:error] = 'Access is denied for this action.'
       redirect_to events_path
@@ -44,11 +57,23 @@ class EventsController < ApplicationController
 
   private
 
-  def increment_end_date(eventobject)
-    if eventobject.start == eventobject.end
-      eventobject.end = eventobject.end + 1.minutes
+  def validate_dates( params )
+    if params['event']['start'].length > 0 && params['event']['end'].length > 0
+      if params['event']['start'] <= params['event']['end']
+        return true
+      else
+        return false
+      end
+    else
+      return false
     end
-    eventobject
+  end
+
+  def increment_end_date(event)
+    if event.start == event.end
+      event.end = event.end + 1.minutes
+    end
+    event
   end
 
   def event_params

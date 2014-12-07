@@ -1,8 +1,8 @@
 <body id='userprofile' class='navbar-help'>
-  <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
+  <!-- <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div> -->
   <div id='userprofilewrapper'>
 
-    <div id='userinfo' class='userpagediv'>
+    <div id='userinfo' class='userpagediv divinline'>
       <div class='divinline userprofileform'>
         <% if @user %>
           <%= form_for @user, url: user_path(@user.id) do |f| %>
@@ -16,14 +16,14 @@
               <br><%= f.label :work_title %><br>
               <%= f.text_field :work_title %>
             <% end %>
-              
+
             <div class='choose_upload'>
               <div class='fileUpload divcenter btn btn-primary btn-usergray btn-xs'>
                 <%= f.label :image, 'Upload a User photo' %><br>
                 <%= f.file_field :image, class: 'upload', id: 'uploadBtn' %><br><br>
               </div><br>
               <%= f.text_field :id, value: "", id: 'uploadFile', class: 'uploadFileInput', placeholder: 'Choose Image', disabled: true %><br>
-            </div>     
+            </div>
             <%= f.submit "Update Profile", id: 'user_profile_button', class: 'btn btn-primary btn-usergreen' %>
           <% end %>
         <% end %>
@@ -31,6 +31,7 @@
         <%= link_to 'Change Password', edit_user_registration_path, id: 'change_password' %><br><br>
         </div>
       </div>
+
       <div class='divinline user_photo_wrapper'>
         <% if @user.image.large.to_s.empty? %>
           <div class='photo_outline'>
@@ -43,16 +44,16 @@
             <img class='usercircle' src='<%= @user.image.large.to_s %>'>
           </div>
           <div class='divcenter user_image_buttons'>
-          <div class='divinline'>
-            <%= link_to "Crop Photo", '#addphotomodal', id: 'addphotobutton', class: 'btn btn-primary btn-usergray btn-sm' %>
+            <div class='divinline'>
+              <%= link_to "Crop Photo", '#addphotomodal', id: 'addphotobutton', class: 'btn btn-primary btn-usergray btn-sm' %>
+            </div>
+            <div class='divinline'>
+              <%= button_to "Delete Photo", user_path(@user), method: 'delete',  id: 'deletePhoto', class: 'btn btn-primary btn-usergray user_image_button btn-sm' %>
+            </div>
           </div>
-          <div class='divinline'>
-            <%= render partial: 'user/partials/addphoto' %>
-            <%= button_to "Delete Photo", user_path(@user), method: 'delete',  id: 'deletePhoto', class: 'btn btn-primary btn-usergray user_image_button btn-sm' %>
-          </div>
-        </div>
         <% end %>
       </div>
+      <%= render partial: 'user/partials/addphoto' %>
     </div>
 
     <div class='userpagediv'>
@@ -110,7 +111,7 @@
                   <div class='divinline floatright pinhead_div_size'>
                     <% if obligation.user_id == current_user.id %>
                       <div class='pinhead_image_div divinline'>
-                        
+
                         <% if !@user.image.pinhead.to_s.blank? %>
                           <img class='pinhead_image' src='<%= @user.image.pinhead.to_s %>'>
                         <% else %>
@@ -123,7 +124,7 @@
                         <%= button_to obligation_path(obligation, { swapremove: 'remove' }), method: :put, class: "btn btn-useryellow btn-xs" do %>
                           <span>Remove <i class='fa fa-undo'></i></span>
                         <% end %>
-                      </div>                    
+                      </div>
                     <% end %>
                   </div>
                   <% if obligation.user_id != current_user.id %>
@@ -160,7 +161,7 @@
             <% if @obligation_offers %>
             <% plural = @obligation_offers.count == 1 ? '' : 's' %>
               <p>You have <span class='badge'><%= @obligation_offers.count %></span> swop <%= 'obligation' + plural %> to confirm</p>
-              <% @obligation_offers.each do |offers| %> 
+              <% @obligation_offers.each do |offers| %>
                 <div class='profileobligation'>
                   <div class='divinline'>
                       <%= offers[:original].first.start.strftime('%A, %B %d - %Y, %l : %M %P') %>

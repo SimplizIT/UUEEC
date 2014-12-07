@@ -3,8 +3,7 @@ class BlogsController < ApplicationController
     @blogs = Blog.order(created_at: :desc).page(params[:page]).per(5)
     @links = Link.order(created_at: :desc)
     @events = Event.where(['start > ?', Date.today]).limit(4)
-    p '4:' * 40
-    p @events
+    @blog = Blog.new
   end
 
   def new

@@ -1,0 +1,21 @@
+<div id="createblogmodal" class='modal fade in' data-keyboard="false" data-backdrop="static" tabindex="-1" style="display: none;">
+<div>
+    <h3 class="divinline">Create Blog</h3>
+    <%= link_to 'Close', '#createblogmodal', class: 'divinline btn btn-primary btn-sm btn-modal-close' %>
+  </div>
+
+  <%= form_for @blog do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "blogTitleModal", placeholder: "Create a captivating Title!!!" %><br>
+    <%= f.label :body %><br>
+    <%= f.text_area :body, placeholder: "Body" %><br>
+    <div class='choose_upload adjustModal'>
+      <div class='fileUpload divcenter btn btn-primary btn-usergray btn-xs'>
+        <%= f.label :image, 'Upload a User photo' %><br>
+        <%= f.file_field :image, class: 'upload', id: 'uploadBtn' %><br><br>
+      </div><br>
+      <%= f.text_field :id, value: "", id: 'uploadFile', class: 'uploadFileInput urlInput', placeholder: 'Choose Image', disabled: true %><br>
+    </div>
+    <%= f.submit "Create Blog!", class: "btn btn-primary btn-sm blogModalBtn" %>
+  <% end %>
+</div>

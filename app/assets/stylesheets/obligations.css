@@ -9,6 +9,28 @@
   color: #FFF;
 }
 
+#obligationcalpage {
+  position: relative;
+  background-color: #87949A;
+  z-index: 1;
+  padding-bottom: 30px;
+}
+#obligationTitle {
+  position: relative;
+  top: 45px;
+  text-align: center;
+  color: #FFF;
+  letter-spacing: 1px;
+  z-index: 30;
+  display: inline-block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+#obligationTitle h1 {
+  font-size: 80px;
+}
 
 .icon-time {
   color: #333;

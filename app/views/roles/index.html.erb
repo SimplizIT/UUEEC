@@ -1,26 +1,28 @@
 <body>
   <div id='tab_management_wrapper'>
 <% if can? :manage, :all %>
-  
-          
+
+
+
   <div class='admin'>
     <div class='tab-wrapper'>
-       <div id='roleSearch' class="row col-sm-4">
-    <div class="input-group">
-      <input type="text" id='role_search' class="form-control">
-      <span class="input-group-addon">
-        <i class="fa fa-search"></i>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.row -->
-      <ul class="nav nav-tabs">
-        <li class="active"><a href='#tab1' data-toggle='tab'>Access</a></li>
-        <li><a href='#tab2' class='icon-group' data-toggle='tab'>Students</a></li>
-        <li><a href='#tab3' class='icon-folder-open' data-toggle='tab'></a></li>
-        <li><a href='#tab4' class='icon-calendar' data-toggle='tab'></a></li>
-      </ul>
+      <div class="divinline roleULTabs">
+        <ul class="divinline nav nav-tabs">
+          <li class="active divinline"><a href='#tab1' data-toggle='tab'>Access</a></li>
+          <li><a href='#tab2' class='divinline icon-group' data-toggle='tab'>Students</a></li>
+          <!-- <li><a href='#tab3' class='icon-folder-open' data-toggle='tab'></a></li>
+          <li><a href='#tab4' class='icon-calendar' data-toggle='tab'></a></li> -->
+        </ul>
+      </div>
 
-     
+      <div id='roleSearch' class="divinline row col-sm-4">
+        <div class="input-group">
+          <input type="text" id='role_search' class="form-control">
+          <span class="input-group-addon">
+            <i class="fa fa-search"></i>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.row -->
 
       <div class='tab-content tab-cell'>
         <div class='tab-pane active' id='tab1'>
@@ -84,7 +86,7 @@
                         <% end %>
                       </td>
                     </tr>
-                  <% end %>  
+                  <% end %>
                 </tbody>
               <% end %>
             </table>
@@ -110,7 +112,7 @@
                               <tbody class='role_table_body'>
 
               <% @all_students.each do |student| %>
-                  
+
                     <% counter += 1 %>
                     <tr>
                       <td><%= counter %><span hidden><%= student.id %></span></td>
@@ -125,7 +127,7 @@
                       <% vac_waiver = student.vaccination_waiver ? 'Yes' : 'No' %>
                       <td class='center_text'><%= vac_waiver %></td>
                     </tr>
-                
+
               <% end %>
               </tbody>
             </table>

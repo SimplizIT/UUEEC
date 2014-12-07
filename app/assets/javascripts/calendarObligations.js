@@ -38,7 +38,7 @@ var obligationCalendar = function(){
         $('#ObligationModal').find('#obligationbody').html(displayObligationHTML(calEvent))
         $('#ObligationModal').modal('show')
       }
-    
+
       $('.button_closeObligation').on('click', function(){
         $('#ObligationModal').modal('hide')
       });
@@ -55,21 +55,21 @@ var obligationCalendar = function(){
         })
       });
     }
-  }); 
+  });
 
- 
+
 }
 
 var createobligation = function(){
   $('.btn-modal-open').on('click', function(link){
-    console.log('open')
+    console.log('open modal')
     link.preventDefault();
     $(this.getAttribute('href')).modal('show');
   })
 
 
  $('.btn-modal-close').on('click', function(link){
-  console.log('close')
+  console.log('close modal')
     link.preventDefault();
     $(this.getAttribute('href') + ' form').find("input,textarea").val('');
     $(this.getAttribute('href')).modal('hide');
@@ -83,7 +83,7 @@ displayObligationHTML = function(calEvent){
     var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ')
     var startDate = calEvent.start
   }else{
-   var startTime = "No Time Given" 
+   var startTime = "No Time Given"
    var startDate = "No start Date Given"
   }
   if(calEvent.end){
@@ -91,31 +91,31 @@ displayObligationHTML = function(calEvent){
     var endDate = calEvent.end
   }else{
    var endTime = "No Time Given"
-   var endDate = "No end Date Given" 
+   var endDate = "No end Date Given"
   }
   if(calEvent.allDay == true){
     return ('<div class="modaldivcolor"><b>Title: </b>' + capitalizeWords(calEvent.title) + '<br>' + '<p>This is an all day event</p>' + '<b>Description: </b>' + calEvent.description)
-    
+
   }else{
-    return ('<i id="modaltitleicon" class="fa fa-pagelines"></i><div class="eventtitle">' + capitalizeWords(calEvent.title) + '</div><br>' + '<p>Please join us on <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em><br>starting at <em>' + startTime + '</em><hr><p>Our event will end on ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + ' ending at ' + endTime + '</p><div class="horzscrollone"></div>' + 'Notes ~' + calEvent.description)
+    return ('<i id="obligationModalIcon" class="fa fa-user"> - </i><span> ' + capitalizeWords(calEvent.title) + '</span><br><br>' + '<p><strong>Start: </strong> <em>' + writeDay(startDate.getDay()) + ', ' + writeMonth(startDate.getMonth()) + ' ' + addEndToDate(startDate.getDate()) + '</em> @ <em>' + startTime + '</em><p><strong>End: </strong> <em> ' + writeDay(endDate.getDay()) + ', ' + writeMonth(endDate.getMonth()) + ' ' + addEndToDate(endDate.getDate()) + '</em> @ <em>' + endTime + '</p><div class="horzscrollone"></div><hr>' + 'Notes ~' + calEvent.description)
   }
   // if(calEvent.start){
   //   var startTime = calEvent.start.toLocaleTimeString().replace(/:\d+ /, ' ');
   //   var startDate = calEvent.start.toLocaleDateString();
   // }else{
-  //  var startTime = "No Time Given" 
-  //  var startDate = "No Date Given" 
+  //  var startTime = "No Time Given"
+  //  var startDate = "No Date Given"
   // }
   // if(calEvent.end){
   //   var endTime = calEvent.end.toLocaleTimeString().replace(/:\d+ /, ' ');
   //   var endDate = calEvent.end.toLocaleDateString();
   // }else{
   //  var endTime = "No Time Given"
-  //  var endDate = "No Date Given" 
+  //  var endDate = "No Date Given"
   // }
   // if(calEvent.allDay == true){
   //   return ('<b>Title: </b>' + calEvent.title.capitalizeName() + '<br>' + '<b>Time: </b>' + 'All Day Event<br>' + '<b>Description: </b>' + calEvent.description);
-    
+
   // }else{
   //   return ('<b>Title: </b>' + calEvent.user_id + '<br>' + '<b>Start Date: </b>' + startDate + '<br>' + '<b>Start Time: </b>' + startTime + '<br>' + '<hr>' + '<b>End Date: </b>' + endDate + '<br>' + '<b>End Time: </b>' + endTime + '<br>' + '<b>Description: </b>' + calEvent.description);
   // }
@@ -160,6 +160,3 @@ $(document).ready(createobligation);
 $(document).on('page:load', createobligation);
 // $(document).ready(setEndDate);
 // $(document).on('page:load', setEndDate);
-
-
-

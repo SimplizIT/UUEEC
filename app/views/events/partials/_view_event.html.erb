@@ -1,7 +1,7 @@
 <div id="EventModal" class='modal fade' tabindex="-1" style="display: none;" data-backdrop="true" data-keyboard="true">
   <div>
-    <button type='button' class="button_closeEvent btn btn-xs calendarmodalclose" data-type='EventModal'><i class='fa fa-location-arrow'></i> Close</button>
-    <button type='button' class="eventDelete btn btn-danger btn-xs" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+    <%= link_to 'Close', '#EventModal', class: 'divinline btn btn-primary btn-sm btn-modal-close' %>
+    <button type='button' class="eventDelete btn btn-danger btn-sm" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
   </div>
   <div id='eventbody' class="modal-body"></div>
 </div>

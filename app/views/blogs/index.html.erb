@@ -1,27 +1,28 @@
 <body id='blogspage'>
-  <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div>
+  <!-- <div class='homeimagenav'><%= link_to image_tag("uueecwhite.png", size: "150x150"), root_path %></div> -->
   <div id='blogspagewrapper'>
     <div class='flower'></div>
-    <h1>Blogs</h1>
-    <p>Here are the blogs</p>
-    
-    
+    <div id='blogTitle'>
+      <h1>We've Been Busy</h1>
+    </div>
 
-  
     <div class='blogswrapper'>
       <% if @blogs %>
         <%= paginate @blogs %>
           <% if can? :create, Blog %>
-            <div id='blogbutton' class='divinline'><%= link_to 'Add Blog', new_blog_path, class: 'btn btn-warning' %></div>
+
+            <div id='blogbutton' class='divinline'><%= link_to 'Create Blog', '#createblogmodal', class: 'btn btn-warning btn-modal-open' %></div>
+
           <% end %>
+            <%= render partial: 'blogs/partials/new_blog' %>
+
         <% @blogs.each do |blog| %>
           <div class='blogwrapper'>
             <%= link_to blog_path(blog) do %>
-          
+
               <div class='blogdate'>
                 <p><%= blog.created_at.strftime('%A / %B %d / %Y') %></p>
               </div>
-
 
               <div class='divinline blogsmain overflowbody'>
                 <h3 class='overflowtext'><%= blog.title %></h3>

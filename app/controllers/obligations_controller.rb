@@ -18,15 +18,22 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   def create
+    p'$' * 80
+    p params
     if current_user
-      
-        obligation = current_user.obligations.create(obligation_params)
-      
-      if obligation
-        flash[:notice] = 'Obligation Created'
-        redirect_to obligations_path
+      if validate_dates( params )
+        obligation = current_user.obligations.new(obligation_params)
+        obligation_saved = increment_end_date(obligation).save
+        if obligation_saved
+          flash[:notice] = 'Obligation Created'
+          redirect_to obligations_path
+        else
+          flash[:error] = 'Obligation could not be created'
+          redirect_to obligations_path
+        end
       else
-        flash[:error] = 'Obligation could not be created'
+        flash[:error] = 'Start and End time must be present and incremental'
+        redirect_to obligations_path
       end
     else
       flash[:error] = 'You must be signed in'
@@ -38,7 +45,6 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   def edit
-
   end
 
   def update
@@ -55,7 +61,7 @@ rescue_from StandardError, with: :obligation_create_errors
 
 
     elsif params.has_key?('swap_offered_remove')
-      
+
       p params
 
       obligation = Obligation.find(params[:id])
@@ -91,7 +97,7 @@ rescue_from StandardError, with: :obligation_create_errors
         end
         flash[:notice] = 'Swop Offered to Member.'
         redirect_to user_index_path
-      else 
+      else
         flash[:error] = 'Contact System Admin code obligation203'
         redirect_to user_index_path
       end
@@ -133,6 +139,25 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   private
+
+  def validate_dates( params )
+    if params['obligation']['start'].length > 0 && params['obligation']['end'].length > 0
+      if params['obligation']['start'] <= params['obligation']['end']
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
+  def increment_end_date(obligation)
+    if obligation.start == obligation.end
+      obligation.end = obligation.end + 1.minutes
+    end
+    obligation
+  end
 
   def obligation_params
     params.require(:obligation).permit!

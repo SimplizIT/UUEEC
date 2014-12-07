@@ -5,10 +5,9 @@
       <% if can? :manage, @faq_category %>
         <%= link_to 'Create FAQ Category', '#create_faq_category_modal', class: 'btn btn-primary btn-modal-open button-blue' %>
         <%= render partial: 'faq_categories/partials/create_faq_category' %>
-      <% end %>  
+      <% end %>
 
       <% if @faq_categories %>
-      <br>
           <ul class="nav nav-pills nav-stacked divinline tabbed" role='tablist'>
             <% @faq_categories.each do |category| %>
               <% tabactivation = category.name == @tab_session ? 'active' : '' %>
@@ -20,8 +19,8 @@
                 <div class='divinline left_nav_buttons'>
                     <div class='divinline'>
 
-                      <%= button_to "Delete", faq_category_path(id: category.id, faq_category: {id: category.id, _destroy: '1' }), method: 'delete',  id: 'deleteFAQ', class: 'faqbuttons btn btn-primary button-blue', 
-                      data: { 
+                      <%= button_to "Delete", faq_category_path(id: category.id, faq_category: {id: category.id, _destroy: '1' }), method: 'delete',  id: 'deleteFAQ', class: 'faqbuttons btn btn-primary button-blue',
+                      data: {
                         confirm: "Category: " + category.name.humanize + " and its content will be deleted!\n\nAre you sure you want to DELETE " + category.name.humanize + " ?"
                       } %>
                     </div><div class='divinline'>
@@ -35,17 +34,17 @@
                 <% end %>
               </li>
               <% if can? :manage, @faq_category %>
-                
+
               <% end %>
             <% end %>
           </ul>
-        </div>               
-        
+        </div>
+
         <div class='faq-right-nav divinline tab-content'>
 
           <% @faq_categories.each_with_index do |category, index| %>
 
-            <% tabactivation = category.name == @tab_session ? 'in active' : '' %> 
+            <% tabactivation = category.name == @tab_session ? 'in active' : '' %>
             <div class="tab-pane fade <%= tabactivation %>" id="<%= category.name %>">
                   <% category.faqs.each do |faq| %>
                     <% if !faq.new_record? %>
@@ -71,7 +70,7 @@
                               <%= link_to 'Update', '#' + question_path, class: 'changeLink btn btn-primary button-greenhaze btn-modal-open' %>
                               <%= render partial: 'faq_categories/partials/faq_question_update', locals: { category: category, faq: faq, type: 'question'.to_sym } %>
                             </div>
-                          
+
                             <div class='divinline'>
                               <%= link_to 'Move', '#modalmovefaq' + faq.id.to_s, class: 'btn btn-primary button-greenhaze btn-modal-open' %>
                               <%= render partial: 'faq_categories/partials/faq_move', locals: { category: category, faq: faq } %>
@@ -97,39 +96,12 @@
                         <% end %>
                       </div>
                     <% end %>
-                  <% end %>  
+                  <% end %>
             </div>
 
-          <% end %>  
-        </div>             
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

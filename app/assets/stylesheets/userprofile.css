@@ -54,6 +54,7 @@
   margin-left: auto;
   position: relative;
   margin-bottom: 30px;
+  top: 85px;
 }
 
 .userpagediv {
@@ -75,12 +76,12 @@
   outline: none;
   padding: 6px 10px;
   margin-bottom: 14px;
-    margin-right: 10px;
-
+  margin-right: 10px;
 }
 
 #userinfo {
   width: 980px;
+  height: 520px;
 }
 
 .usercircle {
@@ -191,6 +192,9 @@
   padding: 10px;
   border-radius: 6px;
   float: right;
+  position: relative;
+  top: 33px;
+  right: 40px;
 }
 
 .divcenter {
@@ -201,7 +205,8 @@
 .user_image_buttons {
   margin-right: auto;
   margin-left: auto;
-  width: 190px;
+  width: 300px;
+  margin-left: 60px;
 }
 
 .user_image_buttons div a:hover {
@@ -343,7 +348,7 @@
 #preview_modal_closebtn {
   position: relative;
   top: -88px;
-  left: -33px;  
+  left: -33px;
 }
 
 #user_obligations_wrapper {

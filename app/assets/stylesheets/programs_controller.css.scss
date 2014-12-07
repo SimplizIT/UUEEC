@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'RockSalt';
-  src: url(RockSalt.ttf); 
+  src: url(RockSalt.ttf);
 }
 
 @font-face {
   font-family: 'ChalkBoard';
-  src: url(NothingYouCouldDo.ttf); 
+  src: url(NothingYouCouldDo.ttf);
 }
 
 /*#application_child_image {
@@ -111,6 +111,7 @@
   position: relative;
   margin-bottom: 30px;
   color: #474747;
+  top: 85px;
 }
 
 form input {
@@ -242,8 +243,3 @@ textarea:focus, input:focus {
 .destroy_person {
   padding-top: 18px;
 }
-
-
-
-
-

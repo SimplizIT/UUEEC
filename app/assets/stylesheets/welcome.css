@@ -5,7 +5,9 @@
 
 /*// #jsDisabled is in case the browser does not have javascript enabled*/
 #jsDisabled {
-  color: red;
+  color: rgb(255, 159, 159);
+  background-color: black;
+  font-size: 18px;
 }
 
 html {
@@ -33,48 +35,48 @@ input[type=radio] {
   display: none;
 }
 
-input[type=checkbox] {  
-  display: none;  
-} 
+input[type=checkbox] {
+  display: none;
+}
 
-.radio label:before, .checkbox label:before {  
-  content: "";  
-  display: inline-block;  
+.radio label:before, .checkbox label:before {
+  content: "";
+  display: inline-block;
 
-  width: 16px;  
-  height: 16px;  
+  width: 16px;
+  height: 16px;
 
-  margin-right: 10px;  
-  position: absolute;  
-  left: 0;  
-  bottom: 3px;  
-  background-color: #7AAFB2;  
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
-} 
+  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  background-color: #7AAFB2;
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+}
 
 .radio label:before {
   border-radius: 8px;
 }
 
-.checkbox label:before {  
-  border-radius: 3px;  
-} 
+.checkbox label:before {
+  border-radius: 3px;
+}
 
-input[type=radio]:checked + label:before {  
-  content: "\2022";  
-  color: #f3f3f3;  
-  font-size: 30px;  
-  text-align: center;  
-  line-height: 18px;  
-} 
+input[type=radio]:checked + label:before {
+  content: "\2022";
+  color: #f3f3f3;
+  font-size: 30px;
+  text-align: center;
+  line-height: 18px;
+}
 
-input[type=checkbox]:checked + label:before {  
-  content: "\2713";  
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);  
-  font-size: 15px;  
-  color: #f3f3f3;  
-  text-align: center;  
-  line-height: 15px;  
+input[type=checkbox]:checked + label:before {
+  content: "\2713";
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+  font-size: 15px;
+  color: #f3f3f3;
+  text-align: center;
+  line-height: 15px;
 }
 
 .input-button {
@@ -486,7 +488,7 @@ textarea {
 .navbarwrapper {
   width: 100%;
   margin-bottom: 60px;
-  height: 160px;
+  height: 40px;
 }
 
 .navbar li {

@@ -1,10 +1,22 @@
-<p>here we are</p>
-
-<% if @blog %>
-  <div class='blogindex'>
-    <img src='<%= @blog.image.thumb.to_s %>', style='float: right' >
-    <%= @blog.title %>
-    <%= markdown(@blog.body) %>
-    <p>This blog viewed <span><%= @blog.views %></span> times.</p>
-  </div>
-<% end %>
+<body id='blog-show-page' class='page-content'>
+   <div class='page-content-wrapper'>
+     <% if @blog %>
+       <div id="blog-title" class='page-title'>
+         <% if @blog.title %>
+          <h1><%= @blog.title %></h1>
+         <% else %>
+          <h1>What We've Been Upto</h1>
+         <% end %>
+       </div> <!-- end page title -->
+       <div class='content-body blog'>
+         <div class="blog-image-wrapper">
+           <img src='<%= @blog.image.largeDisplay.to_s %>', class="blog-show-image" >
+         </div>
+         <div class='blog-text'>
+           <%= markdown(@blog.body) %>
+         </div>
+         <p>This blog viewed <span><%= @blog.views %></span> times.</p>
+       </div> <!-- end content body -->
+    <% end %>
+  </div> <!-- end page content wrapper -->
+</body>

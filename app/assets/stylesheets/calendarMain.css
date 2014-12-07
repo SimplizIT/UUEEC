@@ -1,14 +1,5 @@
 #eventcalpage {
   position: relative;
-  top: -24px;
-  background-color: #609E71; /*used to be 45AD72*/
-  z-index: 1;
-  padding-bottom: 30px;
-}
-
-#obligationcalpage {
-  position: relative;
-  top: -24px;
   background-color: #609E71; /*used to be 45AD72*/
   z-index: 1;
   padding-bottom: 30px;
@@ -53,6 +44,7 @@
 #eventbody {
   opacity: .9;
   color: #2d2e2e;
+  margin-top: 57px;
 }
 
 .eventtitle {
@@ -138,6 +130,10 @@
   color: #FFF;
   letter-spacing: 1px;
   z-index: 30;
+  display: inline-block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
 }
 
 #calendarTitle h1 {
@@ -169,7 +165,7 @@
 }
 
 #calendarEvents .fc-content tbody {
- border: 0.5px solid #FFF; 
+ border: 0.5px solid #FFF;
 }
 
 #calendarEvents .fc-header-right {
@@ -244,7 +240,7 @@
 }
 
 #calendarObligations .fc-content tbody {
- border: 0.5px solid #FFF; 
+ border: 0.5px solid #FFF;
 }
 
 #calendarObligations .fc-header-right {
@@ -294,19 +290,15 @@
 }
 
 #calendarObligations .fc-event {
-  border: 1px solid #BF8A4D;
-  background-color: #BF8A4D;
+  border: 1px solid #2d6ca2;
+  background-color: #2d6ca2;
   padding: 4px;
   font-size: .45em;
 }
 
-
-
-
-
 #eventpagewrapper {
   position: relative;
-  top: -70px;
+  top: 115px;
   background-color: none;
   height: 1500px;
   margin-right: auto;
@@ -355,11 +347,11 @@
   height: 53px;
   z-index: 500;
   background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
   color: #6a6340;
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
@@ -372,7 +364,7 @@
 
 .ribbon-green:before, .ribbon-green:after {
   content: "";
-  border-top:   3px solid #797979;   
+  border-top:   3px solid #797979;
   border-left:  3px solid transparent;
   border-right: 3px solid transparent;
   position:absolute;
@@ -416,7 +408,7 @@ border: none;
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
-  top: -75px;
+  top: -15px;
   z-index: -1;
   left: -48px;
   opacity: .2;
@@ -441,4 +433,3 @@ border: none;
   position: relative;
   top: 45px;
 }
-

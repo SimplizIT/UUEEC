@@ -47,12 +47,12 @@ var datePicker = function(){
 
 
   // setDate(currentDate.getDate() - 1)
-  $(".start_date input").change(function (e) {
+  // $(".start_date input").change(function (e) {
     // console.log($('#obligationEnd').data("DateTimePicker").setMinDate(moment(e.date).subtract('days', 1)))
     //  $('#obligationEnd').data("DateTimePicker").setMinDate(moment(e.date).subtract('days', 1));
       // $('.end_date').datetimepicker(moment(moment.unix(e.timeStamp), 'MM-DD-YYYY h:m'))
      // $('#obligationDate').data('DateTimePicker').setDate(moment(e.date));
-  });
+  // });
   // $("#obligationEnd").on("dp.change",function (e) {
   //    // $('#obligationStart').data("DateTimePicker").setMaxDate(e.date);
   // });
@@ -90,7 +90,7 @@ var datePicker = function(){
   })
 
  $('.start_date').datetimepicker({
-    format: "MM d, yyyy  @  9:00 a",
+    format: "MM d, yyyy  @  hh:i p",
     startDate: new Date(),
     endDate: dateFuture,
     startView: 4,
@@ -103,7 +103,7 @@ var datePicker = function(){
   })
 
  $('.end_date').datetimepicker({
-    format: "MM d, yyyy  @  12:00 p",
+    format: "MM d, yyyy  @  hh:i p",
     startDate: new Date(),
     endDate: dateFuture,
     startView: 4,
@@ -113,11 +113,33 @@ var datePicker = function(){
     forceParse: true
   })
 
+  $('.event_start_date').datetimepicker({
+    format: "MM d, yyyy  @  hh:i p",
+    startDate: new Date(),
+    endDate: dateFuture,
+    startView: 4,
+    minView: 0,
+    autoclose: true,
+    todayHighlight: false,
+    forceParse: true,
+  })
+
+  $('.event_end_date').datetimepicker({
+    format: "MM d, yyyy  @  hh:i p",
+    startDate: new Date(),
+    endDate: dateFuture,
+    startView: 4,
+    minView: 0,
+    autoclose: true,
+    todayHighlight: false,
+    forceParse: true
+  })
+
 
 
   // console.log(datepickerdate)
   // console.log(datepickerdate.setMonth(datepickerdate.getMonth() -- 60))
-  
+
   // $('.datetimepickerevent').datetimepicker({
   //   language: 'en',
   //   pick12HourFormat: true,
@@ -156,7 +178,7 @@ var datePicker = function(){
   //                   })
 
 
-  
+
      // $('.datetimepickerobligation').datetimepicker({onSelect: function(selectedDate) {
      //  console.log(selectedDate)
      //        var date = $(this).datetimepicker('getDate');
