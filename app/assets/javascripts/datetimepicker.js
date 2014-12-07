@@ -94,12 +94,12 @@ var datePicker = function(){
     startDate: new Date(),
     endDate: dateFuture,
     startView: 4,
-    minView: 2,
+    minView: 0,
     autoclose: true,
     todayHighlight: false,
     forceParse: true,
-    linkField: "obligation_end",
-    linkFormat: "MM d, yyyy  @  12:00 p"
+    // linkField: "obligation_end",
+    // linkFormat: "MM d, yyyy  @  12:00 p"
   })
 
  $('.end_date').datetimepicker({
@@ -107,7 +107,7 @@ var datePicker = function(){
     startDate: new Date(),
     endDate: dateFuture,
     startView: 4,
-    minView: 2,
+    minView: 0,
     autoclose: true,
     todayHighlight: false,
     forceParse: true

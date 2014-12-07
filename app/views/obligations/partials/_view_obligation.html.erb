@@ -1,17 +1,29 @@
 <div id="ObligationModal" class='modal fade calendarModal' tabindex="-1" style="display: none;">
   <div>
-    <h3>Volunteer</h3>
+    <%= link_to 'Close', '#ObligationModal', class: 'divinline btn btn-primary btn-sm btn-modal-close' %>
+    <% if can? :destroy, Obligation %>
+    <button type='button' class="obligationDelete btn btn-danger btn-sm" data-type='ObligationModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+    <% end %>
+  </div>
+
+
+
+
+
+  <!--
+  <div>
+
     <button type='button' class="button_closeEvent btn btn-xs calendarmodalclose" data-type='ObligationModal'><i class='fa fa-location-arrow'></i> Close</button>
 
     <button type='button' class="btn btn-xs calendarmodalclose" data-type='ObligationModal'><i class='fa fa-location-arrow'></i> Close</button>
 
     <% if current_user %>
-    <% if can? :delete, Event %>
-       <button type='button' class="eventDelete btn btn-danger btn-xs" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+      <% if can? :delete, Event %>
+       <button type='button' class="obligationDelete btn btn-danger btn-xs" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+      <% end %>
     <% end %>
-  <% end %>
 
-  </div>
-
+  </div> -->
+  <!-- <h3>Volunteer</h3> -->
   <div id='obligationbody' class="modal-body"></div>
 </div>

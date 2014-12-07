@@ -129,8 +129,10 @@ rescue_from StandardError, with: :obligation_create_errors
   end
 
   def destroy
+    p '%$' * 90
+    p params
     event = Obligation.find(params[:id])
-    if event.user.id == current_user.id
+    if event.user_id == current_user.id
       event.delete
     else
       flash[:error] = 'Access is denied for this action.'

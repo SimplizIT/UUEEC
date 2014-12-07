@@ -1,7 +1,9 @@
 <div id="EventModal" class='modal fade' tabindex="-1" style="display: none;" data-backdrop="true" data-keyboard="true">
   <div>
     <%= link_to 'Close', '#EventModal', class: 'divinline btn btn-primary btn-sm btn-modal-close' %>
-    <button type='button' class="eventDelete btn btn-danger btn-sm" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+    <% if can? :destroy, Event %>
+      <button type='button' class="eventDelete btn btn-danger btn-sm" data-type='EventModal'><i class='fa fa-exclamation'></i> Delete Event</button>
+    <% end %>
   </div>
   <div id='eventbody' class="modal-body"></div>
 </div>

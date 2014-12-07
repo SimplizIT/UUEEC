@@ -43,7 +43,7 @@ var obligationCalendar = function(){
         $('#ObligationModal').modal('hide')
       });
 
-      $('.button_deleteObligation').on('click', function(e){
+      $('.obligationDelete').on('click', function(e){
         e.preventDefault();
         $.ajax({
           url: 'obligations/' + calEvent.id,

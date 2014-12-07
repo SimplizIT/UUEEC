@@ -28,6 +28,11 @@
   width: 100%;
 }
 
+.obligationDelete {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 #obligationTitle h1 {
   font-size: 80px;
 }
